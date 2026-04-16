@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-04-16T07:39:19.983Z",
+  "generatedAt": "2026-04-16T11:57:29.220Z",
   "lane": "skydexia/knowledge-base/GiftsFromtheSkyes",
   "totalTemplates": 1,
   "templates": [
@@ -23,7 +23,7 @@
         "entrypointType": "asset"
       },
       "smokeable": true,
-      "qualityScore": 0.75,
+      "qualityScore": 0.9,
       "extractionPolicy": "validated-only"
     }
   ]
