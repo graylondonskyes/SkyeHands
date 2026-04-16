@@ -47,20 +47,6 @@
     "smoke:p034": "node ./scripts/smoke-p034-knowledge-base-policy.mjs",
     "smoke:p035": "node ./scripts/smoke-p035-gifts-import-lane.mjs",
     "smoke:p036": "node ./scripts/smoke-p036-donor-indexing-pipeline.mjs",
-    "smoke:p037": "node ./scripts/smoke-p037-provenance-tracking.mjs",
-    "donor:quality": "node ./scripts/skydexia-template-quality.mjs",
-    "donor:extract:safe": "node ./scripts/skydexia-safe-extract.mjs",
-    "donor:ingest": "node ./scripts/skydexia-donor-ingest.mjs",
-    "donor:normalize": "node ./scripts/skydexia-donor-normalize.mjs",
-    "donor:spinup": "node ./scripts/skydexia-template-spinup.mjs",
-    "donor:compatibility:matrix": "node ./scripts/skydexia-compatibility-matrix.mjs",
-    "donor:smoke:classify": "node ./scripts/skydexia-donor-smoke-classifier.mjs",
-    "smoke:p038": "node ./scripts/smoke-p038-template-quality-scoring.mjs",
-    "smoke:p039": "node ./scripts/smoke-p039-safe-extraction-layer.mjs",
-    "smoke:p040": "node ./scripts/smoke-p040-donor-ingestion-protocol.mjs",
-    "smoke:p041": "node ./scripts/smoke-p041-donor-normalization-layer.mjs",
-    "smoke:p042": "node ./scripts/smoke-p042-autonomous-project-spinup.mjs",
-    "smoke:p043": "node ./scripts/smoke-p043-runtime-compatibility-matrix.mjs",
-    "smoke:p044": "node ./scripts/smoke-p044-smoke-suites-by-class.mjs"
+    "smoke:p037": "node ./scripts/smoke-p037-provenance-tracking.mjs"
   }
 }

@@ -21,7 +21,7 @@ SkyeHands is developed as a market-defining enterprise platform with Fortune 500
 ✅ P004 | Easy | Completion percentage must be based only on checked directive items. `SMOKE: enforced by scripts/validate-ultimate-directive.mjs`
 
 
-**Completion Status:** **55%** (**44/80 items complete)**
+**Completion Status:** **46%** (**37/80 items complete)**
 
 ---
 
@@ -69,15 +69,15 @@ SkyeHands is developed as a market-defining enterprise platform with Fortune 500
 ✅ P035 | Medium | Create `GiftsFromtheSkyes/` import lane for donor project packs. `SMOKE: SMOKE_P035_GIFTS_IMPORT_LANE.md + scripts/smoke-p035-gifts-import-lane.mjs`
 ✅ P036 | Medium | Add donor indexing pipeline that converts donor codebases into reusable templates. `SMOKE: SMOKE_P036_DONOR_INDEXING_PIPELINE.md + scripts/smoke-p036-donor-indexing-pipeline.mjs`
 ✅ P037 | Medium | Add provenance tracking per donor asset (source, checksum, import date, compatibility). `SMOKE: SMOKE_P037_PROVENANCE_TRACKING.md + scripts/smoke-p037-provenance-tracking.mjs`
-✅ P038 | Medium | Add template quality scoring and smokeability tagging. `SMOKE: SMOKE_P038_TEMPLATE_QUALITY_SCORING.md + scripts/smoke-p038-template-quality-scoring.mjs`
-✅ P039 | Medium | Add safe extraction layer so generated projects inherit only validated templates. `SMOKE: SMOKE_P039_SAFE_EXTRACTION_LAYER.md + scripts/smoke-p039-safe-extraction-layer.mjs`
+⬜ P038 | Medium | Add template quality scoring and smokeability tagging.
+⬜ P039 | Medium | Add safe extraction layer so generated projects inherit only validated templates.
 
 ## 7) DONOR PROJECT AUTONOMY (30+ PACKS)
-✅ P040 | Medium | Implement ingestion protocol for 30+ donor codebases with manifest validation. `SMOKE: SMOKE_P040_DONOR_INGESTION_PROTOCOL.md + scripts/smoke-p040-donor-ingestion-protocol.mjs`
-✅ P041 | Medium | Add normalization layer (structure, scripts, runtime expectations) for donor packs. `SMOKE: SMOKE_P041_DONOR_NORMALIZATION_LAYER.md + scripts/smoke-p041-donor-normalization-layer.mjs`
-✅ P042 | Medium | Add autonomous project spin-up flow from donor templates. `SMOKE: SMOKE_P042_AUTONOMOUS_PROJECT_SPINUP.md + scripts/smoke-p042-autonomous-project-spinup.mjs`
-✅ P043 | Medium | Add runtime compatibility matrix (provider/env requirements per donor). `SMOKE: SMOKE_P043_RUNTIME_COMPATIBILITY_MATRIX.md + scripts/smoke-p043-runtime-compatibility-matrix.mjs`
-✅ P044 | Medium | Add end-to-end smoke suites per donor class before promotion to reusable template catalog. `SMOKE: SMOKE_P044_SMOKE_SUITES_BY_CLASS.md + scripts/smoke-p044-smoke-suites-by-class.mjs`
+⬜ P040 | Medium | Implement ingestion protocol for 30+ donor codebases with manifest validation.
+⬜ P041 | Medium | Add normalization layer (structure, scripts, runtime expectations) for donor packs.
+⬜ P042 | Medium | Add autonomous project spin-up flow from donor templates.
+⬜ P043 | Medium | Add runtime compatibility matrix (provider/env requirements per donor).
+⬜ P044 | Medium | Add end-to-end smoke suites per donor class before promotion to reusable template catalog.
 
 ## 8) PROVIDER VARIABLES + E2E PROOF STRATEGY
 ⬜ P045 | Medium | Standardize provider var contract for all generated apps/platforms.
