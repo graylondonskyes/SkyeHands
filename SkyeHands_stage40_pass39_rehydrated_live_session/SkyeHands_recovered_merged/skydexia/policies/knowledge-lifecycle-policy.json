@@ -3,14 +3,16 @@
   "owner": "SkyDexia",
   "knowledgeRoot": "skydexia/knowledge-base",
   "importLane": "skydexia/knowledge-base/GiftsFromtheSkyes",
-  "retention": {
-    "archiveAfterDays": 180,
-    "reviewCadenceDays": 30
-  },
   "requiredMetadata": [
     "source",
     "importedAt",
     "checksum",
-    "classification"
-  ]
+    "classification",
+    "compatibility",
+    "qualityScore"
+  ],
+  "retention": {
+    "policy": "immutable-import-log",
+    "auditRequired": true
+  }
 }

@@ -21,7 +21,7 @@ SkyeHands is developed as a market-defining enterprise platform with Fortune 500
 ✅ P004 | Easy | Completion percentage must be based only on checked directive items. `SMOKE: enforced by scripts/validate-ultimate-directive.mjs`
 
 
-**Completion Status:** **35%** (**28/80 items complete)**
+**Completion Status:** **46%** (**37/80 items complete)**
 
 ---
 
@@ -58,17 +58,17 @@ SkyeHands is developed as a market-defining enterprise platform with Fortune 500
 ✅ P028 | Medium | Add dual smoke tiers (structural + runtime/provider-backed) and gate directive checkmarks on runtime tier. `SMOKE: SMOKE_P028_DUAL_SMOKE_TIERS.md + scripts/smoke-p028-dual-smoke-tiers.mjs`
 
 ## 5) SKYDEXIA CORE ORCHESTRATOR
-⬜ P029 | Medium | Define SkyDexia canonical architecture and runtime boundaries.
-⬜ P030 | Medium | Implement SkyDexia as first-class orchestrator across CDE + AE + route flows.
-⬜ P031 | Medium | Enforce single model identity in UX: “SkyDexia model by Skyes Over London”.
-⬜ P032 | Medium | Integrate AE brain capabilities directly into SkyDexia orchestration layer.
-⬜ P033 | Medium | Add capability registry so SkyDexia can compose complete platform builds from available modules.
+✅ P029 | Medium | Define SkyDexia canonical architecture and runtime boundaries. `SMOKE: SMOKE_P029_SKYDEXIA_ARCHITECTURE.md + scripts/smoke-p029-skydexia-architecture.mjs`
+✅ P030 | Medium | Implement SkyDexia as first-class orchestrator across CDE + AE + route flows. `SMOKE: SMOKE_P030_SKYDEXIA_ORCHESTRATOR.md + scripts/smoke-p030-skydexia-orchestrator.mjs`
+✅ P031 | Medium | Enforce single model identity in UX: “SkyDexia model by Skyes Over London”. `SMOKE: SMOKE_P031_SKYDEXIA_IDENTITY.md + scripts/smoke-p031-skydexia-identity.mjs`
+✅ P032 | Medium | Integrate AE brain capabilities directly into SkyDexia orchestration layer. `SMOKE: SMOKE_P032_AE_CAPABILITY_INTEGRATION.md + scripts/smoke-p032-ae-capability-integration.mjs`
+✅ P033 | Medium | Add capability registry so SkyDexia can compose complete platform builds from available modules. `SMOKE: SMOKE_P033_CAPABILITY_REGISTRY.md + scripts/smoke-p033-capability-registry.mjs`
 
 ## 6) SKYDEXIA KNOWLEDGE SYSTEM
-⬜ P034 | Medium | Create SkyDexia-owned knowledge base root and lifecycle policy.
-⬜ P035 | Medium | Create `GiftsFromtheSkyes/` import lane for donor project packs.
-⬜ P036 | Medium | Add donor indexing pipeline that converts donor codebases into reusable templates.
-⬜ P037 | Medium | Add provenance tracking per donor asset (source, checksum, import date, compatibility).
+✅ P034 | Medium | Create SkyDexia-owned knowledge base root and lifecycle policy. `SMOKE: SMOKE_P034_KNOWLEDGE_BASE_POLICY.md + scripts/smoke-p034-knowledge-base-policy.mjs`
+✅ P035 | Medium | Create `GiftsFromtheSkyes/` import lane for donor project packs. `SMOKE: SMOKE_P035_GIFTS_IMPORT_LANE.md + scripts/smoke-p035-gifts-import-lane.mjs`
+✅ P036 | Medium | Add donor indexing pipeline that converts donor codebases into reusable templates. `SMOKE: SMOKE_P036_DONOR_INDEXING_PIPELINE.md + scripts/smoke-p036-donor-indexing-pipeline.mjs`
+✅ P037 | Medium | Add provenance tracking per donor asset (source, checksum, import date, compatibility). `SMOKE: SMOKE_P037_PROVENANCE_TRACKING.md + scripts/smoke-p037-provenance-tracking.mjs`
 ⬜ P038 | Medium | Add template quality scoring and smokeability tagging.
 ⬜ P039 | Medium | Add safe extraction layer so generated projects inherit only validated templates.
 

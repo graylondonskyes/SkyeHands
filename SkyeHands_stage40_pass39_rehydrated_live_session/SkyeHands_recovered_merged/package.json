@@ -36,6 +36,17 @@
     "smoke:p023": "node ./scripts/smoke-p023-provider-outage-failover.mjs",
     "smoke:p026": "node ./scripts/smoke-p026-root-handlers-runtime.mjs",
     "smoke:p027": "node ./scripts/smoke-p027-commandhub-manifest-reconcile.mjs",
-    "smoke:p028": "node ./scripts/smoke-p028-dual-smoke-tiers.mjs"
+    "smoke:p028": "node ./scripts/smoke-p028-dual-smoke-tiers.mjs",
+    "donor:index": "node ./scripts/skydexia-donor-index.mjs",
+    "donor:provenance:audit": "node ./scripts/skydexia-provenance-audit.mjs",
+    "smoke:p029": "node ./scripts/smoke-p029-skydexia-architecture.mjs",
+    "smoke:p030": "node ./scripts/smoke-p030-skydexia-orchestrator.mjs",
+    "smoke:p031": "node ./scripts/smoke-p031-skydexia-identity.mjs",
+    "smoke:p032": "node ./scripts/smoke-p032-ae-capability-integration.mjs",
+    "smoke:p033": "node ./scripts/smoke-p033-capability-registry.mjs",
+    "smoke:p034": "node ./scripts/smoke-p034-knowledge-base-policy.mjs",
+    "smoke:p035": "node ./scripts/smoke-p035-gifts-import-lane.mjs",
+    "smoke:p036": "node ./scripts/smoke-p036-donor-indexing-pipeline.mjs",
+    "smoke:p037": "node ./scripts/smoke-p037-provenance-tracking.mjs"
   }
 }
