@@ -17,6 +17,9 @@
     "workspace:proof:stage9": "node ./skyequanta.mjs workspace:proof:stage9",
     "workspace:proof:stage10": "node ./skyequanta.mjs workspace:proof:stage10",
     "workspace:proof:stage11": "node ./skyequanta.mjs workspace:proof:stage11",
-    "workspace:proof:section8": "node ./skyequanta.mjs workspace:proof:section8"
+    "workspace:proof:section8": "node ./skyequanta.mjs workspace:proof:section8",
+    "directive:validate": "node ./scripts/validate-ultimate-directive.mjs",
+    "release:gate": "node ./scripts/release-gate.mjs",
+    "directive:changelog": "node ./scripts/generate-directive-changelog.mjs"
   }
 }

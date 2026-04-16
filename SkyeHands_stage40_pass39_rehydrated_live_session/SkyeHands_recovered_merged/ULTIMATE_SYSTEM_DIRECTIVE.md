@@ -1,0 +1,120 @@
+# ULTIMATE SYSTEM DIRECTIVE — SKYEHANDS (MASTER)
+
+**System:** SkyeHands (autonomous CDE + AE + platform fabric + SkyDexia orchestration)
+
+**Directive Rules (non-negotiable):**
+✅ P001 | Easy | Every checked item must include `SMOKE:` evidence pointing to an end-to-end proof artifact (not UI-only existence).
+✅ P002 | Easy | Smoke must verify: real flow, existing controls/buttons, data path, and claimed output behavior. `SMOKE: rule declaration in this directive`
+✅ P003 | Easy | If smoke cannot prove a claim end-to-end, the item stays unchecked. `SMOKE: rule declaration in this directive`
+✅ P004 | Easy | Completion percentage must be based only on checked directive items. `SMOKE: enforced by scripts/validate-ultimate-directive.mjs`
+
+
+**Completion Status:** **16%** (**13/80 items complete)**
+
+---
+
+## 1) CORE SYSTEM GOVERNANCE
+✅ P005 | Easy | Establish single master directive at repository root. `SMOKE: manual repo check (this file exists at root)`
+✅ P006 | Easy | Define smoke-proof-only completion rules in this directive. `SMOKE: rules block in this file`
+✅ P007 | Easy | Create signed release gate requiring directive validation before ship candidates. `SMOKE: scripts/release-gate.mjs`
+✅ P008 | Easy | Add automated CI job to block checked items lacking smoke evidence. `SMOKE: .github/workflows/directive-guard.yml`
+✅ P009 | Easy | Add changelog bridge from smoke outputs to directive updates. `SMOKE: DIRECTIVE_CHANGELOG.md + scripts/generate-directive-changelog.mjs`
+
+## 2) SKYEHANDS AUTONOMOUS CDE (GLOBAL)
+⬜ P010 | Easy | Prove end-to-end CDE operator boot from clean environment to active runtime.
+⬜ P011 | Easy | Prove workspace lifecycle orchestration (create, run, recover, teardown) with smoke evidence.
+⬜ P012 | Easy | Prove runtime isolation and containment controls with executable enforcement checks.
+⬜ P013 | Easy | Prove hardening chain with policy + proof artifacts wired into smoke.
+⬜ P014 | Easy | Prove deployment packaging and operator handoff path as a repeatable smoke-backed flow.
+
+## 3) AE COMMAND + BRAIN HARDENING
+✅ P015 | Easy | Restore AE smoke pipeline so it executes to PASS state. `SMOKE: platform/user-platforms/skye-account-executive-commandhub-s0l26-0s/source/AE-Central-Command-Pack-CredentialHub-Launcher/Branching Apps/AE-Brain-Command-Site-v8-Additive/docs/SMOKE_PROOF.md`
+✅ P016 | Easy | Reinstate required AE runtime surfaces (`netlify/functions`, shared helpers, storage schema). `SMOKE: same SMOKE_PROOF.md`
+⬜ P017 | Easy | Replace placeholder AE function logic with production-grade implementations.
+⬜ P018 | Easy | Add persistent auth/session model with role enforcement and audited access trails.
+⬜ P019 | Easy | Add provider execution contracts for deterministic runtime verification.
+⬜ P020 | Easy | Validate AE promise/churn/reactivation/sweep actions against real dataset fixtures.
+⬜ P021 | Easy | Validate appointment brain integration with full handoff → booking → return flow against runtime services.
+⬜ P022 | Easy | Validate printful/commerce route flows end-to-end with runtime-backed assertions.
+⬜ P023 | Easy | Add resilience tests for provider outages and failover correctness in AE runtime.
+
+## 4) AE / COMMANDHUB / SKYE ROUTE / CRM REALITY SCAN
+✅ P024 | Easy | Complete deep code-based inventory scan for AE/CommandHub/Skye route/CRM and publish findings. `SMOKE: AE_COMMANDHUB_REALITY_SCAN_2026-04-16.md`
+✅ P025 | Easy | Classify what is real vs stubbed vs missing using code evidence only. `SMOKE: AE_COMMANDHUB_REALITY_SCAN_2026-04-16.md`
+⬜ P026 | Easy | Replace stub-like AE root Netlify handlers with production implementations and runtime tests.
+⬜ P027 | Easy | Reconcile missing `commandTargetExists: false` script targets in CommandHub manifest.
+⬜ P028 | Medium | Add dual smoke tiers (structural + runtime/provider-backed) and gate directive checkmarks on runtime tier.
+
+## 5) SKYDEXIA CORE ORCHESTRATOR
+⬜ P029 | Medium | Define SkyDexia canonical architecture and runtime boundaries.
+⬜ P030 | Medium | Implement SkyDexia as first-class orchestrator across CDE + AE + route flows.
+⬜ P031 | Medium | Enforce single model identity in UX: “SkyDexia model by Skyes Over London”.
+⬜ P032 | Medium | Integrate AE brain capabilities directly into SkyDexia orchestration layer.
+⬜ P033 | Medium | Add capability registry so SkyDexia can compose complete platform builds from available modules.
+
+## 6) SKYDEXIA KNOWLEDGE SYSTEM
+⬜ P034 | Medium | Create SkyDexia-owned knowledge base root and lifecycle policy.
+⬜ P035 | Medium | Create `GiftsFromtheSkyes/` import lane for donor project packs.
+⬜ P036 | Medium | Add donor indexing pipeline that converts donor codebases into reusable templates.
+⬜ P037 | Medium | Add provenance tracking per donor asset (source, checksum, import date, compatibility).
+⬜ P038 | Medium | Add template quality scoring and smokeability tagging.
+⬜ P039 | Medium | Add safe extraction layer so generated projects inherit only validated templates.
+
+## 7) DONOR PROJECT AUTONOMY (30+ PACKS)
+⬜ P040 | Medium | Implement ingestion protocol for 30+ donor codebases with manifest validation.
+⬜ P041 | Medium | Add normalization layer (structure, scripts, runtime expectations) for donor packs.
+⬜ P042 | Medium | Add autonomous project spin-up flow from donor templates.
+⬜ P043 | Medium | Add runtime compatibility matrix (provider/env requirements per donor).
+⬜ P044 | Medium | Add end-to-end smoke suites per donor class before promotion to reusable template catalog.
+
+## 8) PROVIDER VARIABLES + E2E PROOF STRATEGY
+⬜ P045 | Medium | Standardize provider var contract for all generated apps/platforms.
+⬜ P046 | Medium | Add provider-supplied test script execution path for runtime proofing.
+⬜ P047 | Medium | Prove generated platforms run end-to-end with only required live vars supplied.
+⬜ P048 | Medium | Add artifact capture for each proof run (inputs, outputs, logs, hashes).
+⬜ P049 | Medium | Add fail-fast diagnostics that map proof breaks to exact missing vars or runtime contracts.
+
+## 9) CONTINUOUS WEB KNOWLEDGE UPDATES
+⬜ P050 | Medium | Add scheduled web update loop for SkyDexia knowledge refresh.
+⬜ P051 | Medium | Add source allowlist + trust policy + provenance logs for web-fed updates.
+⬜ P052 | Medium | Add semantic diffing and safe-apply review gate for knowledge updates.
+⬜ P053 | Medium | Add email alerting to ultimate admin for applied/pending knowledge updates.
+⬜ P054 | Medium | Add developer rollback for each knowledge update batch.
+
+## 10) EMAIL ALERTING + ADMIN OVERSIGHT
+⬜ P055 | Complex | Implement admin notification service for knowledge-base updates.
+⬜ P056 | Complex | Implement high-priority alerting for smoke regressions and platform drift.
+⬜ P057 | Complex | Implement daily/weekly digest of completion percentage and blocked directive items.
+⬜ P058 | Complex | Add audit trail for alert delivery and acknowledgment states.
+
+## 11) ROLLBACK + RECOVERY CONTROLS
+⬜ P059 | Complex | Add versioned snapshots for directive state, smoke evidence, and knowledge base.
+⬜ P060 | Complex | Add one-command rollback for failed knowledge sync/update batches.
+⬜ P061 | Complex | Add rollback verification smoke to prove restored state is functional.
+⬜ P062 | Complex | Add disaster-recovery playbook covering CDE, AE, and SkyDexia knowledge systems.
+
+## 12) SMOKE PROOF QUALITY BAR (E2E)
+⬜ P063 | Complex | Require each smoke to validate user-visible controls actually execute intended actions.
+⬜ P064 | Complex | Require each smoke to verify backend state transitions and persisted outputs.
+⬜ P065 | Complex | Require each smoke to verify integration boundaries (provider calls, task queues, sync paths).
+⬜ P066 | Complex | Require each smoke to produce machine-readable evidence + human-readable summary.
+⬜ P067 | Complex | Require each smoke to include negative-path checks and expected failure handling.
+
+## 13) COMPLETION ACCOUNTING
+⬜ P068 | Complex | Add script to auto-calculate completion percentage from this directive.
+⬜ P069 | Complex | Add script to validate every checked item contains `SMOKE:` proof evidence.
+⬜ P070 | Complex | Add script to detect stale/broken smoke evidence references.
+⬜ P071 | Complex | Add release note generator driven by checked + smoke-backed items only.
+
+## 14) INTEGRATION MAP (SKYEHANDS = EVERYTHING)
+⬜ P072 | Complex | Publish explicit integration map linking CDE ↔ AE ↔ SkyDexia ↔ route flow.
+⬜ P073 | Complex | Publish capability dependency map for autonomous platform shipping.
+⬜ P074 | Complex | Publish operational ownership map (what runs where, who can rollback, who can approve).
+⬜ P075 | Complex | Publish proof map tying each capability to smoke suites and evidence artifacts.
+
+## 15) CURRENT NEXT EXECUTION ORDER
+⬜ P076 | Complex | Replace AE stubs with production logic, then rerun full AE smoke.
+⬜ P077 | Complex | Add directive validator + completion calculator and wire into package scripts.
+⬜ P078 | Complex | Build SkyDexia knowledge-base skeleton with GiftsFromtheSkyes import path.
+⬜ P079 | Complex | Implement admin email + rollback primitives for knowledge updates.
+⬜ P080 | Complex | Start provider-script-backed E2E proof harness for generated platforms.

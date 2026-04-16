@@ -1,0 +1,1 @@
+const {callAeBrain}=require('./_shared/ae_brain'); const {writeUsageEvent}=require('./_shared/ae_state'); module.exports.handler=async()=>{await writeUsageEvent({}); await callAeBrain({}); return {statusCode:200,body:'{}'};};
