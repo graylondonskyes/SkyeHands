@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "owner": "SkyDexia",
+  "knowledgeRoot": "skydexia/knowledge-base",
+  "importLane": "skydexia/knowledge-base/GiftsFromtheSkyes",
+  "retention": {
+    "archiveAfterDays": 180,
+    "reviewCadenceDays": 30
+  },
+  "requiredMetadata": [
+    "source",
+    "importedAt",
+    "checksum",
+    "classification"
+  ]
+}
