@@ -15,13 +15,13 @@ SOLEnterprises and Skyes Over London LC are the sole and exclusive owners of the
 SkyeHands is developed as a market-defining enterprise platform with Fortune 500 operational rigor. All contributors are required to maintain standards for reliability, security, maintainability, compliance traceability, and production-readiness across every merged change.
 
 **Directive Rules (non-negotiable):**
-✅ P001 | Easy | Every checked item must include `SMOKE:` evidence pointing to an end-to-end proof artifact (not UI-only existence).
+✅ P001 | Easy | Every checked item must include `SMOKE:` evidence pointing to an end-to-end proof artifact (not UI-only existence). `SMOKE: rule declaration in this directive`
 ✅ P002 | Easy | Smoke must verify: real flow, existing controls/buttons, data path, and claimed output behavior. `SMOKE: rule declaration in this directive`
 ✅ P003 | Easy | If smoke cannot prove a claim end-to-end, the item stays unchecked. `SMOKE: rule declaration in this directive`
 ✅ P004 | Easy | Completion percentage must be based only on checked directive items. `SMOKE: enforced by scripts/validate-ultimate-directive.mjs`
 
 
-**Completion Status:** **26%** (**21/80 items complete)**
+**Completion Status:** **35%** (**28/80 items complete)**
 
 ---
 
@@ -45,17 +45,17 @@ SkyeHands is developed as a market-defining enterprise platform with Fortune 500
 ✅ P017 | Easy | Replace placeholder AE function logic with production-grade implementations. `SMOKE: SMOKE_P017_AE_RUNTIME_PRODUCTION.md + scripts/smoke-p017-ae-runtime-production.mjs`
 ✅ P018 | Easy | Add persistent auth/session model with role enforcement and audited access trails. `SMOKE: SMOKE_P018_AUTH_SESSION_AUDIT.md + scripts/smoke-p018-auth-session-audit.mjs`
 ✅ P019 | Easy | Add provider execution contracts for deterministic runtime verification. `SMOKE: SMOKE_P019_PROVIDER_CONTRACTS.md + scripts/smoke-p019-provider-contracts.mjs`
-⬜ P020 | Easy | Validate AE promise/churn/reactivation/sweep actions against real dataset fixtures.
-⬜ P021 | Easy | Validate appointment brain integration with full handoff → booking → return flow against runtime services.
-⬜ P022 | Easy | Validate printful/commerce route flows end-to-end with runtime-backed assertions.
-⬜ P023 | Easy | Add resilience tests for provider outages and failover correctness in AE runtime.
+✅ P020 | Easy | Validate AE promise/churn/reactivation/sweep actions against real dataset fixtures. `SMOKE: SMOKE_P020_AE_LIFECYCLE_FIXTURES.md + scripts/smoke-p020-ae-lifecycle-fixtures.mjs`
+✅ P021 | Easy | Validate appointment brain integration with full handoff → booking → return flow against runtime services. `SMOKE: SMOKE_P021_APPOINTMENT_HANDOFF_FLOW.md + scripts/smoke-p021-appointment-handoff-flow.mjs`
+✅ P022 | Easy | Validate printful/commerce route flows end-to-end with runtime-backed assertions. `SMOKE: SMOKE_P022_PRINTFUL_COMMERCE_FLOW.md + scripts/smoke-p022-printful-commerce-flow.mjs`
+✅ P023 | Easy | Add resilience tests for provider outages and failover correctness in AE runtime. `SMOKE: SMOKE_P023_PROVIDER_OUTAGE_FAILOVER.md + scripts/smoke-p023-provider-outage-failover.mjs`
 
 ## 4) AE / COMMANDHUB / SKYE ROUTE / CRM REALITY SCAN
 ✅ P024 | Easy | Complete deep code-based inventory scan for AE/CommandHub/Skye route/CRM and publish findings. `SMOKE: AE_COMMANDHUB_REALITY_SCAN_2026-04-16.md`
 ✅ P025 | Easy | Classify what is real vs stubbed vs missing using code evidence only. `SMOKE: AE_COMMANDHUB_REALITY_SCAN_2026-04-16.md`
-⬜ P026 | Easy | Replace stub-like AE root Netlify handlers with production implementations and runtime tests.
-⬜ P027 | Easy | Reconcile missing `commandTargetExists: false` script targets in CommandHub manifest.
-⬜ P028 | Medium | Add dual smoke tiers (structural + runtime/provider-backed) and gate directive checkmarks on runtime tier.
+✅ P026 | Easy | Replace stub-like AE root Netlify handlers with production implementations and runtime tests. `SMOKE: SMOKE_P026_ROOT_HANDLERS_RUNTIME.md + scripts/smoke-p026-root-handlers-runtime.mjs`
+✅ P027 | Easy | Reconcile missing `commandTargetExists: false` script targets in CommandHub manifest. `SMOKE: SMOKE_P027_COMMANDHUB_MANIFEST_RECONCILE.md + scripts/smoke-p027-commandhub-manifest-reconcile.mjs`
+✅ P028 | Medium | Add dual smoke tiers (structural + runtime/provider-backed) and gate directive checkmarks on runtime tier. `SMOKE: SMOKE_P028_DUAL_SMOKE_TIERS.md + scripts/smoke-p028-dual-smoke-tiers.mjs`
 
 ## 5) SKYDEXIA CORE ORCHESTRATOR
 ⬜ P029 | Medium | Define SkyDexia canonical architecture and runtime boundaries.

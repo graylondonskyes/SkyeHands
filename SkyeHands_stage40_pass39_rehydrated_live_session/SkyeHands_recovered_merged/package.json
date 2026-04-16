@@ -28,6 +28,14 @@
     "smoke:p014": "node ./scripts/smoke-p014-deployment-handoff.mjs",
     "smoke:p017": "node ./scripts/smoke-p017-ae-runtime-production.mjs",
     "smoke:p018": "node ./scripts/smoke-p018-auth-session-audit.mjs",
-    "smoke:p019": "node ./scripts/smoke-p019-provider-contracts.mjs"
+    "smoke:p019": "node ./scripts/smoke-p019-provider-contracts.mjs",
+    "manifest:reconcile:commandhub": "node ./scripts/reconcile-commandhub-manifest-targets.mjs",
+    "smoke:p020": "node ./scripts/smoke-p020-ae-lifecycle-fixtures.mjs",
+    "smoke:p021": "node ./scripts/smoke-p021-appointment-handoff-flow.mjs",
+    "smoke:p022": "node ./scripts/smoke-p022-printful-commerce-flow.mjs",
+    "smoke:p023": "node ./scripts/smoke-p023-provider-outage-failover.mjs",
+    "smoke:p026": "node ./scripts/smoke-p026-root-handlers-runtime.mjs",
+    "smoke:p027": "node ./scripts/smoke-p027-commandhub-manifest-reconcile.mjs",
+    "smoke:p028": "node ./scripts/smoke-p028-dual-smoke-tiers.mjs"
   }
 }

@@ -1,1 +1,7 @@
-module.exports.handler=async()=>({statusCode:200,body:JSON.stringify({table:'ae_branch_smoke_reports'})});
+const { listSmokeReports } = require('./_shared/ae_state');
+
+module.exports.handler = async () => ({
+  statusCode: 200,
+  headers: { 'content-type': 'application/json' },
+  body: JSON.stringify({ ok: true, reports: await listSmokeReports() })
+});

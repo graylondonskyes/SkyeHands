@@ -18,7 +18,19 @@ const PROVIDER_CONTRACTS = {
     requiredEnv: ['CALENDLY_TOKEN'],
     requiredActionFields: ['eventTypeUri', 'inviteeEmail'],
     endpoint: '/scheduled_events'
-  }
+  },
+anthropic: {
+    provider: 'anthropic',
+    requiredEnv: ['ANTHROPIC_API_KEY'],
+    requiredActionFields: ['model', 'input'],
+    endpoint: '/v1/messages'
+  },
+  gemini: {
+    provider: 'gemini',
+    requiredEnv: ['GEMINI_API_KEY'],
+    requiredActionFields: ['model', 'input'],
+    endpoint: '/v1beta/models'
+  },
 };
 
 function getProviderContract(provider) {
@@ -72,5 +84,17 @@ module.exports = {
   RESPONSES_ROUTE,
   getProviderContract,
   validateProviderAction,
-  executeProviderAction
+  executeProviderAction,
+  executeWithFailover
 };
+
+
+async function executeWithFailover(primary, fallbacks = [], action = {}, env = process.env) {
+  const attempts = [];
+  for (const provider of [primary, ...fallbacks]) {
+    const result = await executeProviderAction(provider, action, env);
+    attempts.push({ provider, ok: result.ok, errors: result.errors || [] });
+    if (result.ok) return { ok: true, selectedProvider: provider, result, attempts };
+  }
+  return { ok: false, selectedProvider: null, attempts };
+}
