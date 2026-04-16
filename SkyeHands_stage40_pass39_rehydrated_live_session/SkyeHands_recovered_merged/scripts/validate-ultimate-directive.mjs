@@ -4,6 +4,7 @@ import path from 'node:path';
 
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const directivePath = path.join(root, 'ULTIMATE_SYSTEM_DIRECTIVE.md');
+const requireRuntimeTier = process.argv.includes('--require-runtime-tier');
 
 if (!fs.existsSync(directivePath)) {
   console.error('Directive not found:', directivePath);
@@ -14,21 +15,26 @@ const content = fs.readFileSync(directivePath, 'utf8');
 const lines = content.split('\n');
 
 const taskRegex = /^(✅|⬜)\s+P(\d{3})\s+\|\s+(Easy|Medium|Complex)\s+\|\s+(.+)$/;
+const smokeRefRegex = /`SMOKE:\s*([^`]+)`/;
 const tasks = lines
   .map((line, index) => ({ line, index: index + 1, match: line.match(taskRegex) }))
   .filter((row) => row.match)
-  .map((row) => ({
-    line: row.line,
-    lineNumber: row.index,
-    status: row.match[1],
-    patchNumber: Number(row.match[2]),
-    complexity: row.match[3],
-    body: row.match[4],
-  }));
+  .map((row) => {
+    const smokeMatch = row.line.match(smokeRefRegex);
+    return {
+      line: row.line,
+      lineNumber: row.index,
+      status: row.match[1],
+      patchNumber: Number(row.match[2]),
+      complexity: row.match[3],
+      body: row.match[4],
+      smokeRef: smokeMatch ? smokeMatch[1] : null
+    };
+  });
 
 const checked = tasks.filter((task) => task.status === '✅');
 const unchecked = tasks.filter((task) => task.status === '⬜');
-const missingSmoke = checked.filter((task) => !task.line.includes('SMOKE:'));
+const missingSmoke = checked.filter((task) => !task.smokeRef);
 
 const total = tasks.length;
 const done = checked.length;
@@ -72,6 +78,32 @@ for (let i = 1; i < tasks.length; i += 1) {
   }
 }
 
+const structuralTier = { checkedWithSmokeReference: checked.length - missingSmoke.length, missingSmokeReference: missingSmoke.length };
+let runtimeTier = { enforced: requireRuntimeTier, checkedArtifacts: 0, passArtifacts: 0, failArtifacts: [] };
+
+if (requireRuntimeTier) {
+  for (const task of checked) {
+    const tokens = String(task.smokeRef || '').split('+').map((item) => item.trim());
+    const artifactToken = tokens.find((item) => /^SMOKE_.*\.(md|json)$/i.test(item));
+    if (!artifactToken) continue;
+    runtimeTier.checkedArtifacts += 1;
+    const artifactPath = path.join(root, artifactToken);
+    if (!fs.existsSync(artifactPath)) {
+      ok = false;
+      runtimeTier.failArtifacts.push({ task: `P${String(task.patchNumber).padStart(3, '0')}`, artifact: artifactToken, reason: 'missing' });
+      continue;
+    }
+    const artifactText = fs.readFileSync(artifactPath, 'utf8');
+    const runtimePass = /Status:\s*PASS/i.test(artifactText) || /"status"\s*:\s*"PASS"/i.test(artifactText);
+    if (!runtimePass) {
+      ok = false;
+      runtimeTier.failArtifacts.push({ task: `P${String(task.patchNumber).padStart(3, '0')}`, artifact: artifactToken, reason: 'non-pass-status' });
+      continue;
+    }
+    runtimeTier.passArtifacts += 1;
+  }
+}
+
 console.log(JSON.stringify({
   directivePath: path.relative(root, directivePath),
   totalItems: total,
@@ -82,6 +114,8 @@ console.log(JSON.stringify({
   statusVocabulary: ['✅', '⬜'],
   patchNumbering: 'contiguous',
   complexityOrder: 'Easy->Medium->Complex',
+  structuralTier,
+  runtimeTier
 }, null, 2));
 
 if (!ok) process.exit(1);
