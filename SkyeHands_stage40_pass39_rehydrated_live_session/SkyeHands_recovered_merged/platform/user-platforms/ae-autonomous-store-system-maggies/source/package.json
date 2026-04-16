@@ -1,0 +1,10 @@
+{
+  "name": "ae-autonomous-store-system-maggies",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "smoke:foundation": "node ./proof-smoke/smoke-foundation.mjs",
+    "smoke:inventory-sync": "node ./proof-smoke/smoke-inventory-sync.mjs"
+  }
+}
