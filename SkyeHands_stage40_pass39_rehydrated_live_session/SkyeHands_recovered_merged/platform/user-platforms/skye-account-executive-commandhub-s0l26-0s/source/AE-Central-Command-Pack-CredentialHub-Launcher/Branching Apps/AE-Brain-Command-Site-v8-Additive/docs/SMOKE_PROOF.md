@@ -1,7 +1,7 @@
 AE BRAIN COMMAND SITE — SMOKE PROOF
 
 Status: PASS
-Run at: 2026-04-05T15:56:32.412Z
+Run at: 2026-04-16T04:09:51.737Z
 
 Important boundary:
 - PASS here means the additive files, helpers, syntax checks, and local helper flows passed smoke in the zip itself.

@@ -17,6 +17,17 @@
     "workspace:proof:stage9": "node ./skyequanta.mjs workspace:proof:stage9",
     "workspace:proof:stage10": "node ./skyequanta.mjs workspace:proof:stage10",
     "workspace:proof:stage11": "node ./skyequanta.mjs workspace:proof:stage11",
-    "workspace:proof:section8": "node ./skyequanta.mjs workspace:proof:section8"
+    "workspace:proof:section8": "node ./skyequanta.mjs workspace:proof:section8",
+    "directive:validate": "node ./scripts/validate-ultimate-directive.mjs",
+    "release:gate": "node ./scripts/release-gate.mjs",
+    "directive:changelog": "node ./scripts/generate-directive-changelog.mjs",
+    "smoke:p010": "node ./scripts/smoke-p010-cde-operator-boot.mjs",
+    "smoke:p011": "node ./scripts/smoke-p011-workspace-lifecycle.mjs",
+    "smoke:p012": "node ./scripts/smoke-p012-runtime-isolation-containment.mjs",
+    "smoke:p013": "node ./scripts/smoke-p013-hardening-chain.mjs",
+    "smoke:p014": "node ./scripts/smoke-p014-deployment-handoff.mjs",
+    "smoke:p017": "node ./scripts/smoke-p017-ae-runtime-production.mjs",
+    "smoke:p018": "node ./scripts/smoke-p018-auth-session-audit.mjs",
+    "smoke:p019": "node ./scripts/smoke-p019-provider-contracts.mjs"
   }
 }
