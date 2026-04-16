@@ -1,0 +1,351 @@
+{
+  "usageEvents": [
+    {
+      "id": "usage_c6a61f9a-fab5-4ee7-bf32-e4d8d03b9ff4",
+      "createdAt": "2026-04-16T12:40:12.906Z",
+      "route": "ae-founder-login",
+      "action": "login",
+      "actorId": "founder",
+      "tenantId": "ae-commandhub",
+      "metrics": {},
+      "detail": {}
+    },
+    {
+      "id": "usage_8cb9a322-aed3-49f6-8c84-f8fdd8939454",
+      "createdAt": "2026-04-16T12:40:12.908Z",
+      "route": "ae-founder-me",
+      "action": "read_profile",
+      "actorId": "founder",
+      "tenantId": "ae-commandhub",
+      "metrics": {},
+      "detail": {}
+    },
+    {
+      "id": "usage_1ee5a854-5fe5-4469-baaf-fcc0bb18052a",
+      "createdAt": "2026-04-16T12:40:12.909Z",
+      "route": "ae-brain-chat",
+      "action": "chat",
+      "actorId": "founder",
+      "tenantId": "ae-commandhub",
+      "metrics": {},
+      "detail": {
+        "provider": "openai"
+      }
+    },
+    {
+      "id": "usage_1a63a294-23f0-4685-8764-d72f115a129c",
+      "createdAt": "2026-04-16T12:40:13.289Z",
+      "route": "ae-clients",
+      "action": "create_client",
+      "actorId": "ae-system",
+      "tenantId": "default",
+      "metrics": {},
+      "detail": {
+        "clientId": "client_1164bf84-a652-4041-8adb-a8f44499f90e"
+      }
+    },
+    {
+      "id": "usage_ef0c6d3f-323e-43db-b3f1-328f8a0bddff",
+      "createdAt": "2026-04-16T12:40:13.290Z",
+      "route": "ae-tasks",
+      "action": "create_task",
+      "actorId": "ae-system",
+      "tenantId": "default",
+      "metrics": {},
+      "detail": {
+        "taskId": "task_4c6de603-54fe-4cf4-ad3d-f410b0476ed0"
+      }
+    },
+    {
+      "id": "usage_68d87cb6-8df6-43e0-a439-6b90ea096f6a",
+      "createdAt": "2026-04-16T12:40:13.669Z",
+      "route": "ae-clients",
+      "action": "create_client",
+      "actorId": "ae-system",
+      "tenantId": "default",
+      "metrics": {},
+      "detail": {
+        "clientId": "client_379b6608-3e2b-40fe-babc-cb04102a1412"
+      }
+    },
+    {
+      "id": "usage_9a6ac4b6-65f8-41ef-a278-709e46cc29a4",
+      "createdAt": "2026-04-16T12:40:13.671Z",
+      "route": "ae-tasks",
+      "action": "create_task",
+      "actorId": "ae-system",
+      "tenantId": "default",
+      "metrics": {},
+      "detail": {
+        "taskId": "task_a86732ef-e9ab-48fd-8f30-a54ea27984f9"
+      }
+    },
+    {
+      "id": "usage_f1aca7ce-d908-4edd-b3db-d3d3f50e9c50",
+      "createdAt": "2026-04-16T12:40:38.527Z",
+      "route": "ae-founder-login",
+      "action": "login",
+      "actorId": "founder",
+      "tenantId": "ae-commandhub",
+      "metrics": {},
+      "detail": {}
+    },
+    {
+      "id": "usage_cc485124-2086-41b4-af6f-9e460e8a4a08",
+      "createdAt": "2026-04-16T12:40:38.544Z",
+      "route": "ae-founder-me",
+      "action": "read_profile",
+      "actorId": "founder",
+      "tenantId": "ae-commandhub",
+      "metrics": {},
+      "detail": {}
+    },
+    {
+      "id": "usage_458a304f-0150-40f0-b7e4-b5362c47387a",
+      "createdAt": "2026-04-16T12:40:38.545Z",
+      "route": "ae-brain-chat",
+      "action": "chat",
+      "actorId": "founder",
+      "tenantId": "ae-commandhub",
+      "metrics": {},
+      "detail": {
+        "provider": "openai"
+      }
+    },
+    {
+      "id": "usage_d8f8b9fd-3ba4-490c-ba84-9e7a6dd7aae8",
+      "createdAt": "2026-04-16T12:40:38.958Z",
+      "route": "ae-clients",
+      "action": "create_client",
+      "actorId": "ae-system",
+      "tenantId": "default",
+      "metrics": {},
+      "detail": {
+        "clientId": "client_887cfbec-6f07-4dac-95a2-fe8401785905"
+      }
+    },
+    {
+      "id": "usage_4f57dda1-9677-4afa-b699-0ad1253c1cb4",
+      "createdAt": "2026-04-16T12:40:38.960Z",
+      "route": "ae-tasks",
+      "action": "create_task",
+      "actorId": "ae-system",
+      "tenantId": "default",
+      "metrics": {},
+      "detail": {
+        "taskId": "task_8c53449d-71a0-40ad-a0fa-fdbff4742584"
+      }
+    },
+    {
+      "id": "usage_3f481754-a541-48ee-8aa8-695328e545dd",
+      "createdAt": "2026-04-16T12:40:39.385Z",
+      "route": "ae-clients",
+      "action": "create_client",
+      "actorId": "ae-system",
+      "tenantId": "default",
+      "metrics": {},
+      "detail": {
+        "clientId": "client_8dce42a3-ee64-4b8b-895d-fed4f85af6ac"
+      }
+    },
+    {
+      "id": "usage_fdf127e4-ef11-4b15-a38c-d0d66423e0fe",
+      "createdAt": "2026-04-16T12:40:39.388Z",
+      "route": "ae-tasks",
+      "action": "create_task",
+      "actorId": "ae-system",
+      "tenantId": "default",
+      "metrics": {},
+      "detail": {
+        "taskId": "task_dae37139-d128-415b-9c0e-49302213a8ab"
+      }
+    }
+  ],
+  "auditEvents": [
+    {
+      "id": "audit_8ef4859f-ce8e-48b8-acb5-c7c07a01bf9b",
+      "createdAt": "2026-04-16T12:40:12.907Z",
+      "actorId": "founder",
+      "actorType": "user",
+      "action": "ae_founder_login_success",
+      "resource": "ae_founder_session",
+      "tenantId": "default",
+      "outcome": "ok",
+      "detail": {
+        "sessionId": "21747c0b-e9a6-43ef-ad42-faacea776f20"
+      }
+    },
+    {
+      "id": "audit_0aa82c60-c7fb-4d22-b17a-9c8393532a70",
+      "createdAt": "2026-04-16T12:40:12.910Z",
+      "actorId": "founder",
+      "actorType": "user",
+      "action": "ae_brain_chat_executed",
+      "resource": "openai",
+      "tenantId": "default",
+      "outcome": "ok",
+      "detail": {
+        "executionId": "ae_provider_openai_1776343212909"
+      }
+    },
+    {
+      "id": "audit_5e7735fe-33ca-4fd1-bd06-9a94c3f63628",
+      "createdAt": "2026-04-16T12:40:13.289Z",
+      "actorId": "ae-system",
+      "actorType": "system",
+      "action": "ae_client_created",
+      "resource": "client_1164bf84-a652-4041-8adb-a8f44499f90e",
+      "tenantId": "default",
+      "outcome": "ok",
+      "detail": {}
+    },
+    {
+      "id": "audit_4b62ee47-a7ef-4184-9c5d-d56e9c88293a",
+      "createdAt": "2026-04-16T12:40:13.291Z",
+      "actorId": "ae-system",
+      "actorType": "system",
+      "action": "ae_task_promise",
+      "resource": "task_4c6de603-54fe-4cf4-ad3d-f410b0476ed0",
+      "tenantId": "default",
+      "outcome": "ok",
+      "detail": {}
+    },
+    {
+      "id": "audit_c325f52d-b01a-4523-88dd-1003ddccefe7",
+      "createdAt": "2026-04-16T12:40:13.292Z",
+      "actorId": "ae-system",
+      "actorType": "system",
+      "action": "ae_task_churn",
+      "resource": "task_4c6de603-54fe-4cf4-ad3d-f410b0476ed0",
+      "tenantId": "default",
+      "outcome": "ok",
+      "detail": {}
+    },
+    {
+      "id": "audit_a48b5ed1-b8e8-4bdd-a54b-aa181918bcbd",
+      "createdAt": "2026-04-16T12:40:13.292Z",
+      "actorId": "ae-system",
+      "actorType": "system",
+      "action": "ae_task_reactivation",
+      "resource": "task_4c6de603-54fe-4cf4-ad3d-f410b0476ed0",
+      "tenantId": "default",
+      "outcome": "ok",
+      "detail": {}
+    },
+    {
+      "id": "audit_6a70e57e-d618-43f8-8ee2-68dc0780ce3d",
+      "createdAt": "2026-04-16T12:40:13.293Z",
+      "actorId": "ae-system",
+      "actorType": "system",
+      "action": "ae_task_sweep",
+      "resource": "task_4c6de603-54fe-4cf4-ad3d-f410b0476ed0",
+      "tenantId": "default",
+      "outcome": "ok",
+      "detail": {}
+    },
+    {
+      "id": "audit_5200f0dd-793d-428a-a88d-b6590d524e72",
+      "createdAt": "2026-04-16T12:40:13.670Z",
+      "actorId": "ae-system",
+      "actorType": "system",
+      "action": "ae_client_created",
+      "resource": "client_379b6608-3e2b-40fe-babc-cb04102a1412",
+      "tenantId": "default",
+      "outcome": "ok",
+      "detail": {}
+    },
+    {
+      "id": "audit_4944de29-5fa5-4127-be45-e747d431fe91",
+      "createdAt": "2026-04-16T12:40:38.528Z",
+      "actorId": "founder",
+      "actorType": "user",
+      "action": "ae_founder_login_success",
+      "resource": "ae_founder_session",
+      "tenantId": "default",
+      "outcome": "ok",
+      "detail": {
+        "sessionId": "cba1a813-4421-4a5b-85f5-cc9d2a25781d"
+      }
+    },
+    {
+      "id": "audit_894bd8a0-66b9-479c-9215-d6ab4f755328",
+      "createdAt": "2026-04-16T12:40:38.546Z",
+      "actorId": "founder",
+      "actorType": "user",
+      "action": "ae_brain_chat_executed",
+      "resource": "openai",
+      "tenantId": "default",
+      "outcome": "ok",
+      "detail": {
+        "executionId": "ae_provider_openai_1776343238545"
+      }
+    },
+    {
+      "id": "audit_816c7fa8-a95b-4c93-b1d3-02e847302206",
+      "createdAt": "2026-04-16T12:40:38.959Z",
+      "actorId": "ae-system",
+      "actorType": "system",
+      "action": "ae_client_created",
+      "resource": "client_887cfbec-6f07-4dac-95a2-fe8401785905",
+      "tenantId": "default",
+      "outcome": "ok",
+      "detail": {}
+    },
+    {
+      "id": "audit_a7b6bf91-a36a-4655-a714-257fe860a3a7",
+      "createdAt": "2026-04-16T12:40:38.962Z",
+      "actorId": "ae-system",
+      "actorType": "system",
+      "action": "ae_task_promise",
+      "resource": "task_8c53449d-71a0-40ad-a0fa-fdbff4742584",
+      "tenantId": "default",
+      "outcome": "ok",
+      "detail": {}
+    },
+    {
+      "id": "audit_2e45c646-8e35-4a90-acef-7db6a8d751a4",
+      "createdAt": "2026-04-16T12:40:38.962Z",
+      "actorId": "ae-system",
+      "actorType": "system",
+      "action": "ae_task_churn",
+      "resource": "task_8c53449d-71a0-40ad-a0fa-fdbff4742584",
+      "tenantId": "default",
+      "outcome": "ok",
+      "detail": {}
+    },
+    {
+      "id": "audit_b444e675-e0cf-4a18-8b2f-d7a4ffc2ac43",
+      "createdAt": "2026-04-16T12:40:38.967Z",
+      "actorId": "ae-system",
+      "actorType": "system",
+      "action": "ae_task_reactivation",
+      "resource": "task_8c53449d-71a0-40ad-a0fa-fdbff4742584",
+      "tenantId": "default",
+      "outcome": "ok",
+      "detail": {}
+    },
+    {
+      "id": "audit_b1975cb4-c05d-40b0-ac1a-49d2258edb57",
+      "createdAt": "2026-04-16T12:40:38.968Z",
+      "actorId": "ae-system",
+      "actorType": "system",
+      "action": "ae_task_sweep",
+      "resource": "task_8c53449d-71a0-40ad-a0fa-fdbff4742584",
+      "tenantId": "default",
+      "outcome": "ok",
+      "detail": {}
+    },
+    {
+      "id": "audit_9768ea4f-d90d-4665-b083-d5957288dae5",
+      "createdAt": "2026-04-16T12:40:39.385Z",
+      "actorId": "ae-system",
+      "actorType": "system",
+      "action": "ae_client_created",
+      "resource": "client_8dce42a3-ee64-4b8b-895d-fed4f85af6ac",
+      "tenantId": "default",
+      "outcome": "ok",
+      "detail": {}
+    }
+  ],
+  "smokeReports": []
+}
