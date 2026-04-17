@@ -30,5 +30,5 @@ module.exports.handler = async (event = {}) => {
   const limit = parseLimit(event, 200);
   const events = await listAuditEvents(limit);
   await writeUsageEvent({ route: 'ae-audit-events', action: 'list_audit_events', detail: { limit, returned: events.length } });
-  return json(200, { ok: true, limit, count: events.length, events });
+  return json(200, events);
 };
