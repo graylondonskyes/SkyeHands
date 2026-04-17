@@ -7,7 +7,13 @@ const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..')
 const artifactPath = path.join(root, 'SMOKE_P070_STALE_SMOKE_REFERENCES.md');
 
 const run = spawnSync(process.execPath, [path.join(root, 'scripts', 'directive-stale-smoke-check.mjs')], { cwd: root, encoding: 'utf8' });
-const payload = JSON.parse((run.stdout || '{}').trim() || '{}');
+const raw = (run.stdout || '').trim();
+let payload = {};
+try {
+  payload = JSON.parse(raw || '{}');
+} catch {
+  payload = {};
+}
 const stale = Array.isArray(payload.staleReferences) ? payload.staleReferences : [];
 const allowed = new Set(['SMOKE_P070_STALE_SMOKE_REFERENCES.md']);
 const blocking = stale.filter((entry) => !allowed.has(entry.artifact));
