@@ -20,11 +20,33 @@ for (const project of projects) {
   if (!fs.existsSync(runtimeConfigPath) || !fs.existsSync(smokeScriptPath)) continue;
 
   const runtime = JSON.parse(fs.readFileSync(runtimeConfigPath, 'utf8'));
-  const requiredVars = runtime.providerVars || [];
+  const requiredVars = Array.isArray(runtime.providerVars)
+    ? runtime.providerVars.filter((key) => typeof key === 'string' && key.trim().length > 0)
+    : [];
+  const missingRequiredVars = requiredVars.filter((key) => {
+    const value = process.env[key];
+    return typeof value !== 'string' || value.length === 0;
+  });
+
+  if (missingRequiredVars.length > 0) {
+    checks.push({
+      project,
+      requiredVars,
+      missingRequiredVars,
+      envVarCount: 0,
+      status: 'FAIL',
+      exitCode: null,
+      stdout: '',
+      stderr: `missing_required_provider_vars:${missingRequiredVars.join(',')}`
+    });
+    continue;
+  }
+
   const proofEnv = {
     PATH: process.env.PATH || '',
     HOME: process.env.HOME || '',
     LANG: process.env.LANG || 'C.UTF-8',
+    ...Object.fromEntries(requiredVars.map((key) => [key, process.env[key]]))
     ...Object.fromEntries(requiredVars.map((key) => [key, process.env[key] || `required-${key.toLowerCase()}-value`]))
   };
 

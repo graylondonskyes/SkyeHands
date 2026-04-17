@@ -15,21 +15,21 @@ SOLEnterprises and Skyes Over London LC are the sole and exclusive owners of the
 SkyeHands is developed as a market-defining enterprise platform with Fortune 500 operational rigor. All contributors are required to maintain standards for reliability, security, maintainability, compliance traceability, and production-readiness across every merged change.
 
 **Directive Rules (non-negotiable):**
-✅ P001 | Easy | Every checked item must include `SMOKE:` evidence pointing to an end-to-end proof artifact (not UI-only existence). `SMOKE: rule declaration in this directive`
-✅ P002 | Easy | Smoke must verify: real flow, existing controls/buttons, data path, and claimed output behavior. `SMOKE: rule declaration in this directive`
-✅ P003 | Easy | If smoke cannot prove a claim end-to-end, the item stays unchecked. `SMOKE: rule declaration in this directive`
+✅ P001 | Easy | Every checked item must include `SMOKE: SMOKE_P001_SMOKE_EVIDENCE_RULE.md + scripts/smoke-p001-smoke-evidence-rule.mjs`
+✅ P002 | Easy | Smoke must verify: real flow, existing controls/buttons, data path, and claimed output behavior. `SMOKE: SMOKE_P002_SMOKE_SCOPE_RULE.md + scripts/smoke-p002-smoke-scope-rule.mjs`
+✅ P003 | Easy | If smoke cannot prove a claim end-to-end, the item stays unchecked. `SMOKE: SMOKE_P003_CHECKMARK_GATE_RULE.md + scripts/smoke-p003-checkmark-gate-rule.mjs`
 ✅ P004 | Easy | Completion percentage must be based only on checked directive items. `SMOKE: enforced by scripts/validate-ultimate-directive.mjs`
 
 
-**Completion Status:** **100%** (**80/80 items complete)**
+**Completion Status:** **95%** (**80/84 items complete)**
 
 ---
 
 ## 1) CORE SYSTEM GOVERNANCE
-✅ P005 | Easy | Establish single master directive at repository root. `SMOKE: manual repo check (this file exists at root)`
-✅ P006 | Easy | Define smoke-proof-only completion rules in this directive. `SMOKE: rules block in this file`
+✅ P005 | Easy | Establish single master directive at repository root. `SMOKE: SMOKE_P005_MASTER_DIRECTIVE_AT_ROOT.md + scripts/smoke-p005-master-directive-at-root.mjs`
+✅ P006 | Easy | Define smoke-proof-only completion rules in this directive. `SMOKE: SMOKE_P006_SMOKE_RULES_DECLARED.md + scripts/smoke-p006-smoke-rules-declared.mjs`
 ✅ P007 | Easy | Create signed release gate requiring directive validation before ship candidates. `SMOKE: scripts/release-gate.mjs`
-✅ P008 | Easy | Add automated CI job to block checked items lacking smoke evidence. `SMOKE: .github/workflows/directive-guard.yml`
+✅ P008 | Easy | Add automated CI job to block checked items lacking smoke evidence. `SMOKE: SMOKE_P008_CI_GUARD_JOB.md + scripts/smoke-p008-ci-guard-job.mjs`
 ✅ P009 | Easy | Add changelog bridge from smoke outputs to directive updates. `SMOKE: DIRECTIVE_CHANGELOG.md + scripts/generate-directive-changelog.mjs`
 
 ## 2) SKYEHANDS AUTONOMOUS CDE (GLOBAL)
@@ -40,8 +40,8 @@ SkyeHands is developed as a market-defining enterprise platform with Fortune 500
 ✅ P014 | Easy | Prove deployment packaging and operator handoff path as a repeatable smoke-backed flow. `SMOKE: SMOKE_P014_DEPLOYMENT_HANDOFF.md + scripts/smoke-p014-deployment-handoff.mjs`
 
 ## 3) AE COMMAND + BRAIN HARDENING
-✅ P015 | Easy | Restore AE smoke pipeline so it executes to PASS state. `SMOKE: platform/user-platforms/skye-account-executive-commandhub-s0l26-0s/source/AE-Central-Command-Pack-CredentialHub-Launcher/Branching Apps/AE-Brain-Command-Site-v8-Additive/docs/SMOKE_PROOF.md`
-✅ P016 | Easy | Reinstate required AE runtime surfaces (`netlify/functions`, shared helpers, storage schema). `SMOKE: same SMOKE_PROOF.md`
+✅ P015 | Easy | Restore AE smoke pipeline so it executes to PASS state. `SMOKE: SMOKE_P015_AE_PIPELINE_RESTORED.md + scripts/smoke-p015-ae-pipeline-restored.mjs`
+✅ P016 | Easy | Reinstate required AE runtime surfaces (`netlify/functions`, shared helpers, storage schema). `SMOKE: SMOKE_P016_AE_RUNTIME_SURFACES.md + scripts/smoke-p016-ae-runtime-surfaces.mjs`
 ✅ P017 | Easy | Replace placeholder AE function logic with production-grade implementations. `SMOKE: SMOKE_P017_AE_RUNTIME_PRODUCTION.md + scripts/smoke-p017-ae-runtime-production.mjs`
 ✅ P018 | Easy | Add persistent auth/session model with role enforcement and audited access trails. `SMOKE: SMOKE_P018_AUTH_SESSION_AUDIT.md + scripts/smoke-p018-auth-session-audit.mjs`
 ✅ P019 | Easy | Add provider execution contracts for deterministic runtime verification. `SMOKE: SMOKE_P019_PROVIDER_CONTRACTS.md + scripts/smoke-p019-provider-contracts.mjs`
@@ -51,8 +51,8 @@ SkyeHands is developed as a market-defining enterprise platform with Fortune 500
 ✅ P023 | Easy | Add resilience tests for provider outages and failover correctness in AE runtime. `SMOKE: SMOKE_P023_PROVIDER_OUTAGE_FAILOVER.md + scripts/smoke-p023-provider-outage-failover.mjs`
 
 ## 4) AE / COMMANDHUB / SKYE ROUTE / CRM REALITY SCAN
-✅ P024 | Easy | Complete deep code-based inventory scan for AE/CommandHub/Skye route/CRM and publish findings. `SMOKE: AE_COMMANDHUB_REALITY_SCAN_2026-04-16.md`
-✅ P025 | Easy | Classify what is real vs stubbed vs missing using code evidence only. `SMOKE: AE_COMMANDHUB_REALITY_SCAN_2026-04-16.md`
+✅ P024 | Easy | Complete deep code-based inventory scan for AE/CommandHub/Skye route/CRM and publish findings. `SMOKE: SMOKE_P024_AE_COMMANDHUB_REALITY_SCAN.md + scripts/smoke-p024-ae-commandhub-reality-scan.mjs`
+✅ P025 | Easy | Classify what is real vs stubbed vs missing using code evidence only. `SMOKE: SMOKE_P025_CLASSIFICATION_REAL_VS_STUBBED.md + scripts/smoke-p025-classification-real-vs-stubbed.mjs`
 ✅ P026 | Easy | Replace stub-like AE root Netlify handlers with production implementations and runtime tests. `SMOKE: SMOKE_P026_ROOT_HANDLERS_RUNTIME.md + scripts/smoke-p026-root-handlers-runtime.mjs`
 ✅ P027 | Easy | Reconcile missing `commandTargetExists: false` script targets in CommandHub manifest. `SMOKE: SMOKE_P027_COMMANDHUB_MANIFEST_RECONCILE.md + scripts/smoke-p027-commandhub-manifest-reconcile.mjs`
 ✅ P028 | Medium | Add dual smoke tiers (structural + runtime/provider-backed) and gate directive checkmarks on runtime tier. `SMOKE: SMOKE_P028_DUAL_SMOKE_TIERS.md + scripts/smoke-p028-dual-smoke-tiers.mjs`
@@ -130,3 +130,49 @@ SkyeHands is developed as a market-defining enterprise platform with Fortune 500
 ✅ P078 | Complex | Build SkyDexia knowledge-base skeleton with GiftsFromtheSkyes import path. `SMOKE: SMOKE_P078_KNOWLEDGE_SKELETON.md + scripts/smoke-p078-knowledge-skeleton.mjs`
 ✅ P079 | Complex | Implement admin email + rollback primitives for knowledge updates. `SMOKE: SMOKE_P079_ADMIN_EMAIL_ROLLBACK_PRIMITIVES.md + scripts/smoke-p079-admin-email-rollback-primitives.mjs`
 ✅ P080 | Complex | Start provider-script-backed E2E proof harness for generated platforms. `SMOKE: SMOKE_P080_PROVIDER_E2E_HARNESS.md + scripts/smoke-p080-provider-e2e-proof-harness.mjs`
+
+## 16) APPENDED AUDIT + EXECUTION PROGRESS BASELINE (WORKING SECTION)
+
+**Appended on:** 2026-04-17 (UTC)
+
+### Directive Completion Progress (source of truth)
+- Completion status: **95% (80/84 checked)**
+- Generator: `scripts/directive-completion.mjs`
+- Evidence: `DIRECTIVE_RELEASE_NOTES.md`
+
+### Runtime/Quality Baseline Snapshot (for active remediation)
+- Audit report: `BULLSHIT_AUDIT_REPORT.md`
+- Machine summary: `skydexia/proofs/bullshit-audit.json`
+- Generated at: `2026-04-17T01:02:14.339Z`
+
+#### Blocking gate status
+- Blocking bullshit total: **0**
+- Blocking executable findings: **0**
+- Checked directive items without script refs: **0**
+- Weak smoke pass-expression scripts: **0**
+
+#### Remediation backlog counters (non-blocking telemetry, still must be burned down)
+- TODO/FIXME/XXX hits: **141**
+- Stub/placeholder/mock/dummy hits: **2024**
+- Actionable stub/placeholder hits: **1066**
+- "Not implemented" hits: **33**
+
+### Execution rule for this section
+- This section is a **living execution baseline**: each implementation pass must update these counters after code changes.
+- Required direction of travel per pass: backlog counters trend down while blocking counters stay at zero.
+- No completion claims are accepted from this section without corresponding code edits and rerun evidence.
+
+
+## 17) AUDIT REMEDIATION BACKLOG (MANDATORY IMPLEMENTATION LIST)
+⬜ P081 | Complex | Burn TODO/FIXME/XXX count from 141 to 0 by replacing all deferred notes with implemented code or deleting obsolete markers. `TARGET: TODO/FIXME/XXX = 0`
+⬜ P082 | Complex | Eliminate stub/placeholder/mock/dummy debt from 2024 to 0 through real code-path replacement and dead scaffold removal. `TARGET: stub/placeholder/mock/dummy = 0`
+⬜ P083 | Complex | Remove all “not implemented” runtime surfaces and replace with production behavior or explicit non-runtime archival. `TARGET: "not implemented" = 0`
+⬜ P084 | Complex | Burn actionable stub/placeholder (generated/proof excluded) from 1066 to 0 with code-first remediation in first-party runtime paths. `TARGET: actionable stub/placeholder = 0`
+
+### Audit backlog source snapshot to fix (synced from `skydexia/proofs/bullshit-audit.json`)
+- Audit generatedAt: **2026-04-17T01:02:14.339Z**
+- scannedFiles: **4111**
+- TODO/FIXME/XXX: **141 hits** (~3.43% of scanned files)
+- stub/placeholder/mock/dummy: **2024 hits** (~49.23%)
+- “not implemented”: **33 hits** (~0.80%)
+- actionable stub/placeholder (generated/proof excluded): **1066** (~25.93%)

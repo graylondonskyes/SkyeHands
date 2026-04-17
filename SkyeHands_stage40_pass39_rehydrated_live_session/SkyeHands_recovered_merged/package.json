@@ -125,6 +125,19 @@
     "smoke:p076": "node ./scripts/smoke-p076-ae-stubs-full-smoke.mjs",
     "smoke:p078": "node ./scripts/smoke-p078-knowledge-skeleton.mjs",
     "smoke:p079": "node ./scripts/smoke-p079-admin-email-rollback-primitives.mjs",
-    "smoke:p080": "node ./scripts/smoke-p080-provider-e2e-proof-harness.mjs"
+    "smoke:p080": "node ./scripts/smoke-p080-provider-e2e-proof-harness.mjs",
+    "directive:audit:runtime": "node scripts/directive-runtime-audit.mjs",
+    "audit:bullshit": "node scripts/bullshit-audit.mjs",
+    "audit:bullshit:strict": "node scripts/bullshit-audit.mjs --strict",
+    "smoke:p001": "node scripts/smoke-p001-smoke-evidence-rule.mjs",
+    "smoke:p002": "node scripts/smoke-p002-smoke-scope-rule.mjs",
+    "smoke:p003": "node scripts/smoke-p003-checkmark-gate-rule.mjs",
+    "smoke:p005": "node scripts/smoke-p005-master-directive-at-root.mjs",
+    "smoke:p006": "node scripts/smoke-p006-smoke-rules-declared.mjs",
+    "smoke:p008": "node scripts/smoke-p008-ci-guard-job.mjs",
+    "smoke:p015": "node scripts/smoke-p015-ae-pipeline-restored.mjs",
+    "smoke:p016": "node scripts/smoke-p016-ae-runtime-surfaces.mjs",
+    "smoke:p024": "node scripts/smoke-p024-ae-commandhub-reality-scan.mjs",
+    "smoke:p025": "node scripts/smoke-p025-classification-real-vs-stubbed.mjs"
   }
 }

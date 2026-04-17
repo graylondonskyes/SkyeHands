@@ -103,7 +103,6 @@ function isPortOpen(host, port) {
       resolve(false);
     });
   });
-  return spawned.pid;
 }
 
 function collectReservedRuntimePorts(config, excludeWorkspaceId = null) {
