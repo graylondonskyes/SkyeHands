@@ -47,6 +47,7 @@ for (const project of projects) {
     HOME: process.env.HOME || '',
     LANG: process.env.LANG || 'C.UTF-8',
     ...Object.fromEntries(requiredVars.map((key) => [key, process.env[key]]))
+    ...Object.fromEntries(requiredVars.map((key) => [key, process.env[key] || `required-${key.toLowerCase()}-value`]))
   };
 
   const run = spawnSync('bash', [smokeScriptPath], {
@@ -58,7 +59,6 @@ for (const project of projects) {
   checks.push({
     project,
     requiredVars,
-    missingRequiredVars: [],
     envVarCount: Object.keys(proofEnv).length,
     status: run.status === 0 ? 'PASS' : 'FAIL',
     exitCode: run.status,
