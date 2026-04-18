@@ -138,6 +138,17 @@
     "smoke:p015": "node scripts/smoke-p015-ae-pipeline-restored.mjs",
     "smoke:p016": "node scripts/smoke-p016-ae-runtime-surfaces.mjs",
     "smoke:p024": "node scripts/smoke-p024-ae-commandhub-reality-scan.mjs",
-    "smoke:p025": "node scripts/smoke-p025-classification-real-vs-stubbed.mjs"
+    "smoke:p025": "node scripts/smoke-p025-classification-real-vs-stubbed.mjs",
+    "graychunks:scan": "node ./scripts/graychunks-scan.mjs",
+    "graychunks:autofix": "node ./scripts/graychunks-autofix.mjs",
+    "graychunks:alert": "node ./scripts/graychunks-alert-resend.mjs",
+    "graychunks:cycle": "node ./scripts/graychunks-runtime-cycle.mjs",
+    "smoke:p085": "node ./scripts/smoke-p085-graychunks-platform.mjs",
+    "graychunks:queue": "node ./scripts/graychunks-priority-queue.mjs",
+    "smoke:p086": "node ./scripts/smoke-p086-graychunks-ae-integration.mjs",
+    "graychunks:server": "node ./scripts/graychunks-platform-server.mjs",
+    "smoke:p087": "node ./scripts/smoke-p087-graychunks-platform-server.mjs",
+    "graychunks:progress": "node ./scripts/graychunks-progress-dashboard.mjs",
+    "smoke:p088": "node ./scripts/smoke-p088-graychunks-cycle-autofix.mjs"
   }
 }

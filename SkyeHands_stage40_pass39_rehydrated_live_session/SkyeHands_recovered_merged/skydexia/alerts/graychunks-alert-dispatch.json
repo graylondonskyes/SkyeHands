@@ -1,0 +1,13 @@
+{
+  "generatedAt": "2026-04-18T04:02:50.594Z",
+  "recipients": [
+    "ultimate-admin@skyehands.local"
+  ],
+  "subject": "[GrayChunks] 1011 issues detected in 3934 files",
+  "issueCount": 1011,
+  "delivery": {
+    "status": "DRY_RUN",
+    "provider": "resend",
+    "accepted": true
+  }
+}

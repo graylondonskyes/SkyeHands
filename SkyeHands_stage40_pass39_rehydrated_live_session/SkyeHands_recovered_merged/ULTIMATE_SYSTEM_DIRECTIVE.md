@@ -1,5 +1,7 @@
 # ULTIMATE SYSTEM DIRECTIVE — SKYEHANDS (MASTER)
 
+> **WORK CYCLE STOP MARKER (2026-04-18 UTC):** Last completed implementation pass ended at commit `6a35e47` after GrayChunks scanner/alert platform baseline. Next pickup starts with **GrayChunks control-plane + AE integration execution (P085-P088)**.
+
 **System:** SkyeHands (autonomous CDE + AE + platform fabric + SkyDexia orchestration)
 
 
@@ -21,7 +23,7 @@ SkyeHands is developed as a market-defining enterprise platform with Fortune 500
 ✅ P004 | Easy | Completion percentage must be based only on checked directive items. `SMOKE: enforced by scripts/validate-ultimate-directive.mjs`
 
 
-**Completion Status:** **95%** (**80/84 items complete)**
+**Completion Status:** **91%** (**80/88 items complete)**
 
 ---
 
@@ -176,3 +178,28 @@ SkyeHands is developed as a market-defining enterprise platform with Fortune 500
 - stub/placeholder/mock/dummy: **2024 hits** (~49.23%)
 - “not implemented”: **33 hits** (~0.80%)
 - actionable stub/placeholder (generated/proof excluded): **1066** (~25.93%)
+
+## 18) GRAYCHUNKS AUTONOMOUS PLATFORM (NEW)
+⬜ P085 | Complex | Implement GrayChunks scanner engine that detects duplicate imports, duplicate object/config keys, broken JSX structure, and adjacent garbage chunks across first-party code; publish machine + human reports each run. `SMOKE: SMOKE_P085_GRAYCHUNKS_PLATFORM.md + scripts/smoke-p085-graychunks-platform.mjs`
+⬜ P086 | Complex | Implement live admin alert lane for GrayChunks findings using Resend API with audited dispatch logs, dry-run safety, and recipient routing controlled by env vars. `SMOKE: scripts/graychunks-alert-resend.mjs`
+⬜ P087 | Complex | Implement autonomous GrayChunks remediation cycle (scan → autofix deterministic issues → rescan → queue → alert) wired for scheduled execution and external API mode. `SMOKE: scripts/graychunks-runtime-cycle.mjs + scripts/smoke-p087-graychunks-platform-server.mjs`
+⬜ P088 | Complex | Integrate GrayChunks outputs into AE/CommandHub operator surfaces so AE brains can consume findings, prioritize fixes, and track remediation state over time (including control endpoint actions). `SMOKE: netlify/functions/ae-graychunks-control.js + scripts/smoke-p086-graychunks-ae-integration.mjs`
+
+### GrayChunks Definition (binding)
+### GrayChunks In-Depth Build Directive (authoritative)
+1. **Detection coverage (must-have):** GrayChunks scanner must detect duplicate imports, duplicate object keys, repeated config keys, malformed JSX trees, and structurally repeated/garbage chunks in executable first-party code before ship gates.
+2. **Evidence outputs (must-have):** Every scan run must emit machine JSON + human Markdown artifacts with timestamp, scanned scope, issue counts by type, file+line evidence, and top-priority queue output.
+3. **Autofix controls (must-have):** Deterministic autofix is allowed only for low-risk transformations (e.g., duplicate import dedupe). Any potentially destructive transformation must be queued for human/AE triage, not silently rewritten.
+4. **Admin alerting (must-have):** GrayChunks findings must trigger admin alert dispatch through Resend when live vars are present, with dry-run mode for non-live environments. Dispatch records must be written to artifacts for auditability.
+5. **Autonomous runtime cycle (must-have):** GrayChunks runtime cycle must support scan -> autofix -> rescan -> queue -> alert in one command and return structured step results with explicit failure status.
+6. **AE integration (must-have):** AE runtime must expose GrayChunks findings/queue/dispatch through executable handler surfaces so AE brains can read, prioritize, and initiate remediation actions.
+7. **Smoke quality bar (must-have):** GrayChunks smoke cannot pass on route existence. Smoke must seed defects, prove detection, prove deterministic remediation delta, and prove alert-dispatch path output.
+8. **UI/UX execution bar (must-have):** Any GrayChunks UI added later must prove controls are visible/usable (not off-screen), actions are wired to real APIs, table/list state updates persist, and remediation actions produce auditable state transitions.
+9. **Production gate intent (must-have):** GrayChunks platform is deployment-grade; unfinished theater code is prohibited. Remaining unmet items stay unchecked until backed by runtime execution evidence.
+10. **Commercialization readiness (must-have):** GrayChunks architecture must remain modular (scanner, queue, alert, control API) so external dev teams can consume as drop-in scripts or hosted API integration without changing core detection semantics.
+
+- Canonical externalization spec: `GRAYCHUNKS_PLATFORM_DIRECTIVE.md` (sellable-platform contract, env vars, API mode, proof bar).
+- GrayChunks are back-to-back or repeated code chunks that introduce duplicate imports, duplicate object/config keys, malformed JSX trees, repeated config declarations, or other merge-generated garbage that causes manual cleanup debt and runtime risk.
+- GrayChunks controls must be implementation-real and deployment-safe: no pseudo scans, no route-existence-only checks, and no pass-only theater.
+- Validation bar requires end-to-end behavior evidence: scanner catches seeded defects, autofix removes deterministic defects, alert dispatch is produced (dry-run or live), and artifacts are persisted for admin and AE pipeline consumption.
+

@@ -1,0 +1,19 @@
+{
+  "generatedAt": "2026-04-18T04:02:47.897Z",
+  "targetDir": "../../../../tmp/graychunks-cycle-4aSXOc/repo",
+  "filesChanged": 2,
+  "removedDuplicateImports": 1,
+  "removedDuplicateJsonKeys": 1,
+  "fileResults": [
+    {
+      "file": "../../../../tmp/graychunks-cycle-4aSXOc/repo/sample.json",
+      "removedDuplicateImports": 0,
+      "removedDuplicateJsonKeys": 1
+    },
+    {
+      "file": "../../../../tmp/graychunks-cycle-4aSXOc/repo/sample.mjs",
+      "removedDuplicateImports": 1,
+      "removedDuplicateJsonKeys": 0
+    }
+  ]
+}
