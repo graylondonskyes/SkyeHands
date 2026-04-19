@@ -1,6 +1,6 @@
 # GrayChunks Progress Dashboard
 
-GeneratedAt: 2026-04-18T05:03:18.011Z
+GeneratedAt: 2026-04-18T05:06:25.496Z
 Directive completion: 91% (80/88)
 Unchecked items: 8
 
@@ -27,3 +27,10 @@ GrayChunks queue delta: 300
 
 ## Queue severity summary
 - critical: 300
+
+## Contender score
+- Score: 16/100
+- Grade: F
+- Penalty(issue count): 50.55
+- Penalty(critical queued): 25.00
+- Penalty(unchecked directive items): 8.00

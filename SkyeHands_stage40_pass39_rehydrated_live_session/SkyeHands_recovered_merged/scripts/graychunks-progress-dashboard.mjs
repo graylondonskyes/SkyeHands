@@ -23,10 +23,30 @@ function delta(current, prior) {
   return current - prior;
 }
 
+function clamp(min, value, max) {
+  return Math.max(min, Math.min(value, max));
+}
+
+function contenderGrade(score) {
+  if (score >= 90) return 'A';
+  if (score >= 80) return 'B';
+  if (score >= 70) return 'C';
+  if (score >= 60) return 'D';
+  return 'F';
+}
+
 const issueDeltas = {};
 for (const [type, count] of Object.entries(findings?.issuesByType || {})) {
   issueDeltas[type] = delta(count, previous?.graychunks?.issuesByType?.[type]);
 }
+
+const issueCount = Number(findings?.issueCount || 0);
+const criticalQueued = Number(queue?.summaryBySeverity?.critical || 0);
+const uncheckedItems = Number(completionPayload.uncheckedItems || 0);
+const scorePenalty = Math.min(60, issueCount / 20)
+  + Math.min(25, criticalQueued * 0.1)
+  + Math.min(15, uncheckedItems * 1);
+const contenderScore = clamp(0, Math.round(100 - scorePenalty), 100);
 
 const payload = {
   generatedAt: new Date().toISOString(),
@@ -49,6 +69,15 @@ const payload = {
     issueCountDelta: delta(findings?.issueCount, previous?.graychunks?.issueCount),
     queuedIssuesDelta: delta(queue?.queuedIssues, previous?.graychunks?.queuedIssues),
     issuesByTypeDelta: issueDeltas
+  },
+  contender: {
+    score: contenderScore,
+    grade: contenderGrade(contenderScore),
+    penalties: {
+      issueCount: Math.min(60, issueCount / 20),
+      criticalQueued: Math.min(25, criticalQueued * 0.1),
+      uncheckedItems: Math.min(15, uncheckedItems * 1)
+    }
   }
 };
 
@@ -76,7 +105,14 @@ const mdLines = [
   ...Object.entries(payload.trend.issuesByTypeDelta).map(([k, v]) => `- ${k}: ${v ?? 'n/a'}`),
   '',
   '## Queue severity summary',
-  ...Object.entries(payload.graychunks.summaryBySeverity).map(([k, v]) => `- ${k}: ${v}`)
+  ...Object.entries(payload.graychunks.summaryBySeverity).map(([k, v]) => `- ${k}: ${v}`),
+  '',
+  '## Contender score',
+  `- Score: ${payload.contender.score}/100`,
+  `- Grade: ${payload.contender.grade}`,
+  `- Penalty(issue count): ${payload.contender.penalties.issueCount.toFixed(2)}`,
+  `- Penalty(critical queued): ${payload.contender.penalties.criticalQueued.toFixed(2)}`,
+  `- Penalty(unchecked directive items): ${payload.contender.penalties.uncheckedItems.toFixed(2)}`
 ];
 
 fs.writeFileSync(dashboardMd, `${mdLines.join('\n')}\n`, 'utf8');
