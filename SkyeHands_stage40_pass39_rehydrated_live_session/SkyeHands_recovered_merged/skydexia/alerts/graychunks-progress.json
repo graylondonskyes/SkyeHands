@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-18T04:18:07.795Z",
+  "generatedAt": "2026-04-18T04:23:09.491Z",
   "directiveCompletion": {
     "percent": 91,
     "checkedItems": 80,
@@ -19,6 +19,18 @@
     "queuedIssues": 300,
     "summaryBySeverity": {
       "critical": 300
+    }
+  },
+  "trend": {
+    "previousGeneratedAt": "2026-04-18T04:23:07.454Z",
+    "issueCountDelta": 1011,
+    "queuedIssuesDelta": 300,
+    "issuesByTypeDelta": {
+      "repeated_chunk": null,
+      "duplicate_import": null,
+      "repeated_config_key": null,
+      "duplicate_object_key": null,
+      "broken_jsx_structure": null
     }
   }
 }
