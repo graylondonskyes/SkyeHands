@@ -29,5 +29,11 @@
     "platform/user-platforms/": "ae-platform-team",
     "platform/ide-core/": "ide-core-team",
     "apps/": "runtime-team"
+  },
+  "repeatedChunkOptions": {
+    "windowSize": 5,
+    "minLineLength": 20,
+    "maxIssuesPerFile": 5,
+    "minSemanticLines": 3
   }
 }

@@ -20,6 +20,12 @@ const DEFAULT_CONFIG = {
     'platform/user-platforms/': 'ae-platform-team',
     'platform/ide-core/': 'ide-core-team',
     'apps/': 'runtime-team'
+  },
+  repeatedChunkOptions: {
+    windowSize: 5,
+    minLineLength: 20,
+    maxIssuesPerFile: 5,
+    minSemanticLines: 3
   }
 };
 
@@ -41,7 +47,8 @@ export function loadGrayChunksConfig(rootDir) {
       ignorePathPrefixes: Array.isArray(parsed.ignorePathPrefixes) ? parsed.ignorePathPrefixes : DEFAULT_CONFIG.ignorePathPrefixes,
       jsxExtensions: Array.isArray(parsed.jsxExtensions) && parsed.jsxExtensions.length ? parsed.jsxExtensions : DEFAULT_CONFIG.jsxExtensions,
       severityByType: { ...DEFAULT_CONFIG.severityByType, ...(parsed.severityByType || {}) },
-      ownershipRules: { ...DEFAULT_CONFIG.ownershipRules, ...(parsed.ownershipRules || {}) }
+      ownershipRules: { ...DEFAULT_CONFIG.ownershipRules, ...(parsed.ownershipRules || {}) },
+      repeatedChunkOptions: { ...DEFAULT_CONFIG.repeatedChunkOptions, ...(parsed.repeatedChunkOptions || {}) }
     };
   } catch {
     return { ...DEFAULT_CONFIG, configPath };
@@ -169,17 +176,20 @@ function detectRepeatedConfigKeys(lines, relativePath) {
   return issues;
 }
 
-function detectRepeatedChunks(lines, relativePath) {
-  const windowSize = 5;
+function detectRepeatedChunks(lines, relativePath, options = DEFAULT_CONFIG.repeatedChunkOptions) {
+  const windowSize = Math.max(3, Number.parseInt(options.windowSize || DEFAULT_CONFIG.repeatedChunkOptions.windowSize, 10));
+  const minLineLength = Math.max(10, Number.parseInt(options.minLineLength || DEFAULT_CONFIG.repeatedChunkOptions.minLineLength, 10));
+  const maxIssuesPerFile = Math.max(1, Number.parseInt(options.maxIssuesPerFile || DEFAULT_CONFIG.repeatedChunkOptions.maxIssuesPerFile, 10));
+  const minSemanticLines = Math.max(2, Number.parseInt(options.minSemanticLines || DEFAULT_CONFIG.repeatedChunkOptions.minSemanticLines, 10));
   const issues = [];
   const seen = new Map();
 
   for (let index = 0; index <= lines.length - windowSize; index += 1) {
     const block = lines.slice(index, index + windowSize).map((line) => readString(line));
-    if (block.some((line) => !line || line.startsWith('//') || line.length < 20)) continue;
+    if (block.some((line) => !line || line.startsWith('//') || line.length < minLineLength)) continue;
     if (block.some((line) => /^[{}()[\];,]+$/.test(line.replace(/\s+/g, '')))) continue;
     if (block.some((line) => /^(import|export|function|if|for|while|switch|catch)\b/.test(line))) continue;
-    if (block.filter((line) => /(=|return\b|await\b|\.[A-Za-z_$][\w$]*\(|\bnew\b)/.test(line)).length < 3) continue;
+    if (block.filter((line) => /(=|return\b|await\b|\.[A-Za-z_$][\w$]*\(|\bnew\b)/.test(line)).length < minSemanticLines) continue;
     if (new Set(block).size !== block.length) continue;
     const key = block.join('\n');
     if (seen.has(key)) {
@@ -191,7 +201,7 @@ function detectRepeatedChunks(lines, relativePath) {
         line: index + 1,
         message: `Repeated ${windowSize}-line chunk first seen on line ${originalLine}.`
       });
-      if (issues.length >= 5) break;
+      if (issues.length >= maxIssuesPerFile) break;
       continue;
     }
     seen.set(key, index + 1);
@@ -213,7 +223,7 @@ export function scanGrayChunks({ rootDir, targetDir = rootDir, config = loadGray
     issues.push(...detectDuplicateObjectKeys(lines, relative));
     issues.push(...detectBrokenJsx(lines, relative, config.jsxExtensions || DEFAULT_CONFIG.jsxExtensions));
     issues.push(...detectRepeatedConfigKeys(lines, relative));
-    issues.push(...detectRepeatedChunks(lines, relative));
+    issues.push(...detectRepeatedChunks(lines, relative, config.repeatedChunkOptions || DEFAULT_CONFIG.repeatedChunkOptions));
   }
 
   const byType = issues.reduce((acc, issue) => {
