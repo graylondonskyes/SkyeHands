@@ -60,6 +60,10 @@ function authorized(req) {
 }
 
 const server = http.createServer(async (req, res) => {
+  if (!authorized(req)) {
+    return send(res, 401, { ok: false, error: 'unauthorized' });
+  }
+
   if (req.method === 'GET' && req.url === '/status') {
     return send(res, 200, {
       ok: true,
@@ -71,9 +75,6 @@ const server = http.createServer(async (req, res) => {
 
   if (req.method !== 'POST') {
     return send(res, 405, { ok: false, error: 'method_not_allowed' });
-  }
-  if (!authorized(req)) {
-    return send(res, 401, { ok: false, error: 'unauthorized' });
   }
 
   const body = await parseBody(req);

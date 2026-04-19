@@ -65,11 +65,12 @@ function saveCatalog(catalog) {
 }
 
 async function upsertArtist(payload = {}, catalog = loadCatalog()) {
-  const artistSlug = normalizeSlug(payload.artistSlug || payload.slug, 'artist');
   const artistName = readString(payload.artistName) || readString(payload.name);
   if (!artistName) {
     throw new Error('artist_name_required');
   }
+
+  const artistSlug = normalizeSlug(payload.artistSlug || payload.slug, normalizeSlug(artistName, 'artist'));
 
   const existing = catalog.artists[artistSlug] || {};
   const artist = {
@@ -85,7 +86,7 @@ async function upsertArtist(payload = {}, catalog = loadCatalog()) {
 }
 
 async function upsertEntry(payload = {}, catalog = loadCatalog()) {
-  const artistSlug = normalizeSlug(payload.artistSlug, 'artist');
+  const artistSlug = normalizeSlug(payload.artistSlug, normalizeSlug(payload.artistName, 'artist'));
   const title = readString(payload.title);
   const id = readString(payload.id);
   const existing = id ? catalog.entries[id] : null;
