@@ -1,12 +1,13 @@
 # GrayChunks Progress Dashboard
 
-GeneratedAt: 2026-04-18T04:23:09.491Z
+GeneratedAt: 2026-04-18T05:03:18.011Z
 Directive completion: 91% (80/88)
 Unchecked items: 8
 
 GrayChunks scanned files: 3934
 GrayChunks issue count: 1011
 GrayChunks queued issues: 300
+GrayChunks trend baseline: skydexia/alerts/graychunks-progress.json
 GrayChunks issue delta: 1011
 GrayChunks queue delta: 300
 

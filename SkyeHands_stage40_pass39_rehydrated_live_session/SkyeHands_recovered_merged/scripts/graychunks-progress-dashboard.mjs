@@ -9,12 +9,14 @@ const findingsPath = path.join(root, 'skydexia', 'alerts', 'graychunks-findings.
 const queuePath = path.join(root, 'skydexia', 'alerts', 'graychunks-priority-queue.json');
 const dashboardJson = path.join(root, 'skydexia', 'alerts', 'graychunks-progress.json');
 const dashboardMd = path.join(root, 'GRAYCHUNKS_PROGRESS.md');
+const baselineArg = process.argv.find((arg) => arg.startsWith('--baseline='));
+const baselinePath = baselineArg ? path.resolve(root, baselineArg.slice('--baseline='.length)) : dashboardJson;
 
 const completion = spawnSync(process.execPath, [path.join(root, 'scripts', 'directive-completion.mjs')], { cwd: root, encoding: 'utf8' });
 const completionPayload = JSON.parse(completion.stdout || '{}');
 const findings = fs.existsSync(findingsPath) ? JSON.parse(fs.readFileSync(findingsPath, 'utf8')) : null;
 const queue = fs.existsSync(queuePath) ? JSON.parse(fs.readFileSync(queuePath, 'utf8')) : null;
-const previous = fs.existsSync(dashboardJson) ? JSON.parse(fs.readFileSync(dashboardJson, 'utf8')) : null;
+const previous = fs.existsSync(baselinePath) ? JSON.parse(fs.readFileSync(baselinePath, 'utf8')) : null;
 
 function delta(current, prior) {
   if (typeof current !== 'number' || typeof prior !== 'number') return null;
@@ -42,6 +44,7 @@ const payload = {
     summaryBySeverity: queue?.summaryBySeverity || {}
   },
   trend: {
+    baselinePath: previous ? path.relative(root, baselinePath).replace(/\\/g, '/') : null,
     previousGeneratedAt: previous?.generatedAt || null,
     issueCountDelta: delta(findings?.issueCount, previous?.graychunks?.issueCount),
     queuedIssuesDelta: delta(queue?.queuedIssues, previous?.graychunks?.queuedIssues),
@@ -62,6 +65,7 @@ const mdLines = [
   `GrayChunks scanned files: ${payload.graychunks.scannedFiles}`,
   `GrayChunks issue count: ${payload.graychunks.issueCount}`,
   `GrayChunks queued issues: ${payload.graychunks.queuedIssues}`,
+  `GrayChunks trend baseline: ${payload.trend.baselinePath || 'none'}`,
   `GrayChunks issue delta: ${payload.trend.issueCountDelta ?? 'n/a'}`,
   `GrayChunks queue delta: ${payload.trend.queuedIssuesDelta ?? 'n/a'}`,
   '',
