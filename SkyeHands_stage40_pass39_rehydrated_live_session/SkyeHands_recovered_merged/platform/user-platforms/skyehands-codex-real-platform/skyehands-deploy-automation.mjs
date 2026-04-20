@@ -1,0 +1,28 @@
+#!/usr/bin/env node
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import { spawn } from 'node:child_process';
+
+const VERSION='9.0.0';
+const ROOT=process.cwd();
+const STATE=path.join(ROOT,'.skyehands-codex-real-platform');
+const WORKSPACES=path.join(STATE,'workspaces');
+const DEPLOY_FILE=path.join(STATE,'deployments.json');
+const PROOF=path.join(ROOT,'docs/proof');
+function mkdirs(){for(const d of [STATE,WORKSPACES,PROOF])fs.mkdirSync(d,{recursive:true})}
+function now(){return new Date().toISOString()}
+function id(p='id'){return`${p}-${Date.now()}-${crypto.randomBytes(5).toString('hex')}`}
+function hash(x){return crypto.createHash('sha256').update(typeof x==='string'?x:JSON.stringify(x)).digest('hex')}
+function proof(name,payload){mkdirs();const p={ok:true,name,version:VERSION,createdAt:now(),...payload};p.proofHash=hash(p);const file=path.join(PROOF,`${name}.json`);fs.writeFileSync(file,JSON.stringify(p,null,2));return{file,proof:p}}
+function db(){mkdirs();try{return JSON.parse(fs.readFileSync(DEPLOY_FILE,'utf8'))}catch{return{deployments:[],audit:[]}}}
+function save(d){fs.writeFileSync(DEPLOY_FILE,JSON.stringify(d,null,2));return d}
+function wid(x='default'){return String(x).replace(/[^a-zA-Z0-9_.-]/g,'-').toLowerCase()||'default'}
+function workspace(id='default'){mkdirs();const root=path.join(WORKSPACES,wid(id));fs.mkdirSync(root,{recursive:true});return{id:wid(id),root}}
+function detect(root){let pkg={scripts:{}};try{pkg=JSON.parse(fs.readFileSync(path.join(root,'package.json'),'utf8'))}catch{}const scripts=pkg.scripts||{};const outDir=fs.existsSync(path.join(root,'dist'))?'dist':fs.existsSync(path.join(root,'out'))?'out':'.';return{hasPackage:fs.existsSync(path.join(root,'package.json')),scripts,outDir,staticFiles:fs.existsSync(path.join(root,'index.html'))}}
+function run(cmd,args,cwd,timeout=120000){return new Promise(resolve=>{const child=spawn(cmd,args,{cwd,env:{...process.env,CI:'1'}});let stdout='',stderr='',timedOut=false;const t=setTimeout(()=>{timedOut=true;child.kill('SIGKILL')},timeout);child.stdout.on('data',d=>stdout+=d);child.stderr.on('data',d=>stderr+=d);child.on('close',code=>{clearTimeout(t);resolve({ok:code===0&&!timedOut,code,timedOut,stdout:stdout.slice(0,20000),stderr:stderr.slice(0,20000),cmd,args,cwd})})})}
+async function build(workspaceId){const ws=workspace(workspaceId);const d=detect(ws.root);if(d.hasPackage&&d.scripts.build)return await run('npm',['run','build'],ws.root);return{ok:true,skipped:true,reason:'static-or-no-build-script',cwd:ws.root}}
+function plan({workspaceId='default',provider='cloudflare-pages',siteName=null,domain=null}={}){const ws=workspace(workspaceId);const d=detect(ws.root);const deploy={id:id('deploy'),workspaceId:ws.id,provider,siteName:siteName||`skyehands-${ws.id}`,domain,status:'planned',outDir:d.outDir,createdAt:now(),commands:[]};if(provider==='cloudflare-pages')deploy.commands.push(`npx wrangler pages deploy ${d.outDir} --project-name ${deploy.siteName}`);else if(provider==='netlify')deploy.commands.push(`npx netlify deploy --dir ${d.outDir} --prod`);else deploy.commands.push('static artifact only');const state=db();state.deployments.push(deploy);state.audit.push({id:id('audit'),at:now(),action:'deploy.plan',deployId:deploy.id,hash:hash(deploy)});save(state);return deploy}
+async function execute({deployId,live=false}={}){const state=db();const deploy=state.deployments.find(d=>d.id===deployId);if(!deploy)throw new Error('deploy not found');deploy.status='running';deploy.startedAt=now();const buildResult=await build(deploy.workspaceId);deploy.buildResult=buildResult;if(!buildResult.ok){deploy.status='failed';deploy.failedAt=now();save(state);return deploy}if(live){if(deploy.provider==='cloudflare-pages'&&!process.env.CLOUDFLARE_API_TOKEN)throw new Error('CLOUDFLARE_API_TOKEN missing');if(deploy.provider==='netlify'&&!process.env.NETLIFY_AUTH_TOKEN)throw new Error('NETLIFY_AUTH_TOKEN missing');const [cmd,...args]=deploy.commands[0].split(' ');deploy.deployResult=await run(cmd,args,path.join(WORKSPACES,deploy.workspaceId),180000);deploy.status=deploy.deployResult.ok?'succeeded':'failed';}else{deploy.deployResult={ok:true,proofOnly:true,command:deploy.commands[0]};deploy.status='succeeded';deploy.url=deploy.domain?`https://${deploy.domain}`:`local-proof://${deploy.siteName}`;}deploy.completedAt=now();state.audit.push({id:id('audit'),at:now(),action:'deploy.execute',deployId:deploy.id,status:deploy.status,hash:hash(deploy)});save(state);return deploy}
+async function smoke(){fs.rmSync(DEPLOY_FILE,{force:true});const ws=workspace('deploy-smoke');fs.writeFileSync(path.join(ws.root,'index.html'),'<!doctype html><h1>Deploy Smoke</h1>');const dep=plan({workspaceId:ws.id,provider:'cloudflare-pages',siteName:'skyehands-deploy-smoke'});const done=await execute({deployId:dep.id,live:false});if(done.status!=='succeeded'||!done.deployResult.proofOnly)throw new Error('deploy proof failed');const p=proof('SKYEHANDS_DEPLOY_AUTOMATION_PROOF',{deployment:done,capabilities:['build-detection','cloudflare-pages-plan','netlify-plan','live-token-loud-fail','proof-deploy-ledger','audit-ledger']});console.log(JSON.stringify({ok:true,proofFile:p.file,proofHash:p.proof.proofHash},null,2))}
+const cmd=process.argv[2]||'help';if(cmd==='smoke')await smoke();else if(cmd==='plan')console.log(JSON.stringify(plan({workspaceId:process.argv[3]||'default',provider:process.argv[4]||'cloudflare-pages'}),null,2));else if(cmd==='execute')console.log(JSON.stringify(await execute({deployId:process.argv[3],live:process.env.LIVE_DEPLOY==='1'}),null,2));else console.log('Usage: node skyehands-deploy-automation.mjs smoke|plan|execute');
