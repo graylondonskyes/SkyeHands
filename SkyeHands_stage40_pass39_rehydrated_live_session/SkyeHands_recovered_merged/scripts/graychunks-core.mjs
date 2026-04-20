@@ -29,6 +29,17 @@ const DEFAULT_CONFIG = {
   }
 };
 
+const TYPE_ONLY_TAG_NAMES = new Set([
+  'Array', 'Map', 'Set', 'WeakMap', 'WeakSet', 'Record', 'Pick', 'Omit', 'Partial', 'Required',
+  'Readonly', 'ReadonlyArray', 'ReturnType', 'Parameters', 'ConstructorParameters', 'Promise',
+  'Iterable', 'IterableIterator', 'Iterator', 'Generator', 'NodeJS', 'React', 'ReactNode',
+  'HTMLElement', 'HTMLDivElement', 'HTMLSpanElement', 'HTMLInputElement', 'HTMLButtonElement',
+  'HTMLSelectElement', 'HTMLTextAreaElement', 'HTMLAnchorElement', 'HTMLHeadingElement',
+  'HTMLUListElement', 'HTMLLIElement', 'HTMLFormElement', 'HTMLCanvasElement',
+  'URI', 'Disposable', 'Widget', 'TreeNode', 'CompositeTreeNode', 'TreeElement',
+  'DebugProtocol', 'Interfaces', 'DebugRequestTypes', 'Mutable'
+]);
+
 function readString(value) {
   return String(value ?? '').trim();
 }
@@ -82,35 +93,107 @@ function listFiles(rootDir, config) {
   return out;
 }
 
+function stripLineComment(line) {
+  const marker = line.indexOf('//');
+  if (marker === -1) return line;
+  return line.slice(0, marker);
+}
+
+function isImportContinuation(line) {
+  const trimmed = readString(line);
+  return Boolean(trimmed && !trimmed.startsWith('import ') && !trimmed.includes(' from ') && !trimmed.endsWith(';'));
+}
+
 function detectDuplicateImports(lines, relativePath) {
   const issues = [];
   const seenImports = new Map();
-  for (let index = 0; index < lines.length; index += 1) {
-    const line = readString(lines[index]);
-    if (!line.startsWith('import ')) continue;
-    const normalized = line.replace(/\s+/g, ' ');
+  let activeImportStart = -1;
+  let activeImport = [];
+
+  function flushImport(endLine) {
+    if (!activeImport.length) return;
+    const normalized = activeImport.join(' ').replace(/\s+/g, ' ').trim().replace(/;$/, '');
     if (seenImports.has(normalized)) {
-      issues.push({ type: 'duplicate_import', file: relativePath, line: index + 1, message: `Duplicate import statement repeated from line ${seenImports.get(normalized)}.` });
+      issues.push({
+        type: 'duplicate_import',
+        file: relativePath,
+        line: activeImportStart + 1,
+        message: `Duplicate import statement repeated from line ${seenImports.get(normalized)}.`
+      });
     } else {
-      seenImports.set(normalized, index + 1);
+      seenImports.set(normalized, activeImportStart + 1);
     }
+    activeImportStart = -1;
+    activeImport = [];
   }
+
+  for (let index = 0; index < lines.length; index += 1) {
+    const line = readString(stripLineComment(lines[index]));
+    if (!line) continue;
+
+    if (activeImport.length) {
+      activeImport.push(line);
+      if (line.endsWith(';') || line.includes(' from ')) flushImport(index);
+      continue;
+    }
+
+    if (!line.startsWith('import ')) continue;
+    activeImportStart = index;
+    activeImport = [line];
+    if (line.endsWith(';') || line.includes(' from ') || !isImportContinuation(line)) flushImport(index);
+  }
+  flushImport(lines.length - 1);
   return issues;
 }
 
+function lineLooksLikeObjectKey(line) {
+  const trimmed = stripLineComment(line).trim();
+  if (!trimmed) return false;
+  if (/^(case|default|export|import|return|throw|if|for|while|switch|catch|class|interface|type|enum|namespace)\b/.test(trimmed)) return false;
+  if (/^[A-Za-z_$][\w$-]*\s*:\s*(public|private|protected|readonly|abstract|static)\b/.test(trimmed)) return false;
+  return /^([A-Za-z_$][\w$-]*|['"][^'"]+['"])\s*:/.test(trimmed);
+}
+
+function countStructuralChar(line, char) {
+  let count = 0;
+  let quote = null;
+  let escaped = false;
+  for (const ch of line) {
+    if (escaped) {
+      escaped = false;
+      continue;
+    }
+    if (ch === '\\') {
+      escaped = true;
+      continue;
+    }
+    if (quote) {
+      if (ch === quote) quote = null;
+      continue;
+    }
+    if (ch === '"' || ch === "'" || ch === '`') {
+      quote = ch;
+      continue;
+    }
+    if (ch === char) count += 1;
+  }
+  return count;
+}
+
 function detectDuplicateObjectKeys(lines, relativePath) {
+  if (path.extname(relativePath).toLowerCase() === '.json') return [];
   const issues = [];
-  const keyRegex = /^\s*([A-Za-z_$][\w$-]*)\s*:/;
+  const keyRegex = /^\s*([A-Za-z_$][\w$-]*|['"]([^'"]+)['"])\s*:/;
   const keyStack = [];
 
   for (let index = 0; index < lines.length; index += 1) {
-    const line = lines[index];
-    const opens = (line.match(/\{/g) || []).length;
+    const rawLine = lines[index];
+    const opens = countStructuralChar(rawLine, '{');
     for (let n = 0; n < opens; n += 1) keyStack.push(new Map());
 
-    const match = line.match(keyRegex);
-    if (match && keyStack.length) {
-      const key = match[1];
+    const match = rawLine.match(keyRegex);
+    if (match && keyStack.length && lineLooksLikeObjectKey(rawLine)) {
+      const key = match[2] || match[1];
       const keys = keyStack[keyStack.length - 1];
       if (keys.has(key)) {
         issues.push({ type: 'duplicate_object_key', file: relativePath, line: index + 1, message: `Object key '${key}' repeats key first seen on line ${keys.get(key)}.` });
@@ -119,11 +202,43 @@ function detectDuplicateObjectKeys(lines, relativePath) {
       }
     }
 
-    const closes = (line.match(/\}/g) || []).length;
+    const closes = countStructuralChar(rawLine, '}');
     for (let n = 0; n < closes; n += 1) keyStack.pop();
   }
 
   return issues;
+}
+
+function previousNonWhitespaceChar(text, index) {
+  for (let cursor = index - 1; cursor >= 0; cursor -= 1) {
+    const ch = text[cursor];
+    if (!/\s/.test(ch)) return ch;
+  }
+  return '';
+}
+
+function nextNonWhitespaceChar(text, index) {
+  for (let cursor = index; cursor < text.length; cursor += 1) {
+    const ch = text[cursor];
+    if (!/\s/.test(ch)) return ch;
+  }
+  return '';
+}
+
+function isLikelyTypeGeneric(joined, match) {
+  const tag = match[1];
+  const index = match.index || 0;
+  const prev = previousNonWhitespaceChar(joined, index);
+  const afterTagIndex = index + match[0].length;
+  const next = nextNonWhitespaceChar(joined, afterTagIndex);
+  if (TYPE_ONLY_TAG_NAMES.has(tag)) return true;
+  if (/[A-Za-z0-9_$.)\]]/.test(prev)) return true;
+  if (next === ';' || next === ':' || next === ',' || next === ')' || next === ']' || next === '|') return true;
+  const lineStart = joined.lastIndexOf('\n', index) + 1;
+  const lineEnd = joined.indexOf('\n', index);
+  const line = joined.slice(lineStart, lineEnd === -1 ? joined.length : lineEnd).trim();
+  if (/^(type|interface|declare|export\s+type|export\s+interface|const\s+\w+\s*:|let\s+\w+\s*:|var\s+\w+\s*:)/.test(line)) return true;
+  return false;
 }
 
 function detectBrokenJsx(lines, relativePath, jsxExtensions) {
@@ -132,13 +247,22 @@ function detectBrokenJsx(lines, relativePath, jsxExtensions) {
 
   const joined = lines.join('\n');
   const issues = [];
-  const openTags = [...joined.matchAll(/<([A-Z][A-Za-z0-9]{2,})\b(?![^>]*\/>)((?:(?!=>)[^\n])*?)>/g)].map((m) => m[1]);
-  const closeTags = [...joined.matchAll(/<\/([A-Z][A-Za-z0-9]{2,})>/g)].map((m) => m[1]);
-
   const openCount = new Map();
   const closeCount = new Map();
-  for (const tag of openTags) openCount.set(tag, (openCount.get(tag) || 0) + 1);
-  for (const tag of closeTags) closeCount.set(tag, (closeCount.get(tag) || 0) + 1);
+  const openRegex = /<([A-Z][A-Za-z0-9]{2,})\b(?![^>]*\/>)((?:(?!=>)[^\n])*?)>/g;
+  const closeRegex = /<\/([A-Z][A-Za-z0-9]{2,})>/g;
+
+  for (const match of joined.matchAll(openRegex)) {
+    if (isLikelyTypeGeneric(joined, match)) continue;
+    const tag = match[1];
+    openCount.set(tag, (openCount.get(tag) || 0) + 1);
+  }
+
+  for (const match of joined.matchAll(closeRegex)) {
+    const tag = match[1];
+    if (TYPE_ONLY_TAG_NAMES.has(tag)) continue;
+    closeCount.set(tag, (closeCount.get(tag) || 0) + 1);
+  }
 
   for (const [tag, count] of openCount.entries()) {
     if ((closeCount.get(tag) || 0) !== count) {
