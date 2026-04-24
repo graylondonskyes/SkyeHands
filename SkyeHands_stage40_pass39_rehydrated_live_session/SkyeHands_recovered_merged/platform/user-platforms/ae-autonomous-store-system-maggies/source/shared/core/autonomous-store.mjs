@@ -15,6 +15,26 @@ export function nowIso() {
   return new Date().toISOString();
 }
 
+export function slugify(value = '') {
+  return String(value)
+    .trim()
+    .toLowerCase()
+    .replace(/&/g, ' and ')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '') || 'item';
+}
+
+export function titleCase(value = '') {
+  return String(value)
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, ' ')
+    .split(' ')
+    .filter(Boolean)
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(' ');
+}
+
 export function defaultState(seed = {}) {
   const state = clone(seed || {});
   state.merchant = state.merchant || {};
