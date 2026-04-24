@@ -1,13 +1,14 @@
 # Section 87 — SkyeHands Provider Router Directive
 
 ☑ Encrypted provider config storage implemented.
-☑ Cost-cap provider selection implemented.
-☑ Disabled-provider denial implemented.
-☑ Usage ledger implemented.
-☑ Audit ledger implemented.
-☑ OpenAI-compatible live call boundary implemented.
-☑ Secret leak smoke implemented.
-☑ Proof output implemented.
+☑ AES-256-GCM provider config encryption implemented.
+☑ Provider registration implemented.
+☑ Model allowlist implemented.
+☑ Cost-cap route selection implemented.
+☑ Cost denial proof implemented.
+☑ Provider test path implemented.
+☑ Provider event ledger implemented.
+☑ Proof ledger output implemented.
 
 ## Required proof
 

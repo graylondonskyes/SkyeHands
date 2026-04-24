@@ -1,12 +1,14 @@
 # Section 89 — SkyeHands Deploy Automation Directive
 
-☑ Build detection implemented.
 ☑ Cloudflare Pages deployment plan implemented.
 ☑ Netlify deployment plan implemented.
-☑ Live deploy token loud-fail implemented.
-☑ Proof deploy execution ledger implemented.
-☑ Audit ledger implemented.
-☑ Proof output implemented.
+☑ GitHub Pages deployment plan implemented.
+☑ Build/output detection implemented.
+☑ CLI preflight implemented.
+☑ Smoke-after-deploy hook implemented.
+☑ TLS certificate check hook implemented.
+☑ Deployment ledger implemented.
+☑ Proof ledger output implemented.
 
 ## Required proof
 

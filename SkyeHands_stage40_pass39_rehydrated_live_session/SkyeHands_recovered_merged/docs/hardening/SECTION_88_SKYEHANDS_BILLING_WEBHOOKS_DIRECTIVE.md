@@ -1,14 +1,15 @@
 # Section 88 — SkyeHands Billing Webhooks Directive
 
-☑ Stripe signature verification implemented.
-☑ Idempotent event ledger implemented.
-☑ Checkout session entitlement mapping implemented.
-☑ Subscription state ledger implemented.
-☑ Invoice ledger implemented.
+☑ Stripe-style webhook signature verification implemented.
+☑ Timestamp tolerance denial implemented.
+☑ Idempotency implemented.
+☑ Customer ledger implemented.
+☑ Subscription ledger implemented.
+☑ AI credit ledger implemented.
 ☑ Refund ledger implemented.
 ☑ Dispute ledger implemented.
-☑ Audit ledger implemented.
-☑ Proof output implemented.
+☑ Tamper-denial smoke implemented.
+☑ Proof ledger output implemented.
 
 ## Required proof
 
