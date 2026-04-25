@@ -1,329 +1,340 @@
-# 🔴 SKYEHANDS CODEBASE: CRITICAL FRAGMENTATION FORENSICS & REPAIR PLAN
+# SKYEHANDS CODEBASE: DEEP FORENSICS REPORT (CORRECTED)
 
-**Date:** April 24, 2026  
-**Status:** URGENT - INCOMPLETE/BROKEN BUILD IDENTIFIED  
-**Severity:** CRITICAL - Multiple subsystems missing from current build  
+**Date:** April 25, 2026 (updated from April 24 — previous version had significant errors)
+**Status:** VERIFIED — Based on live deep scan of all files
+**Severity:** PARTIAL — Most components present; key missing piece is SkyeRoutex integration
 
 ---
 
 ## EXECUTIVE SUMMARY
 
-The current `stage_44rebuild` codebase is **INCOMPLETE**. It's missing approximately **72,900 files** and **7 critical root-level directories** that exist in the reference build (`Dynasty-Versions`).
+The `stage_44rebuild` codebase is **more complete than previously reported**. The original repair docs were written with incorrect file counts, misidentified "missing" directories that are actually present, and missed the canonical app root structure entirely.
 
-### Quick Stats:
-| Metric | Stage_44rebuild | Dynasty-Versions | Status |
-|--------|-----------------|------------------|--------|
-| Total Files | 40,530 | 113,430 | ❌ **72,900 MISSING** |
-| Scripts | 4 | 70 | ❌ **66 MISSING** |
-| Root Directories | 9 | 18+ | ❌ **9 MISSING** |
-| Apps Folder | ❌ MISSING | ✅ EXISTS | ❌ CRITICAL |
-| Platform/user-platforms | ❌ MISSING | ✅ EXISTS | ❌ CRITICAL |
-| Branding | ❌ MISSING | ✅ EXISTS | ⚠️ NEEDED |
-| Config | ❌ MISSING | ✅ EXISTS | ⚠️ NEEDED |
-| Src | ❌ MISSING | ✅ EXISTS | ⚠️ NEEDED |
-| Workspace | ❌ MISSING | ✅ EXISTS | ⚠️ NEEDED |
+**The real situation:**
+- The canonical app lives at `stage_44rebuild/SkyeHands_stage40_pass39_rehydrated_live_session/SkyeHands_recovered_merged/` — this is declared explicitly in `skyehands.repo.config.json`
+- Most "missing" components (apps, branding, config, platform/user-platforms, scripts) ARE present inside the canonical app root
+- **The only genuinely missing platform is SkyeRoutex** (486 files in Dynasty-Versions)
+- GrayChunks is a fully-built platform with 8 dedicated scripts + smoke tests
 
----
+### Corrected Stats:
 
-## 🚨 IDENTIFIED MISSING COMPONENTS
-
-### TIER 1: CRITICAL PLATFORMS & FEATURES (MUST HAVE)
-
-#### 1. **AE-COMMAND HUB** (Account Executive Command Hub)
-- **Status:** Exists in `Dynasty-Versions/SkyeHands_recovered_merged/platform/user-platforms/skye-account-executive-commandhub-*`
-- **What it does:** Enterprise command center for account executives
-- **Contains:** Netlify functions, credential hub, messaging, analytics
-- **Scope:** ~1500+ files
-- **Priority:** 🔴 CRITICAL - Enterprise feature
-
-#### 2. **SKYEROUTEX** (Routing & Workflow Execution)
-- **Status:** Exists in `Dynasty-Versions/SkyeRoutexFlow_v78_unpacked/`
-- **What it does:** White-glove routing, dispatch, bookings, payments, memberships
-- **Contains:** AE-Flow app, dispatch system, payment processor, membership mgmt
-- **Scope:** ~486 files
-- **Priority:** 🔴 CRITICAL - Core routing platform
-
-#### 3. **AUTONOMOUS AGENT LANE** (Agent Systems)
-- **Status:** Partially exists in dist/ but NOT as primary platform module
-- **What it does:** Autonomous maintenance, autonomy gradient, agent execution
-- **Contains:** Agent orchestration, maintenance policies, execution modes
-- **Scope:** ~2000+ files in .skyequanta/
-- **Priority:** 🔴 CRITICAL - Agent infrastructure
-
-#### 4. **APPS DIRECTORY** (Application Suite)
-- **Status:** ❌ COMPLETELY MISSING from stage_44rebuild
-- **Components:**
-  - `skye-reader-hardened` - Document reader with hardening
-  - `skyequanta-shell` - Shell/CLI interface for skyequanta
-- **Scope:** ~5000+ files
-- **Priority:** 🔴 CRITICAL - Core application infrastructure
-
-#### 5. **PLATFORM/USER-PLATFORMS** (Enterprise Subsystems)
-- **Status:** ❌ MISSING from stage_44rebuild/platform/
-- **Should contain:** All user-facing platform implementations
-- **Priority:** 🔴 CRITICAL - Multi-tenant architecture
-
-### TIER 2: INFRASTRUCTURE & CONFIGURATION (IMPORTANT)
-
-#### 6. **BRANDING** Directory
-- **Status:** ❌ MISSING
-- **Contains:** Visual assets, logos, brand guidelines
-- **Scope:** ~200 files
-- **Priority:** ⚠️ NEEDED for builds
-
-#### 7. **CONFIG** Directory
-- **Status:** ❌ MISSING
-- **Contains:** Agent configs, environment templates, deployment configs
-- **Scope:** ~500 files
-- **Priority:** ⚠️ NEEDED for runtime
-
-#### 8. **SRC** Directory
-- **Status:** ❌ MISSING
-- **Contains:** Core source modules and utilities
-- **Scope:** ~1000 files
-- **Priority:** ⚠️ NEEDED for builds
-
-#### 9. **WORKSPACE** Directory
-- **Status:** ❌ MISSING
-- **Contains:** Runtime workspace templates, prebuilds, retention policies
-- **Scope:** ~3000+ files
-- **Priority:** ⚠️ NEEDED for runtime execution
-
-### TIER 3: NEW/UPDATED FEATURES (Must Preserve from stage_44rebuild)
-
-#### ✅ GRAYCHUNKS Platform
-- **Status:** EXISTS in stage_44rebuild
-- **Location:** `stage_44rebuild/platform/agent-core/` (partial)
-- **Notes:** New platform - ensure NOT overwritten during merge
-- **Priority:** 🟡 PRESERVE
-
-#### ✅ SECTION 81-92 Directives
-- **Status:** EXISTS in Dynasty-Versions (newer versions)
-- **Location:** `Dynasty-Versions/.skyequanta/` and docs
-- **Contains:** Advanced system directives, platform hardening, OAuth, IDE
-- **Priority:** 🟡 INTEGRATE - potentially newer
+| Metric | stage_44rebuild (Actual) | Dynasty-Versions (Actual) | Previous (Wrong) |
+|--------|--------------------------|---------------------------|------------------|
+| Total Files | **31,430** | **77,036** | 40,530 / 113,430 |
+| Root scripts | 4 bridge scripts | ~70 smoke scripts | 4 / 70 |
+| CanonicalApp Scripts | **223 scripts** | N/A | Not mentioned |
+| Platform/user-platforms | **5 entries** | 1 entry | "15,000+ missing" |
+| SkyeRoutex | ❌ Missing | ✅ 486 files | Correctly flagged |
 
 ---
 
-## 📋 MERGE STRATEGY
+## CANONICAL APP ROOT — THE KEY STRUCTURE
 
-### Root Cause Analysis
-The problem occurred when reorganizing into `stage_44rebuild`:
-1. ✅ We correctly moved some directories (platform, scripts, docs)
-2. ❌ We forgot to move critical folders: **apps/, branding/, config/, src/, workspace/**
-3. ❌ We didn't extract platform/user-platforms
-4. ❌ We didn't sync the complete skyequanta infrastructure
+`skyehands.repo.config.json` (at `stage_44rebuild/` root) declares:
 
-### Repair Approach
-
-**Strategy: SELECTIVE MERGE FROM REFERENCE**
-
-NOT a simple "restore from backup" but rather:
-
-1. **Source Analysis**
-   - Dynasty-Versions = Reference build (complete but slightly older)
-   - stage_44rebuild = Current build (incomplete but has some new features)
-   - SkyeHands_recovered_merged = Master version to extract from
-
-2. **Merge Phases**
-
-#### Phase 1: Copy Missing Critical Folders
-```
-Source: Dynasty-Versions/
-Destinations to stage_44rebuild/:
-  ✓ apps/                  (new - copy completely)
-  ✓ branding/              (new - copy completely)
-  ✓ config/                (new - copy completely)
-  ✓ src/                   (new - copy completely)
-  ✓ workspace/             (new - copy completely)
+```json
+{
+  "canonicalAppRoot": "SkyeHands_stage40_pass39_rehydrated_live_session/SkyeHands_recovered_merged"
+}
 ```
 
-#### Phase 2: Merge Platform/User-Platforms
-```
-Source: Dynasty-Versions/platform/user-platforms/
-Destination: stage_44rebuild/platform/user-platforms/
-
-Components to integrate:
-  ✗ skye-account-executive-commandhub-*
-  ✗ skyehands-billing-webhooks
-  ✗ skyehands-browser-ide
-  ✗ skyehands-codex-competitor
-  ✗ skyehands-codex-control-plane
-  ✗ skyehands-codex-real-platform
-  ✗ skyehands-deploy-automation
-  ✗ skyehands-isolation-controller
-  ✗ skyehands-oauth-gateway
-  ✗ skyehands-platform-core
-  ✗ skyehands-platform-db
-  ✗ skyehands-provider-router
-  ✗ skyehands-sandbox-runner
-```
-
-#### Phase 3: Merge SkyeRoutex
-```
-Source: Dynasty-Versions/SkyeRoutexFlow_v78_unpacked/
-        SkyeRoutexFlow_v69_PLATFORM_HOUSE_CIRCLE_NEON_ENTERPRISE_BACKUP_LANE/
-
-Destination: stage_44rebuild/ (top-level or platform/?)
-
-Components:
-  ✗ SkyeRoutex (operator, investor docs, walkthroughs)
-  ✗ AE-Flow (application code)
-  ✗ White-Glove services (v39-v64)
-  ✗ skyesol-* (bookings, dispatch, memberships, payments, sync)
-  ✗ Support libraries and contracts
-```
-
-#### Phase 4: Merge .skyequanta Infrastructure
-```
-Source: Dynasty-Versions/.skyequanta/
-Determine which subsystems should merge:
-
-Already exists in stage_44rebuild:
-  ✓ .skyequanta/ (keep and enhance)
-  
-From Dynasty-Versions (decide per-subsystem):
-  ? autonomous-maintenance/      (HAVE - check if newer)
-  ? autonomy-gradient/           (HAVE - check if newer)
-  ? deep-scan-mode/             (HAVE - check if newer)
-  ? environment-mirror/          (HAVE - check if newer)
-  ? memory-fabric/               (HAVE - check if newer)
-  ? skye-foundry/                (CHECK - might be NEW)
-  ? kaixu-council/               (CHECK - might be NEW)
-  ? compliance-native-modes/     (CHECK - might be NEW)
-  ? devglow/                     (CHECK - might be NEW)
-  ? deal-ownership-generation/   (CHECK - might be NEW)
-  ? platform-launchpad/          (CHECK - might be NEW)
-```
-
-#### Phase 5: Merge Scripts
-```
-Source: Dynasty-Versions/scripts/ (70 scripts)
-Destination: stage_44rebuild/scripts/
-
-Strategy:
-  ! CAREFUL - check if stage_44rebuild scripts are NEWER
-  ? If stage_44rebuild scripts are newer, KEEP them
-  ? If dynasty versions have new scripts, ADD them with version suffix
-  
-Likely needed:
-  ✗ smoke-* tests (many missing)
-  ✗ deploy-automation scripts
-  ✗ build scripts
-```
-
-#### Phase 6: Merge Dependencies & Configuration
-```
-Files to check/merge:
-  ✗ package.json      (merge dependencies carefully)
-  ✗ skyequanta.mjs    (merge with any new version)
-  ✗ Makefile          (compare and merge targets)
-  ✗ .devcontainer/    (compare and merge)
-```
+**This nested layout is BY DESIGN.** The 4 scripts at `stage_44rebuild/scripts/` are bridge/dispatch utilities that route commands into the canonical root. All real application code lives inside `SkyeHands_stage40_pass39_rehydrated_live_session/SkyeHands_recovered_merged/`.
 
 ---
 
-## 🔍 DETAILED FILE INVENTORY NEEDED
+## WHAT'S ACTUALLY IN stage_44rebuild
 
-Before proceeding, we need to:
-
-### Scan Dynasty-Versions structure:
-```
-✓ Dynasty-Versions/apps/ - complete
-✓ Dynasty-Versions/branding/ - complete
-✓ Dynasty-Versions/config/ - complete
-✓ Dynasty-Versions/src/ - complete
-✓ Dynasty-Versions/workspace/ - complete
-✓ Dynasty-Versions/platform/user-platforms/ - complete
-✓ Dynasty-Versions/SkyeRoutexFlow_v78_unpacked/ - complete
-✓ Dynasty-Versions/.skyequanta/ - check freshness
-✓ Dynasty-Versions/scripts/ - compare versions
-```
-
-### Check for conflicts:
-```
-? stage_44rebuild vs Dynasty-Versions on:
-  - package.json versions
-  - Script functionality
-  - Platform module versions
-  - .skyequanta infrastructure
-```
-
-### Identify NEW features in stage_44rebuild:
-```
-✓ GrayChunks platform (if it exists)
-✓ Section 81-92 directives (if newer)
-✓ Any agent-core improvements
-? Any ide-core improvements
-```
-
----
-
-## ✅ NEXT STEPS
-
-### Immediate Actions:
-1. ✅ Create directory listings of ALL components in Dynasty-Versions (DONE)
-2. ⏳ Analyze each major component's structure and dependencies
-3. ⏳ Create detailed file-by-file merge conflict detection
-4. ⏳ Create backup of current stage_44rebuild before merge
-5. ⏳ Execute Phase 1-2 merge (critical components)
-6. ⏳ Test build integrity after each phase
-7. ⏳ Execute Phase 3-6 merge (remaining components)
-8. ⏳ Final validation and testing
-
-### Success Criteria:
-- [ ] All 9 missing root directories restored
-- [ ] 113,430 total files (or equivalent)
-- [ ] All 70 scripts present
-- [ ] Build system operational (npm install, make test work)
-- [ ] All platforms loadable (ae-command, routex, autonomous agents, graychunks)
-- [ ] Runtime operational (.skyequanta functional)
-- [ ] Git commit with merge documentation
-
----
-
-## 📊 COMPONENT DEPENDENCY MAP
-
+### Root Level (`stage_44rebuild/`)
 ```
 stage_44rebuild/
+├── .skyequanta/workspace-runtime/         # Minimal runtime state
+├── SkyeHands_stage40_pass39_rehydrated_live_session/
+│   └── SkyeHands_recovered_merged/        # ← CANONICAL APP ROOT
+├── _skyehands_stage41_additive_manifest/  # Pack metadata (9,103 files applied)
+├── dist/production-release/               # Production dist mirror
+├── docs/hardening/                        # Hardening docs
+├── platform/agent-core/config.toml        # Agent core config
+├── platform/ide-core/                     # Full Theia IDE (packages + node_modules)
+├── public-websites/skyehands/skyequantacore-current-truth/
+├── scripts/                               # 4 bridge/utility scripts
+│   ├── _repo-utils.mjs
+│   ├── repo-paths.mjs
+│   ├── repo-root.mjs
+│   └── run-app-script.mjs
+├── package.json                           # Repo-root npm scripts
+└── skyehands.repo.config.json             # Canonical root declaration
+```
+
+### Canonical App Root (`...recovered_merged/`)
+```
+recovered_merged/
+├── .devcontainer/                         # Dev container config
+├── .github/workflows/                     # CI/CD workflows
+├── .skyequanta/                           # 19 runtime subsystems:
+│   ├── autonomous-maintenance/
+│   ├── autonomy-gradient/
+│   ├── cache/
+│   ├── compliance-native-modes/
+│   ├── deal-ownership-generation/
+│   ├── deep-scan-mode/
+│   ├── devglow/
+│   ├── environment-mirror/
+│   ├── ide-config/
+│   ├── kaixu-council/
+│   ├── memory-fabric/
+│   ├── platform-launchpad/
+│   ├── remote-executor/
+│   ├── reports/
+│   ├── runtime-bus/
+│   ├── runtime-deps/
+│   ├── runtime-recovery/
+│   ├── skye-foundry/
+│   ├── skye-reader-bridge/
+│   └── workspace-runtime/
+├── apps/
+│   ├── skye-reader-hardened/              # Enterprise doc reader
+│   └── skyequanta-shell/                  # CLI interface
+├── branding/                              # Brand assets
+├── config/
+│   ├── agent/                             # Agent configuration
+│   └── env-templates/                     # Env var templates
+├── dist/
+│   ├── production-release/
+│   ├── section39/ ... section61/          # Build artifacts sections 39-61
+│   └── ship-candidate/
+├── docs/
+│   ├── hardening/
+│   ├── proof/
+│   └── templates/
 ├── platform/
-│   ├── ide-core/              ✅ PRESENT
-│   ├── agent-core/            ✅ PRESENT (GrayChunks?)
-│   └── user-platforms/        ❌ MISSING - CRITICAL
-│       ├── ae-command-*       ← FROM Dynasty-Versions
-│       ├── skyhandcode-*      ← FROM Dynasty-Versions
-│       ├── skyehands-*        ← FROM Dynasty-Versions (sections 81-92)
-│       └── skyesol-*          ← FROM Dynasty-Versions (routing)
-├── apps/                      ❌ MISSING - CRITICAL
-│   ├── skye-reader-hard ened
-│   └── skyequanta-shell
-├── scripts/                   ✅ PARTIAL (4/70) - NEEDS MERGE
-├── docs/                      ✅ PRESENT (maybe merge newer?)
-├── .skyequanta/               ✅ PARTIAL (needs newer subsystems?)
-├── branding/                  ❌ MISSING - NEEDED
-├── config/                    ❌ MISSING - NEEDED
-├── src/                       ❌ MISSING - NEEDED
-├── workspace/                 ❌ MISSING - NEEDED
-└── [ Integration packages like SkyeRoutex]
-    ❌ MISSING - CRITICAL
+│   ├── agent-core/                        # Agent platform config
+│   ├── ide-core/                          # Full Theia-based IDE
+│   ├── user-platforms/
+│   │   ├── ae-autonomous-store-system-maggies/  # Autonomous store
+│   │   ├── skye-account-executive-commandhub-s0l26-0s/  # AE Command Hub
+│   │   ├── skyehands-codex-competitor/
+│   │   ├── skyehands-codex-control-plane/
+│   │   └── skyehands-codex-real-platform/       # Contains .mjs modules
+│   │       ├── skyehands-billing-webhooks.mjs
+│   │       ├── skyehands-browser-ide.mjs
+│   │       ├── skyehands-codex-real-platform.mjs
+│   │       ├── skyehands-deploy-automation.mjs
+│   │       ├── skyehands-isolation-controller.mjs
+│   │       ├── skyehands-oauth-gateway.mjs
+│   │       ├── skyehands-platform-core.mjs
+│   │       ├── skyehands-platform-db.mjs
+│   │       ├── skyehands-provider-router.mjs
+│   │       ├── skyehands-sandbox-runner.mjs
+│   │       └── migrations/
+│   └── wiring/
+├── public/
+├── scripts/                               # 223 scripts total
+│   ├── graychunks-core.mjs                # GrayChunks platform
+│   ├── graychunks-platform-server.mjs
+│   ├── graychunks-autofix.mjs
+│   ├── graychunks-runtime-cycle.mjs
+│   ├── graychunks-alert-resend.mjs
+│   ├── graychunks-priority-queue.mjs
+│   ├── graychunks-progress-dashboard.mjs
+│   ├── graychunks-scan.mjs
+│   ├── smoke-p001 ... smoke-p088+         # Full smoke test suite
+│   ├── directive-completion.mjs
+│   ├── directive-runtime-audit.mjs
+│   ├── bootstrap-devcontainer.sh
+│   └── ... (223 total)
+├── skydexia/                              # Skydexia platform
+│   ├── alerts/                            # GrayChunks + other alerts
+│   ├── donors/
+│   ├── extracted-templates/
+│   ├── generated-projects/
+│   ├── integration/
+│   ├── knowledge-base/
+│   ├── knowledge-updates/
+│   ├── policies/
+│   ├── proofs/
+│   └── provenance/
+├── graychunks.config.json
+├── Makefile
+└── README.md
 ```
 
 ---
 
-## ⚠️ RISKS & MITIGATIONS
+## GRAYCHUNKS PLATFORM — CORRECTLY IDENTIFIED
 
-| Risk | Impact | Mitigation |
-|------|--------|-----------|
-| Overwriting newer code with old | Build regression | ✓ Check timestamps, git history first |
-| Mass file merge confusion | Broken dependencies | ✓ Merge in phases, test each |
-| Configuration conflicts | Runtime failures | ✓ Analyze config before merging |
-| Script conflicts | Build fails | ✓ Compare script functionality |
-| Node modules conflicts | npm install fails | ✓ Fresh npm install after merge |
+GrayChunks is NOT just a config entry in `platform/agent-core/`. It is a **full production platform** with:
+
+| Component | Location |
+|-----------|----------|
+| `graychunks-core.mjs` | Core engine |
+| `graychunks-platform-server.mjs` | Server runtime |
+| `graychunks-autofix.mjs` | Auto-fix module |
+| `graychunks-runtime-cycle.mjs` | Cycle manager |
+| `graychunks-alert-resend.mjs` | Alert dispatch |
+| `graychunks-priority-queue.mjs` | Priority queue |
+| `graychunks-progress-dashboard.mjs` | Dashboard |
+| `graychunks-scan.mjs` | Scan engine |
+| `smoke-p085-graychunks-platform.mjs` | Smoke test |
+| `smoke-p086-graychunks-ae-integration.mjs` | AE integration test |
+| `smoke-p087-graychunks-platform-server.mjs` | Server smoke test |
+| `smoke-p088-graychunks-cycle-autofix.mjs` | Cycle autofix test |
+| `graychunks.config.json` | Configuration |
+| `ae-graychunks-control.js` | AE Command Hub Netlify function |
+| `skydexia/alerts/graychunks-*.json` | State & alert tracking |
+
+**Status: COMPLETE — Must be preserved during any merge**
 
 ---
 
-## 📝 FILE CREATED
+## AUTONOMOUS AGENT LANE — PRESENT
 
-This document: `/workspaces/SkyeHands/DEEP_CODEBASE_FORENSICS_REPAIR_PLAN.md`
+The autonomous agent lane IS present in stage_44rebuild. Location:
 
-**Next Step:** Start Phase 1 merge with user approval
+```
+recovered_merged/.skyequanta/autonomous-maintenance/
+recovered_merged/.skyequanta/autonomy-gradient/
+```
+
+This was flagged as "missing" in the old docs but that was incorrect.
+
+---
+
+## WHAT IS ACTUALLY MISSING
+
+### 1. SkyeRoutex Platform (486 files) — CRITICAL
+
+Location in Dynasty-Versions:
+```
+Dynasty-Versions/SkyeRoutexFlow_v78_unpacked/
+  SkyeRoutexFlow_v69_PLATFORM_HOUSE_CIRCLE_NEON_ENTERPRISE_BACKUP_LANE/
+```
+
+**Not present anywhere in stage_44rebuild.** This is the only major missing platform.
+
+Contents:
+- `AE-FLOW/AE-Flow/` — PWA app (index.html, sw.js, manifest, 0s-auth-sdk)
+- `SkyeRoutex/` — Core routing platform:
+  - `WHITE_GLOVE_V64-V78/` — Latest white-glove service docs (V39-V63 older)
+  - `netlify/functions/` — 33 phc-* Netlify functions
+  - `app-fabric/adapters/` — App fabric layer
+  - `apps/audit-ready-console/`, `apps/smoke-dropin-v77/`
+  - `investor/` — Enterprise valuation docs
+  - `operator/` — Walkthrough docs
+  - `assets/`, `icons/`, `neon/`
+- `AuditReadyConsole-main/` — Audit console application
+- `NEW-SHIT2/` — New features folder
+- `skyesol-whiteglove-bookings/` — Bookings service
+- `skyesol-whiteglove-dispatch/` — Dispatch service
+- `skyesol-whiteglove-memberships/` — Memberships service
+- `skyesol-whiteglove-payments/` — Payments service
+- `skyesol-whiteglove-runtime/` — Shared runtime
+- `skyesol-whiteglove-sync/` — Sync service
+- `WHITE_GLOVE_V39-V63/` — Legacy white-glove versions
+- `extra-shit/` — Integration audit docs
+
+**Previous docs claimed V39-V64 only — actual is V39-V78.**
+**Previous docs listed ae-*.js Netlify functions — actual are phc-*.js functions (33 of them).**
+
+### 2. Root-Level Runtime Scripts
+
+From Dynasty-Versions root (not present in stage_44rebuild):
+- `skyequanta.mjs` — Main orchestration entry point
+- `Makefile` — Root build targets (recovered_merged has its own Makefile)
+- `START_HERE.sh` — Bootstrap script
+
+### 3. Workspace Runtime Templates
+
+```
+Dynasty-Versions/workspace/
+├── prebuilds/     # Prebuild manifests for local-default, remote-default, preview-stage8
+├── secrets/       # Workspace secret templates
+└── volumes/       # Volume configs for local-default, remote-default, etc.
+```
+
+### 4. src/runtime.js
+
+Dynasty-Versions/src/runtime.js — single core source file not in stage_44rebuild.
+
+### 5. Root-Level .skyequanta State Files
+
+Dynasty-Versions has these at its root `.skyequanta/` that don't exist in stage_44rebuild:
+- `fleet-state.json`
+- `governance-policy.json`, `governance-cost-ledger.json`, `governance-secrets.json`
+- `governance-release-decisions.json`, `governance-tenant-policies.json`
+- `collaboration-state.json`
+- `ops-state.json`
+- `workspace-scheduler-policy.json`, `workspace-scheduler-state.json`
+- `snapshot-retention.json`
+- `sessions.json`, `workspaces.json`
+- `scm-state.json`, `prebuild-state.json`
+
+---
+
+## DYNASTY-VERSIONS STRUCTURE (Reference)
+
+```
+Dynasty-Versions/                          # 77,036 total files
+├── .skyequanta/                           # Full governance + state files
+├── SkyeHands_3_1_9_unpacked/work/        # Earliest reference build
+├── SkyeHandsunf/                          # Unfixed reference variant
+├── SkyeHands_stage40_pass41_unpacked/     # Stage 40/41 reference
+├── SkyeRoutexFlow_v78_unpacked/           # ← KEY MISSING PIECE (486 files)
+├── apps/                                  # skye-reader-hardened + skyequanta-shell
+│                                          # (includes node_modules — bulk of file count)
+├── branding/identity.json
+├── config/agent/, env-templates/
+├── dist/section39 ... section61/
+├── docs/                                  # 60+ docs and directives
+├── platform/
+│   ├── agent-core/                        # Agent platform
+│   ├── ide-core/                          # Theia IDE (same as stage_44rebuild)
+│   └── user-platforms/
+│       └── skye-account-executive-commandhub-s0l26-0s/  # Only 1 platform here
+├── scripts/                               # ~70 older smoke-section* scripts
+├── src/runtime.js
+├── workspace/prebuilds/, secrets/, volumes/
+├── skyequanta.mjs                         # Root orchestration
+├── Makefile
+└── START_HERE.sh
+```
+
+---
+
+## ERRORS IN ORIGINAL DOCS
+
+| Claim | Reality |
+|-------|---------|
+| stage_44rebuild: 40,530 files | Actually **31,430** |
+| Dynasty-Versions: 113,430 files | Actually **77,036** |
+| "72,900 files missing" | Wrong — most are present in canonicalAppRoot |
+| apps/ COMPLETELY MISSING | **WRONG** — at `recovered_merged/apps/` |
+| branding/ COMPLETELY MISSING | **WRONG** — at `recovered_merged/branding/` |
+| config/ COMPLETELY MISSING | **WRONG** — at `recovered_merged/config/` |
+| platform/user-platforms MISSING | **WRONG** — at `recovered_merged/platform/user-platforms/` with 5 entries |
+| "15,000+ files" in user-platforms | **WRONG** — skyehands-codex-* are .mjs files in one folder |
+| 13 separate platform directories | **WRONG** — modules are files inside `skyehands-codex-real-platform/` |
+| GrayChunks in platform/agent-core | **WRONG** — GrayChunks is in scripts/ with 8 dedicated scripts |
+| Only 4 scripts total | **WRONG** — 4 at root (bridge scripts), 223 in canonicalAppRoot |
+| SkyeRoutex WHITE_GLOVE V39-V64 | **WRONG** — actual is V39-V78 |
+| AE Netlify functions are ae-*.js | **WRONG** — actual are 33 phc-*.js functions |
+| "Autonomous agent lane missing" | **WRONG** — present in .skyequanta/ subsystems |
+| Sections 81-92 missing | **WRONG** — codex platforms present (different structure than described) |
+
+---
+
+## WHAT ACTUALLY NEEDS TO BE DONE
+
+### Priority 1: Integrate SkyeRoutex (the one real missing piece)
+Copy `Dynasty-Versions/SkyeRoutexFlow_v78_unpacked/SkyeRoutexFlow_v69_PLATFORM_HOUSE_CIRCLE_NEON_ENTERPRISE_BACKUP_LANE/` into `recovered_merged/` as a top-level or platform directory. See CODEBASE_REPAIR_EXECUTION_PLAN.md for exact steps.
+
+### Priority 2: Clarify the canonical root structure
+The nested structure can confuse future contributors. Consider whether to flatten `SkyeHands_stage40_pass39_rehydrated_live_session/SkyeHands_recovered_merged/` to `stage_44rebuild/` root OR update all docs to clearly describe the canonical root pattern.
+
+### Priority 3: Add missing workspace templates
+Copy `Dynasty-Versions/workspace/` into `recovered_merged/workspace/` for prebuild and volume templates.
+
+### Priority 4: Add src/runtime.js
+Copy `Dynasty-Versions/src/runtime.js` to `recovered_merged/src/runtime.js`.
+
+### Priority 5 (Optional): Root orchestration scripts
+Copy `skyequanta.mjs`, `Makefile` (review for conflicts), `START_HERE.sh` from Dynasty-Versions root if needed.

@@ -1,205 +1,179 @@
-# 🚨 SKYEHANDS CODEBASE REPAIR - SUMMARY FOR USER
+# SKYEHANDS CODEBASE — ACCURATE STATUS SUMMARY
 
-**Analysis Complete:** April 24, 2026  
-**Issue Severity:** CRITICAL  
-**Action Required:** YES - Merge needed  
-
----
-
-## THE PROBLEM (In Plain English)
-
-Your `stage_44rebuild` folder is **INCOMPLETE**. When we reorganized the codebase, we accidentally left out 9 critical directories containing 72,900 important files. This means:
-
-- ❌ Your AE-Command Hub (Account Executive system) is missing
-- ❌ Your SkyeRoutex (routing/dispatch/payments platform) is missing  
-- ❌ Your Apps directory (reader, shell) is missing
-- ❌ 66 build/deploy automation scripts are missing
-- ❌ Production configs are missing
-- ❌ Runtime workspace templates are missing
-
-**Result:** ~64% of your codebase is gone. You have a "broken and shattered" build.
+**Analysis Complete:** April 25, 2026 (corrected from April 24)
+**Previous Severity:** CRITICAL (wrong)
+**Actual Severity:** MINOR — Build is mostly complete; SkyeRoutex integration needed
 
 ---
 
-## THE SOLUTION
+## THE ACTUAL SITUATION (Plain English)
 
-Dynasty-Versions folder contains the **complete reference build**. We have created a detailed merge plan to restore all missing components back into stage_44rebuild, creating one cohesive, complete build.
+Your `stage_44rebuild` is **much more complete than originally reported.** The previous analysis docs were wrong because they didn't understand the canonical app root structure.
 
----
-
-## WHAT I ANALYZED
-
-### 📊 Codebase Comparison
-
+**The real layout:**
 ```
-stage_44rebuild (CURRENT/INCOMPLETE)
-├── Total Files: 40,530
-├── Root Directories: 9
-├── Scripts: 4
-├── Status: BROKEN
-
-Dynasty-Versions (REFERENCE/COMPLETE)
-├── Total Files: 113,430  
-├── Root Directories: 18+
-├── Scripts: 70
-├── Status: OPERATIONAL
+stage_44rebuild/                              ← repo root (4 bridge scripts)
+  skyehands.repo.config.json                  ← declares the canonical app root
+  SkyeHands_stage40_pass39_rehydrated_live_session/
+    SkyeHands_recovered_merged/               ← THIS IS YOUR REAL APP
+      apps/                    ✅ PRESENT
+      branding/                ✅ PRESENT
+      config/                  ✅ PRESENT
+      platform/user-platforms/ ✅ PRESENT (5 platforms)
+      scripts/                 ✅ 223 scripts
+      .skyequanta/             ✅ 19 subsystems
+      skydexia/                ✅ PRESENT
+      GrayChunks               ✅ FULLY BUILT
 ```
 
-### ✅ WHAT'S IN BOTH (Already OK)
-- platform/ide-core/ ✓
-- platform/agent-core/ ✓ (with GrayChunks preserved)  
-- scripts/ (partial)
-- docs/ (partial)
-- .skyequanta/ (partial)
+---
 
-### ❌ WHAT'S MISSING (Must Add from Dynasty-Versions)
+## WHAT'S ACTUALLY MISSING
 
-**CRITICAL (Project-Blocking):**
-1. **apps/** (5000+ files)
-   - skye-reader-hardened
-   - skyequanta-shell
-2. **platform/user-platforms/** (15000+ files)
-   - AE-Command Hub
-   - SkyeHands Codex platforms (sections 81-92)
-   - Autonomous store systems
-3. **SkyeRoutex** (486 files)
-   - AE-Flow app
-   - White-Glove services
-   - Dispatch, payments, bookings
-4. **scripts/** (66 missing files)
-   - Smoke tests  
-   - Deployment automation
-   - Build scripts
+### ❌ SkyeRoutex — THE ONE BIG MISSING PIECE
 
-**NEEDED (Build-Blocking):**
-5. **config/** (500+ files)
-6. **branding/** (200+ files)
-7. **src/** (1000+ files)
-8. **workspace/** (3000+ files)
+SkyeRoutex (routing, dispatch, payments, memberships) is **not present** in stage_44rebuild. It only exists in Dynasty-Versions. This is a 486-file platform that needs to be integrated.
+
+**From:** `Dynasty-Versions/SkyeRoutexFlow_v78_unpacked/SkyeRoutexFlow_v69_PLATFORM_HOUSE_CIRCLE_NEON_ENTERPRISE_BACKUP_LANE/`
+**To:** `stage_44rebuild/.../recovered_merged/SkyeRoutex-v78/`
+
+Includes:
+- AE-FLOW PWA application
+- SkyeRoutex netlify functions (33 phc-* functions)
+- skyesol-whiteglove services (bookings, dispatch, memberships, payments, sync)
+- WHITE_GLOVE service docs V39 through V78
+- AuditReadyConsole application
+- Integration audit docs
+
+### ⚠️ Minor Missing Files
+
+- `workspace/` runtime templates (prebuild manifests, secrets templates, volume configs)
+- `src/runtime.js` — one source file
+- `skyequanta.mjs` — root orchestration script (optional)
 
 ---
 
-## HOW TO FIX IT: THE MERGE PLAN
+## WHAT'S CONFIRMED PRESENT
 
-I've created **3 detailed documents** in `/workspaces/SkyeHands/`:
+### ✅ AE-Command Hub
+`recovered_merged/platform/user-platforms/skye-account-executive-commandhub-s0l26-0s/`
+- Full Netlify functions suite
+- Credential hub launcher
+- AE analytics, assignments, threads, brains, audit events
 
-### 1. **DEEP_CODEBASE_FORENSICS_REPAIR_PLAN.md**
-- What's broken and why
-- Where each component is located
-- Risk assessment for the merge
-- High-level strategy
+### ✅ SkyeHands Codex Platforms (Sections 81-92)
+`recovered_merged/platform/user-platforms/skyehands-codex-real-platform/`
+- skyehands-billing-webhooks.mjs
+- skyehands-browser-ide.mjs
+- skyehands-codex-real-platform.mjs
+- skyehands-deploy-automation.mjs
+- skyehands-isolation-controller.mjs
+- skyehands-oauth-gateway.mjs
+- skyehands-platform-core.mjs
+- skyehands-platform-db.mjs
+- skyehands-provider-router.mjs
+- skyehands-sandbox-runner.mjs
+- Plus skyehands-codex-control-plane/ and skyehands-codex-competitor/
 
-### 2. **MISSING_COMPONENTS_INVENTORY.md**
-- Complete file-by-file inventory
-- What each missing component does
-- Where to find it in Dynasty-Versions
-- Why it's critical
+### ✅ GrayChunks Platform (New)
+- Core engine, platform server, autofix, runtime cycle, alert system, priority queue, scan engine
+- Full smoke test suite (p085-p088)
+- State tracking in skydexia/alerts/
+- AE Hub integration via ae-graychunks-control.js
 
-### 3. **CODEBASE_REPAIR_EXECUTION_PLAN.md** ⭐ MAIN DOCUMENT
-- **Ready-to-execute** step-by-step procedures
-- 7 phases of merge
-- Exact bash commands for each phase
-- Validation checks after each phase
-- Rollback procedure if needed
+### ✅ Autonomous Agent Lane
+- `.skyequanta/autonomous-maintenance/`
+- `.skyequanta/autonomy-gradient/`
 
----
+### ✅ Full Script Suite
+223 scripts in recovered_merged/scripts/ including:
+- Complete smoke test suite (p001-p088+)
+- GrayChunks scripts
+- Directive completion and audit tools
+- Skydexia admin scripts
+- Bootstrap/setup scripts
 
-## THE FIX (TL;DR VERSION)
-
-### 7 Phases of Merge:
-
-**Phase 1:** Copy missing root directories (apps, branding, config, src, workspace)  
-**Phase 2:** Merge platform/user-platforms (AE-Command, SkyeEhands Codex, etc.)  
-**Phase 3:** Integrate SkyeRoutex platform (routing, dispatch, payments)  
-**Phase 4:** Merge all 70 build scripts  
-**Phase 5:** Sync .skyequanta runtime infrastructure  
-**Phase 6:** Merge configuration files  
-**Phase 7:** Merge documentation  
-
-**Final:** Validate complete build + Git commit
-
----
-
-## KEY COMMITMENTS
-
-### What Gets PRESERVED:
-✅ Your GrayChunks platform (don't lose it!)  
-✅ New features in stage_44rebuild  
-✅ Your newer code if updated  
-
-### What Gets RESTORED:
-✅ Enterprise platforms (AE-Command, etc.)  
-✅ Routing infrastructure (SkyeRoutex)  
-✅ Applications (skye-reader, skyequanta-shell)  
-✅ Build automation (all 70 scripts)  
-✅ Configuration & runtime (complete)  
-
-### What Gets INTEGRATED:
-✅ Best of both versions merged intelligently  
-✅ Newer files kept over older  
-✅ No overwrites without review  
+### ✅ .skyequanta Infrastructure (19 subsystems)
+autonomous-maintenance, autonomy-gradient, cache, compliance-native-modes, deal-ownership-generation, deep-scan-mode, devglow, environment-mirror, ide-config, kaixu-council, memory-fabric, platform-launchpad, remote-executor, reports, runtime-bus, runtime-deps, runtime-recovery, skye-foundry, skye-reader-bridge, workspace-runtime
 
 ---
 
-## EXPECTED OUTCOME
+## THE FIX: 3 Steps (Not 7)
 
-After merge:
+The old plan had 7 phases of mass copying. The corrected plan has 3 real steps:
 
-✅ **stage_44rebuild** becomes **complete & operational**  
-✅ 113,000+ total files (from 40,000+)  
-✅ All platforms loadable:  
-   - AE-Command Hub  
-   - SkyeRoutex  
-   - SkyeHands Codex systems (81-92)  
-   - Autonomous agents  
-   - GrayChunks preserved  
-✅ Build system operational (npm install, make test)  
-✅ 70 smoke tests available  
-✅ Runtime ready (.skyequanta)  
-✅ Git commit with full documentation  
+**Step 1: Integrate SkyeRoutex** (~5 minutes)
+```bash
+cp -r "Dynasty-Versions/SkyeRoutexFlow_v78_unpacked/SkyeRoutexFlow_v69_PLATFORM_HOUSE_CIRCLE_NEON_ENTERPRISE_BACKUP_LANE" \
+      "stage_44rebuild/.../recovered_merged/SkyeRoutex-v78"
+```
 
----
+**Step 2: Add workspace templates** (~1 minute)
+```bash
+cp -r Dynasty-Versions/workspace/ stage_44rebuild/.../recovered_merged/workspace/
+```
 
-## HOW TO PROCEED
+**Step 3: Add src/runtime.js** (<1 minute)
+```bash
+cp Dynasty-Versions/src/runtime.js stage_44rebuild/.../recovered_merged/src/runtime.js
+```
 
-### Option A: I Execute Full Merge (Recommended)
-"Go ahead and do the full merge using the execution plan, then show me the results"
-
-### Option B: I Guide You Step-by-Step  
-"Let's do this together - I'll explain each phase before executing"
-
-### Option C: Manual Review First
-"I want to review more before we merge"
+Then commit. See CODEBASE_REPAIR_EXECUTION_PLAN.md for exact paths and validation steps.
 
 ---
 
-## CRITICAL FILES CREATED
+## HOW THE OLD DOCS WERE WRONG
 
-These are your reference documents:
-
-📄 `/workspaces/SkyeHands/DEEP_CODEBASE_FORENSICS_REPAIR_PLAN.md`  
-📄 `/workspaces/SkyeHands/MISSING_COMPONENTS_INVENTORY.md`  
-📄 `/workspaces/SkyeHands/CODEBASE_REPAIR_EXECUTION_PLAN.md` ⭐ **MAIN**  
-📄 `/workspaces/SkyeHands/README_REPAIR_PLAN.md` (this file)  
-
----
-
-## BACKUP SAFETY
-
-Before merge, I will:
-✅ Create backup: `stage_44rebuild.backup_pre_merge`  
-✅ Keep all Dynasty-Versions files unchanged  
-✅ Provide rollback procedure if needed  
+| Old Claim | Reality |
+|-----------|---------|
+| "72,900 files missing" | Only ~490 files are missing (SkyeRoutex + a few templates) |
+| "Build is 64% incomplete" | Build is ~98% complete |
+| apps/ missing | Present at canonicalAppRoot/apps/ |
+| branding/ missing | Present at canonicalAppRoot/branding/ |
+| config/ missing | Present at canonicalAppRoot/config/ |
+| platform/user-platforms missing | Present with 5 platforms |
+| "15,000+ platform files missing" | Those platforms ARE present |
+| Only 4 scripts | 4 bridge scripts + 223 scripts at canonicalAppRoot |
+| GrayChunks in agent-core only | GrayChunks is a full platform with 8 scripts |
+| Autonomous agent lane missing | Present in .skyequanta/ subsystems |
 
 ---
 
-## NEXT STEP
+## EXPECTED OUTCOME AFTER REPAIR
 
-**Awaiting your approval to proceed with the merge using CODEBASE_REPAIR_EXECUTION_PLAN.md**
-
-The merge is **safe, reversible, and well-documented**. We can start Phase 1 immediately once you approve.
+✅ `stage_44rebuild` becomes fully operational
+✅ SkyeRoutex routing platform accessible
+✅ AE-FLOW PWA app connected
+✅ skyesol-whiteglove services available
+✅ All Codex platforms (81-92) already present
+✅ GrayChunks platform preserved and intact
+✅ Autonomous agent lane preserved
+✅ AE Command Hub preserved
+✅ 223+ scripts available
+✅ 19 .skyequanta subsystems operational
 
 ---
 
-**Questions?** Review the 3 analysis documents above before deciding.
+## REFERENCE DOCS
 
+📄 `DEEP_CODEBASE_FORENSICS_REPAIR_PLAN.md` — Full forensics with corrected structure
+📄 `MISSING_COMPONENTS_INVENTORY.md` — Accurate inventory (what IS vs MISSING)
+📄 `CODEBASE_REPAIR_EXECUTION_PLAN.md` ⭐ — Corrected step-by-step plan (3 phases)
+📄 `README_REPAIR_PLAN.md` — This file (corrected summary)
+
+---
+
+## ABOUT DYNASTY-VERSIONS
+
+Dynasty-Versions is your reference archive containing:
+- SkyeRoutex (the piece you need)
+- 3 older unpacked builds (for reference only — do NOT merge into stage_44rebuild)
+- Older scripts naming convention (smoke-section* vs smoke-p0* in new build)
+
+The stage_44rebuild recovered_merged build is NEWER than Dynasty-Versions root. Don't use Dynasty-Versions as a source for anything except SkyeRoutex and the minor files listed above.
+
+---
+
+## AWAITING YOUR GO-AHEAD
+
+Execute `CODEBASE_REPAIR_EXECUTION_PLAN.md` phases 1-3. The merge is safe, non-destructive, and can be done in under 10 minutes.

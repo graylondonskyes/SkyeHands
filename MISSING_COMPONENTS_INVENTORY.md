@@ -1,420 +1,262 @@
-# 📦 MISSING COMPONENTS DETAILED INVENTORY
+# MISSING COMPONENTS — ACCURATE INVENTORY (CORRECTED)
 
-Generated: April 24, 2026
-
-## 1. APPS DIRECTORY (40+ files)
-
-### Location in Dynasty-Versions:
-`/Dynasty-Versions/apps/`
-
-### Sub-Components:
-
-#### skye-reader-hardened/
-```
-- package.json
-- public/
-- data/
-- scripts/
-- (web app with document reading capabilities)
-```
-**Status:** Essential - Document reader app for enterprise
-
-#### skyequanta-shell/
-```
-- package.json
-- lib/
-- bin/
-- python/
-- (CLI shell for skyequanta interactions)
-```
-**Status:** Essential - CLI interface
+Generated: April 25, 2026 (corrected from April 24 — previous version was significantly wrong)
 
 ---
 
-## 2. BRANDING DIRECTORY (200+ files)
+## IMPORTANT: CANONICAL APP ROOT
 
-### Location in Dynasty-Versions:
-`/Dynasty-Versions/branding/`
+Before reading this inventory, understand the repo structure:
 
-**Contains:**
-- Logo files
-- Brand guidelines
-- Visual assets
-- Color schemes
-- Typography
+```
+stage_44rebuild/skyehands.repo.config.json declares:
+  canonicalAppRoot = "SkyeHands_stage40_pass39_rehydrated_live_session/SkyeHands_recovered_merged"
+```
 
-**Status:** Needed for builds and UI
+Most components the original docs listed as "missing" are present at the canonical app root. The previous inventory was written without knowledge of this structure and is substantially incorrect.
 
 ---
 
-## 3. CONFIG DIRECTORY (500+ files)
+## COMPONENTS THAT ARE PRESENT (Wrongly Listed as Missing)
 
-### Location in Dynasty-Versions:
-`/Dynasty-Versions/config/`
+### ✅ apps/ — PRESENT
+**Location:** `stage_44rebuild/SkyeHands_stage40_pass39_rehydrated_live_session/SkyeHands_recovered_merged/apps/`
+- `skye-reader-hardened/` — Enterprise document reader
+- `skyequanta-shell/` — CLI interface for skyequanta
 
-### Sub-Components:
+### ✅ branding/ — PRESENT
+**Location:** `...recovered_merged/branding/`
+- Brand assets, visual identity
 
-#### config/agent/
-```
-- Agent configuration for autonomy modes
-- Execution policies
-- Resource allocation
-```
+### ✅ config/ — PRESENT
+**Location:** `...recovered_merged/config/`
+- `agent/` — Agent configuration
+- `env-templates/` — Environment variable templates
 
-#### config/env-templates/
-```
-- .env.example files
-- Environment variable templates
-- Configuration templates
-```
+### ✅ platform/user-platforms — PRESENT
+**Location:** `...recovered_merged/platform/user-platforms/`
+- `ae-autonomous-store-system-maggies/` — Autonomous store system
+- `skye-account-executive-commandhub-s0l26-0s/` — AE Command Hub (full + netlify functions)
+- `skyehands-codex-competitor/` — Codex competitor platform
+- `skyehands-codex-control-plane/` — Codex control plane
+- `skyehands-codex-real-platform/` — Real platform with all .mjs modules:
+  - skyehands-billing-webhooks.mjs
+  - skyehands-browser-ide.mjs
+  - skyehands-deploy-automation.mjs
+  - skyehands-isolation-controller.mjs
+  - skyehands-oauth-gateway.mjs
+  - skyehands-platform-core.mjs
+  - skyehands-platform-db.mjs
+  - skyehands-provider-router.mjs
+  - skyehands-sandbox-runner.mjs
+  - migrations/001_skyehands_codex_platform_core.sql
 
-**Status:** Critical for runtime configuration
+### ✅ scripts — PRESENT (223 scripts)
+**Location:** `...recovered_merged/scripts/`
+- Full smoke test suite (smoke-p001 through smoke-p088+)
+- GrayChunks platform scripts (8 scripts)
+- Directive scripts
+- Bootstrap/setup scripts
+- Skydexia admin scripts
+- 223 total
 
----
+### ✅ .skyequanta — PRESENT (19 subsystems)
+**Location:** `...recovered_merged/.skyequanta/`
+- autonomous-maintenance ✅
+- autonomy-gradient ✅
+- cache ✅
+- compliance-native-modes ✅
+- deal-ownership-generation ✅
+- deep-scan-mode ✅
+- devglow ✅
+- environment-mirror ✅
+- ide-config ✅
+- kaixu-council ✅
+- memory-fabric ✅
+- platform-launchpad ✅
+- remote-executor ✅
+- reports ✅
+- runtime-bus ✅
+- runtime-deps ✅
+- runtime-recovery ✅
+- skye-foundry ✅
+- skye-reader-bridge ✅
+- workspace-runtime ✅
 
-## 4. SRC DIRECTORY (1000+ files)
+### ✅ GrayChunks Platform — PRESENT AND COMPLETE
+**Location:** `...recovered_merged/scripts/graychunks-*.mjs` + `recovered_merged/skydexia/alerts/`
+- graychunks-core.mjs ✅
+- graychunks-platform-server.mjs ✅
+- graychunks-autofix.mjs ✅
+- graychunks-runtime-cycle.mjs ✅
+- graychunks-alert-resend.mjs ✅
+- graychunks-priority-queue.mjs ✅
+- graychunks-progress-dashboard.mjs ✅
+- graychunks-scan.mjs ✅
+- smoke-p085 through smoke-p088 ✅
+- graychunks.config.json ✅
+- skydexia/alerts/graychunks-*.json ✅
+- ae-graychunks-control.js (AE Hub integration) ✅
 
-### Location in Dynasty-Versions:
-`/Dynasty-Versions/src/`
+### ✅ skydexia/ — PRESENT
+**Location:** `...recovered_merged/skydexia/`
+- alerts/, donors/, extracted-templates/, generated-projects/, integration/
+- knowledge-base/, knowledge-updates/, policies/, proofs/, provenance/
 
-**Contains:**
-- Core source modules
-- Utility functions
-- Library code
-- Helper scripts
-
-**Status:** Core functionality
-
----
-
-## 5. WORKSPACE DIRECTORY (3000+ files)
-
-### Location in Dynasty-Versions:
-`/Dynasty-Versions/workspace/`
-
-### Sub-Components:
-
-#### workspace/retention/
-```
-- remote-default/
-- local-default/
-- pass38-fallback-*/
-- preview-stage8/
-(Runtime workspace snapshots)
-```
-
-#### workspace/prebuilds/
-```
-- Platform prebuilds for various targets
-```
-
-**Status:** Runtime execution environment
-
----
-
-## 6. PLATFORM/USER-PLATFORMS (15000+ files)
-
-### Location in Dynasty-Versions:
-`/Dynasty-Versions/platform/user-platforms/`
-
-### Sub-Components:
-
-#### A. Account Executive Command Hub Platforms
-```
-skye-account-executive-commandhub-s0l26-0s/
-  ├── source/
-  │   ├── AE-Central-Command-Pack-CredentialHub-Launcher/
-  │   │   ├── netlify/
-  │   │   │   └── functions/
-  │   │   │       ├── ae-access-users.js
-  │   │   │       ├── ae-assignments.js
-  │   │   │       ├── ae-audit-events.js
-  │   │   │       ├── ae-brain-compare.js
-  │   │   │       ├── ae-brain-health.js
-  │   │   │       ├── ae-brain-smoke-reports.js
-  │   │   │       ├── ae-brain-stream.js
-  │   │   │       ├── ae-brains.js
-  │   │   │       ├── ae-branch-state.js
-  │   │   │       ├── ae-clients.js
-  │   │   │       ├── ae-donor-template.js
-  │   │   │       ├── ae-messages.js
-  │   │   │       ├── ae-storage-sync.js
-  │   │   │       ├── ae-threads.js
-  │   │   │       ├── ae-usage-summary.js
-  │   │   │       └── media-center.js
-  │   │   ├── public/
-  │   │   ├── src/
-  │   │   └── package.json
-  │   ├── shared/
-  │   │   ├── core/
-  │   │   └── models/
-```
-
-**Files:** ~1500+  
-**Status:** CRITICAL Enterprise Feature
-
-#### B. SkyEHands Codex Platforms (Sections 81-84+)
-```
-skyehands-codex-control-plane/
-  ├── skyehands-codex-control-plane.mjs
-  ├── README.md
-
-skyehands-codex-competitor/
-  ├── skyehands-codex-competitor.mjs
-  ├── README.md
-
-skyehands-codex-real-platform/
-  ├── skyehands-codex-real-platform.mjs
-  ├── skyehands-platform-core.mjs
-  ├── skyehands-platform-db.mjs
-  ├── skyehands-oauth-gateway.mjs
-  ├── skyehands-browser-ide.mjs
-  ├── skyehands-sandbox-runner.mjs
-  ├── skyehands-provider-router.mjs
-  ├── skyehands-deploy-automation.mjs
-  ├── skyehands-billing-webhooks.mjs
-  ├── skyehands-isolation-controller.mjs
-  ├── migrations/
-  │   └── 001_skyehands_codex_platform_core.sql
-  └── README.md
-```
-
-**Files:** ~500+  
-**Status:** CRITICAL New Platforms (Sections 81-92)
-
-#### C. Autonomous Store System
-```
-ae-autonomous-store-system-maggies/
-  ├── source/
-  │   ├── shared/
-  │   │   └── core/
-  │   │       └── autonomous-store.mjs
-  │   └── package.json
-```
-
-**Files:** ~200+  
-**Status:** Connected to autonomous agent lane
-
-#### D. Platform Wiring Configuration
-```
-platform/wiring/
-  └── unpacked-platforms.json
-```
-
-**Files:** Configuration for platform loading
+### ✅ Autonomous Agent Lane — PRESENT
+`.skyequanta/autonomous-maintenance/` and `.skyequanta/autonomy-gradient/` are both present.
 
 ---
 
-## 7. SKYEROUTEX PLATFORM (486 files)
+## COMPONENTS THAT ARE ACTUALLY MISSING
 
-### Location in Dynasty-Versions:
-`/Dynasty-Versions/SkyeRoutexFlow_v78_unpacked/SkyeRoutexFlow_v69_PLATFORM_HOUSE_CIRCLE_NEON_ENTERPRISE_BACKUP_LANE/`
+### 1. SkyeRoutex Platform — CRITICAL (486 files)
 
-### Sub-Components:
+**Status:** ❌ NOT in stage_44rebuild anywhere
+**Source:** `Dynasty-Versions/SkyeRoutexFlow_v78_unpacked/SkyeRoutexFlow_v69_PLATFORM_HOUSE_CIRCLE_NEON_ENTERPRISE_BACKUP_LANE/`
+**Priority:** 🔴 CRITICAL
 
-#### A. Main SkyeRoutex System
+**Full contents:**
 ```
-SkyeRoutex/
-  ├── operator/ (Documentation & walkthroughs)
-  │   ├── SKYEROUTEXFLOW_V67_MASTER_WALKTHROUGH.md
-  │   ├── SKYEROUTEXFLOW_V67_MASTER_WALKTHROUGH.json
-  │   ├── SKYEROUTEXFLOW_V67_MASTER_WALKTHROUGH.html
-  │   ├── SKYEROUTEXFLOW_V69_MASTER_WALKTHROUGH.md
-  │   ├── SKYEROUTEXFLOW_V69_MASTER_WALKTHROUGH.json
-  │   └── SKYEROUTEXFLOW_V69_MASTER_WALKTHROUGH.html
-  │
-  └── investor/ (Valuation & business docs)
-      ├── SKYEROUTEXFLOW_V66_2026_ENTERPRISE_VALUATION.*
-      ├── SKYEROUTEXFLOW_V68_2026_ENTERPRISE_VALUATION.*
-      └── SKYEROUTEXFLOW_V69_2026_ENTERPRISE_VALUATION.*
-```
-
-#### B. AE-Flow Application
-```
-AE-Flow/AE-Flow/
-  ├── index.html
-  ├── manifest.webmanifest
-  ├── sw.js
-  ├── _headers
-  ├── academy.v38.js
-  ├── tutorials.v35.js
-  ├── whiteglove.v39.js → v56.js (multiple versions)
-  ├── index.check.js
-  ├── 0s-auth-sdk/
-  │   └── index.js
-  ├── apple-touch-icon.png
-  ├── icon-192.png
-  ├── icon-512.png
-  ├── maskable-512.png
-  └── readme.txt
-```
-
-**Files:** ~150+  
-**Status:** Critical routing application
-
-#### C. White-Glove Services (v39-v64)
-```
-WHITE_GLOVE_V39/
-WHITE_GLOVE_V43/
-WHITE_GLOVE_V56/
-WHITE_GLOVE_V58/ (includes PDF)
-WHITE_GLOVE_V60/
-WHITE_GLOVE_V64/
+SkyeRoutexFlow_v69_.../
+├── AE-FLOW/AE-Flow/                       # PWA app
+│   ├── index.html, manifest.webmanifest, sw.js
+│   ├── 0s-auth-sdk/index.js
+│   └── icons (apple-touch, icon-192/512, maskable)
+├── SkyeRoutex/                            # Core routing platform
+│   ├── WHITE_GLOVE_V64/                   # White-glove service docs
+│   ├── WHITE_GLOVE_V65/
+│   ├── WHITE_GLOVE_V66/
+│   ├── WHITE_GLOVE_V67/
+│   ├── WHITE_GLOVE_V68/
+│   ├── WHITE_GLOVE_V69/
+│   ├── WHITE_GLOVE_V77/
+│   ├── WHITE_GLOVE_V78/                   # Latest version
+│   ├── app-fabric/adapters/               # App fabric layer
+│   ├── apps/audit-ready-console/          # Audit console
+│   ├── apps/smoke-dropin-v77/             # Smoke drop-in
+│   ├── assets/, icons/, neon/
+│   ├── investor/                          # Enterprise valuation docs
+│   ├── netlify/.phc_app_fabric_v77/
+│   ├── netlify/.phc_data/
+│   ├── netlify/functions/                 # 33 phc-* Netlify functions:
+│   │   ├── phc-app-fabric-*.js (15 functions)
+│   │   ├── phc-auth-login.js, phc-auth-mfa-*.js
+│   │   ├── phc-event-feed.js, phc-health.js
+│   │   ├── phc-neon-*.js, phc-pos-ingest.js
+│   │   ├── phc-sync-frame.js, phc-device-register.js
+│   │   └── ... (33 total)
+│   └── operator/                          # Master walkthroughs V67/V69
+├── AuditReadyConsole-main/                # Audit console app
+├── NEW-SHIT2/                             # New features folder
+├── WHITE_GLOVE_V39/ through V63/          # Legacy service docs (25 versions)
+├── skyesol-whiteglove-bookings/           # Bookings service
+│   ├── README.md, contract.json, index.js
+├── skyesol-whiteglove-dispatch/           # Dispatch service
+├── skyesol-whiteglove-memberships/        # Memberships service
+├── skyesol-whiteglove-payments/           # Payments service
+├── skyesol-whiteglove-runtime/shared.js   # Shared runtime
+├── skyesol-whiteglove-sync/               # Sync service
+└── extra-shit/                            # Integration audit docs
 ```
 
-**Files:** Multiple versions - ~250+  
-**Status:** Service documentation
-
-#### D. SkyeSol Whiteglove Services
-```
-skyesol-whiteglove-bookings/
-  ├── README.md
-  ├── contract.json
-  └── index.js
-
-skyesol-whiteglove-dispatch/
-  ├── README.md
-  ├── contract.json
-  └── index.js
-
-skyesol-whiteglove-memberships/
-  ├── README.md
-  ├── contract.json
-  └── index.js
-
-skyesol-whiteglove-payments/
-  ├── README.md
-  ├── contract.json
-  └── index.js
-
-skyesol-whiteglove-sync/
-  ├── README.md
-  ├── contract.json
-  └── index.js
-
-skyesol-whiteglove-runtime/
-  └── shared.js
-```
-
-**Files:** ~50+  
-**Status:** Critical service implementations
-
-#### E. Browser Block Captures
-```
-browser_block_capture_v35.json
-browser_block_capture_v36.json
-browser_block_capture_v37.json
-
-static_selector_and_tour_audit_v35.json
-static_selector_and_tour_audit_v36.json
-static_selector_and_tour_audit_v37.json
-```
-
-**Status:** Browser UI automation configs
-
-#### F. Supporting Documentation
-```
-ROUTEX_AE_FLOW_OFFLINE_UPGRADE_DIRECTIVE.md
-extra-shit/
-  ├── 00-READ-FIRST-NO-CODE-TOUCHED.md
-  ├── 01-IN-ORDER-INTEGRATION-PLAN.md
-  ├── 02-DONOR-MAP-FROM-PROJECT-DOCS.md
-  ├── 03-STARTER-STATUS-MATRIX.csv
-  ├── 04-CODE-TOUCH-MAP.md
-  ├── 05-DIRECTIVE-INCONSISTENCIES-AND-HONESTY-NOTES.md
-  └── 99-NO-CODE-HASHES.txt
-```
-
-**Status:** Integration & audit documentation
+**Integration point:** AE-Flow connects to AE Command Hub. Skylane services need wiring config.
 
 ---
 
-## 8. SCRIPTS DIRECTORY (66 missing scripts)
+### 2. workspace/ Templates — NEEDED
 
-### Current in stage_44rebuild:
-- `run-app-script.mjs`
-- `repo-paths.mjs`
-- `repo-root.mjs`
-- `_repo-utils.mjs`
+**Status:** ❌ Not in stage_44rebuild
+**Source:** `Dynasty-Versions/workspace/`
+**Priority:** ⚠️ NEEDED for runtime
 
-**Total:** 4 scripts
-
-### In Dynasty-Versions:
-**Total:** 70 scripts
-
-### Missing Scripts (Examples):
 ```
-smoke-p001-smoke-evidence-rule.sh
-smoke-p002-smoke-scope-rule.sh
-smoke-p003-checkmark-gate-rule.sh
-...
-smoke-p081-skyehands-codex-control-plane.mjs
-smoke-p082-skyehands-codex-competitor.mjs
-smoke-p083-skyehands-real-codex-platform.mjs
-smoke-p084-skyehands-platform-core.mjs
-smoke-p085-skyehands-platform-db.mjs
-smoke-p086-skyehands-sandbox-runner.mjs
-smoke-p087-skyehands-provider-router.mjs
-smoke-p088-skyehands-billing-webhooks.mjs
-smoke-p089-skyehands-deploy-automation.mjs
-smoke-p090-skyehands-oauth-gateway.mjs
-smoke-p091-skyehands-browser-ide.mjs
-smoke-p092-skyehands-isolation-controller.mjs
-... and ~50+ more
+workspace/
+├── prebuilds/
+│   ├── local-default/prebuild-manifest.json
+│   ├── remote-default/prebuild-manifest.json
+│   ├── preview-stage8/prebuild-manifest.json
+│   └── pass38-fallback-*/prebuild-manifest.json
+├── secrets/
+│   ├── local-default/workspace.secrets.env
+│   ├── remote-default/workspace.secrets.env
+│   ├── preview-stage8/workspace.secrets.env
+│   └── pass38-fallback-*/workspace.secrets.env
+└── volumes/
+    ├── local-default/config/*.json
+    ├── remote-default/config/*.json
+    └── preview-stage8/config/*.json
 ```
 
-**Status:** Critical for build validation and deployment
+---
+
+### 3. src/runtime.js — NEEDED
+
+**Status:** ❌ Not in stage_44rebuild
+**Source:** `Dynasty-Versions/src/runtime.js`
+**Priority:** ⚠️ NEEDED for builds
+**Note:** This is a single file — Dynasty-Versions/src/ only contains this one file.
 
 ---
 
-## 9. NEW/PRESERVED FEATURES TO MAINTAIN
+### 4. Root Orchestration Files — OPTIONAL
 
-### GrayChunks Platform
-**Location in stage_44rebuild:** `stage_44rebuild/platform/agent-core/` (possibly)  
-**Status:** MUST NOT OVERWRITE - Newer feature  
-**Action:** Verify and preserve during merge
+**Status:** ❌ Not at stage_44rebuild root (recovered_merged has its own Makefile)
+**Source:** `Dynasty-Versions/`
+- `skyequanta.mjs` — Root orchestration script
+- `START_HERE.sh` — Bootstrap helper
 
-### Section 81-92 Directives  
-**Location in Dynasty-Versions:** `docs/hardening/` and `.skyequanta/`  
-**Status:** Check if newer in Dynasty-Versions  
-**Action:** Compare timestamps and choose newer version
-
-### Agent-Core Improvements
-**Location:** `stage_44rebuild/platform/agent-core/`  
-**Status:** PRESERVE - newer implementation  
-**Action:** Keep unless Dynasty version has critical fixes
+**Note:** The `recovered_merged/Makefile` likely supersedes the Dynasty-Versions Makefile. Review before copying.
 
 ---
 
-## 📊 SUMMARY TABLE
+### 5. Root .skyequanta Governance State Files — OPTIONAL
 
-| Component | Files | Location | Priority | Action |
-|-----------|-------|----------|----------|--------|
-| apps | 5000+ | Dynasty-Versions/apps | 🔴 CRITICAL | Copy |
-| branding | 200+ | Dynasty-Versions/branding | ⚠️ NEEDED | Copy |
-| config | 500+ | Dynasty-Versions/config | ⚠️ NEEDED | Copy |
-| src | 1000+ | Dynasty-Versions/src | ⚠️ NEEDED | Copy |
-| workspace | 3000+ | Dynasty-Versions/workspace | ⚠️ NEEDED | Copy |
-| platform/user-platforms | 15000+ | Dynasty-Versions/platform/user-platforms | 🔴 CRITICAL | Copy + Merge |
-| SkyeRoutex | 486 | Dynasty-Versions/SkyeRoutexFlow_v78_unpacked | 🔴 CRITICAL | Copy |
-| scripts | 66 | Dynasty-Versions/scripts | 🔴 CRITICAL | Merge |
-| .skyequanta | 3000+ | Both (merge newer) | ⚠️ NEEDED | Merge |
-| docs | 1000+ | Both (merge newer) | ⚠️ NEEDED | Merge |
-| GrayChunks | ??? | stage_44rebuild | 🟡 PRESERVE | Keep |
+**Status:** Exists in Dynasty-Versions root but not in stage_44rebuild
+**Source:** `Dynasty-Versions/.skyequanta/`
+- `fleet-state.json`
+- `governance-policy.json`, `governance-cost-ledger.json`
+- `governance-secrets.json`, `governance-release-decisions.json`
+- `governance-tenant-policies.json`
+- `collaboration-state.json`
+- `ops-state.json`
+- `workspace-scheduler-policy.json`, `workspace-scheduler-state.json`
+- `snapshot-retention.json`, `sessions.json`, `workspaces.json`
+- `scm-state.json`, `prebuild-state.json`
 
-**Total Missing Files:** ~72,900  
-**Total Build Gap:** ~64% incomplete
+**Note:** These are runtime state files, not source code. They may need to be initialized fresh rather than copied.
 
 ---
 
-## ✅ NEXT STEPS
+## DYNASTY-VERSIONS EXTRA REFERENCE ARCHIVES (Do NOT blindly merge)
 
-1. Review this inventory with user
-2. Get approval on merge strategy
-3. Create backup of stage_44rebuild
-4. Execute Phase 1 merge (copy missing critical folders)
-5. Test build after each phase
-6. Validate all platforms load
-7. Run smoke tests
-8. Commit merged build to git
+Dynasty-Versions contains three archived builds that should be used as REFERENCE ONLY:
 
+- `SkyeHands_3_1_9_unpacked/work/` — Earliest build
+- `SkyeHandsunf/SkyeHands-main_stage40_pass35_evidence_closure_source/` — Stage 40 pass 35
+- `SkyeHands_stage40_pass41_unpacked/SkyeHands-main_stage40_pass35_evidence_closure_source/` — Stage 40 pass 41
+
+**The stage_44rebuild recovered_merged is NEWER than all of these. Do not use these as the merge source.**
+
+---
+
+## CORRECTED SUMMARY TABLE
+
+| Component | Status | Location | Priority | Action |
+|-----------|--------|----------|----------|--------|
+| apps/ | ✅ PRESENT | recovered_merged/apps/ | — | None |
+| branding/ | ✅ PRESENT | recovered_merged/branding/ | — | None |
+| config/ | ✅ PRESENT | recovered_merged/config/ | — | None |
+| platform/user-platforms | ✅ PRESENT (5 entries) | recovered_merged/platform/user-platforms/ | — | None |
+| scripts | ✅ PRESENT (223 scripts) | recovered_merged/scripts/ | — | None |
+| .skyequanta (19 subsystems) | ✅ PRESENT | recovered_merged/.skyequanta/ | — | None |
+| GrayChunks | ✅ FULLY BUILT | recovered_merged/scripts/graychunks-* | — | Preserve |
+| Autonomous Agent Lane | ✅ PRESENT | recovered_merged/.skyequanta/ | — | None |
+| **SkyeRoutex (486 files)** | ❌ **MISSING** | Dynasty-Versions/SkyeRoutexFlow_v78_unpacked/ | 🔴 CRITICAL | Integrate |
+| workspace/ templates | ❌ Missing | Dynasty-Versions/workspace/ | ⚠️ NEEDED | Copy |
+| src/runtime.js | ❌ Missing | Dynasty-Versions/src/ | ⚠️ NEEDED | Copy |
+| skyequanta.mjs | ❌ Missing | Dynasty-Versions/ root | 🟡 OPTIONAL | Review |
+| Root governance state | ❌ Missing | Dynasty-Versions/.skyequanta/ | 🟡 OPTIONAL | Init fresh |
+
+**Total ACTUALLY missing: ~490 files (SkyeRoutex 486 + workspace ~30 + src 1)**
+**Previous claim of "72,900 missing" was wrong.**

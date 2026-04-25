@@ -1,559 +1,283 @@
-# 🛠️ SKYEHANDS CODEBASE REPAIR - EXECUTION PLAN
+# SKYEHANDS CODEBASE REPAIR — CORRECTED EXECUTION PLAN
 
-**Status:** Ready for Merge  
-**Target:** Create cohesive, complete build in `stage_44rebuild`  
-**Source:** Dynasty-Versions reference build  
-
----
-
-## PRE-MERGE CHECKLIST
-
-- [ ] User reviews DEEP_CODEBASE_FORENSICS_REPAIR_PLAN.md
-- [ ] User reviews MISSING_COMPONENTS_INVENTORY.md  
-- [ ] User approves merge strategy
-- [ ] Backup created of current stage_44rebuild
-- [ ] Current git status clean
+**Status:** Ready to execute
+**Date:** April 25, 2026 (corrected — previous plan was based on wrong analysis)
+**Target:** Integrate SkyeRoutex + missing runtime files into stage_44rebuild canonical app
 
 ---
 
-## PHASE 1: COPY CRITICAL ROOT DIRECTORIES
+## CONTEXT: WHAT WAS WRONG BEFORE
 
-**Objective:** Restore 5 missing critical directories  
-**Time:** ~5-10 minutes  
-**Risk:** Low (no conflicts - files don't exist in current build)
+The previous execution plan had 7 phases including copying apps/, branding/, config/, workspace/, and src/ from Dynasty-Versions. **That plan was wrong.** All of those directories already exist in:
+
+```
+stage_44rebuild/SkyeHands_stage40_pass39_rehydrated_live_session/SkyeHands_recovered_merged/
+```
+
+This path IS the canonical app root (declared in `stage_44rebuild/skyehands.repo.config.json`).
+
+The only substantive work is:
+1. Integrate SkyeRoutex (genuinely missing — 486 files)
+2. Add workspace/ runtime templates
+3. Add src/runtime.js
+4. Optionally integrate root orchestration scripts
+
+---
+
+## CANONICAL APP ROOT PATH
+
+For brevity, all commands below use:
+```bash
+CANONICAL="stage_44rebuild/SkyeHands_stage40_pass39_rehydrated_live_session/SkyeHands_recovered_merged"
+DYNASTY="Dynasty-Versions"
+```
+
+Working from `/home/user/SkyeHands` (repo root).
+
+---
+
+## PRE-EXECUTION CHECKLIST
+
+```bash
+# 1. Verify canonical root exists
+ls $CANONICAL/apps/skye-reader-hardened/       # Should exist
+ls $CANONICAL/platform/user-platforms/          # Should have 5 entries
+ls $CANONICAL/scripts/ | wc -l                  # Should be ~223
+
+# 2. Verify SkyeRoutex source exists
+ls "$DYNASTY/SkyeRoutexFlow_v78_unpacked/SkyeRoutexFlow_v69_PLATFORM_HOUSE_CIRCLE_NEON_ENTERPRISE_BACKUP_LANE/"
+
+# 3. Check git status
+git status
+
+# 4. Create backup branch (optional)
+git stash   # if any uncommitted changes
+```
+
+---
+
+## PHASE 1: INTEGRATE SKYEROUTEX PLATFORM
+
+**Objective:** Add SkyeRoutex routing/dispatch/payments platform to build
+**Time:** ~5 minutes
+**Risk:** Low (new files, no conflicts)
 
 ### Steps:
 
 ```bash
-# 1. Verify backup
-cp -r stage_44rebuild stage_44rebuild.backup_pre_merge
+# 1. Copy SkyeRoutex as a top-level sibling platform (recommended)
+#    Rationale: SkyeRoutex is its own complete platform, not an app subsystem
 
-# 2. Copy apps/ (5000+ files)
-cp -r Dynasty-Versions/apps/ stage_44rebuild/apps
+ROUTEX_SRC="$DYNASTY/SkyeRoutexFlow_v78_unpacked/SkyeRoutexFlow_v69_PLATFORM_HOUSE_CIRCLE_NEON_ENTERPRISE_BACKUP_LANE"
 
-# 3. Copy branding/ (200+ files)
-cp -r Dynasty-Versions/branding/ stage_44rebuild/branding
+cp -r "$ROUTEX_SRC" "$CANONICAL/SkyeRoutex-v78"
 
-# 4. Copy config/ (500+ files)
-cp -r Dynasty-Versions/config/ stage_44rebuild/config
+# 2. Verify the copy
+ls "$CANONICAL/SkyeRoutex-v78/"
+# Expected: AE-FLOW/, SkyeRoutex/, AuditReadyConsole-main/, NEW-SHIT2/,
+#           WHITE_GLOVE_V39-V63/, skyesol-whiteglove-*/, extra-shit/
 
-# 5. Copy src/ (1000+ files)
-cp -r Dynasty-Versions/src/ stage_44rebuild/src
+# 3. Check key components are there
+ls "$CANONICAL/SkyeRoutex-v78/AE-FLOW/AE-Flow/"
+ls "$CANONICAL/SkyeRoutex-v78/SkyeRoutex/netlify/functions/" | wc -l   # Should be ~33
+ls "$CANONICAL/SkyeRoutex-v78/skyesol-whiteglove-bookings/"
+ls "$CANONICAL/SkyeRoutex-v78/SkyeRoutex/WHITE_GLOVE_V78/"
 
-# 6. Copy workspace/ (3000+ files)
-cp -r Dynasty-Versions/workspace/ stage_44rebuild/workspace
-
-# 7. Create structure for Phase 2
-mkdir -p stage_44rebuild/platform/user-platforms
+# 4. Verify file count
+find "$CANONICAL/SkyeRoutex-v78" -type f | wc -l   # Should be ~486
 ```
 
 ### Validation:
-```bash
-# Check all directories exist
-ls -d stage_44rebuild/{apps,branding,config,src,workspace}
-
-# Verify file counts
-find stage_44rebuild/apps -type f | wc -l          # Should be ~5000+
-find stage_44rebuild/branding -type f | wc -l      # Should be ~200+
-find stage_44rebuild/config -type f | wc -l        # Should be ~500+
-find stage_44rebuild/src -type f | wc -l           # Should be ~1000+
-find stage_44rebuild/workspace -type f | wc -l     # Should be ~3000+
-```
-
-**Expected Outcome:**
-- ✅ 9,700+ new files added
-- ✅ Build size increases from 40,530 to ~50,230 files
-- ✅ All directories present
+- ✅ AE-FLOW PWA app present
+- ✅ SkyeRoutex netlify functions present (33 phc-* functions)
+- ✅ skyesol-whiteglove services present (bookings, dispatch, memberships, payments, sync)
+- ✅ WHITE_GLOVE versions V39-V78 all present
+- ✅ AuditReadyConsole application present
 
 ---
 
-## PHASE 2: MERGE PLATFORM/USER-PLATFORMS
+## PHASE 2: ADD workspace/ RUNTIME TEMPLATES
 
-**Objective:** Integrate all enterprise platform subsystems  
-**Time:** ~10-15 minutes  
-**Risk:** Medium (many new platform directories)
-
-### Step-by-Step:
+**Objective:** Add workspace prebuild, secrets, and volume configs
+**Time:** ~2 minutes
+**Risk:** Low (runtime templates, not code)
 
 ```bash
-# 1. Copy entire user-platforms directory
-cp -r Dynasty-Versions/platform/user-platforms/* stage_44rebuild/platform/user-platforms/
+# Copy workspace templates (excludes node_modules/state — these are templates)
+cp -r "$DYNASTY/workspace/" "$CANONICAL/workspace/"
 
-# 2. Validate platform wiring config
-cp Dynasty-Versions/platform/wiring/unpacked-platforms.json stage_44rebuild/platform/wiring/ 2>/dev/null || mkdir -p stage_44rebuild/platform/wiring && cp Dynasty-Versions/platform/wiring/unpacked-platforms.json stage_44rebuild/platform/wiring/
+# Verify
+ls "$CANONICAL/workspace/"
+# Expected: prebuilds/, secrets/, volumes/
+
+ls "$CANONICAL/workspace/prebuilds/"
+# Expected: local-default/, remote-default/, preview-stage8/, pass38-fallback-*/
 ```
-
-### Components Being Added:
-
-**Account Executive Systems:**
-- skye-account-executive-commandhub-s0l26-0s/ (~1500 files)
-
-**Autonomous Enterprise Platforms:**
-- ae-autonomous-store-system-maggies/ (~200 files)
-
-**SkyeHands Codex Platforms (New Sections 81-92):**
-- skyehands-codex-control-plane/ (~100 files)
-- skyehands-codex-competitor/ (~100 files)
-- skyehands-codex-real-platform/ (~400 files)
-
-**Total Addition:** ~15,000-20,000 files
-
-### Validation:
-```bash
-# Check platform/user-platforms structure
-ls -d stage_44rebuild/platform/user-platforms/*/
-
-# Count subsystem files
-find stage_44rebuild/platform/user-platforms -type f | wc -l  # Should be ~15000-20000
-
-# Verify key modules exist
-ls stage_44rebuild/platform/user-platforms/skye-account-executive-commandhub-s0l26-0s/
-ls stage_44rebuild/platform/user-platforms/skyehands-codex-real-platform/
-```
-
-**Expected Outcome:**
-- ✅ 15,000-20,000+ new platform files
-- ✅ AE-Command system ready
-- ✅ SkyeHands Codex platforms available
-- ✅ Enterprise platform architecture complete
 
 ---
 
-## PHASE 3: INTEGRATE SKYEROUTEX PLATFORM
+## PHASE 3: ADD src/runtime.js
 
-**Objective:** Add routing, dispatch, payments, bookings  
-**Time:** ~5 minutes  
-**Risk:** Low-Medium (self-contained platform)
-
-### Decision Point:
-Where should SkyeRoutex live? Options:
-
-**Option A: Top-level directory**
-```
-stage_44rebuild/SkyeRoutex/ (keep as separate module)
-stage_44rebuild/SkyeRoutex-v78/
-```
-
-**Option B: Platform subsystem**
-```
-stage_44rebuild/platform/user-platforms/skyeroutex/
-```
-
-**Option C: Apps directory**
-```
-stage_44rebuild/apps/skyeroutex/
-```
-
-### Recommendation: **Option A** (separate top-level)  
-Rationale: It's a complete platform with its own infrastructure
-
-### Steps:
+**Objective:** Add core source runtime file
+**Time:** <1 minute
+**Risk:** None
 
 ```bash
-# 1. Extract and copy
-cp -r Dynasty-Versions/SkyeRoutexFlow_v78_unpacked/SkyeRoutexFlow_v69_PLATFORM_HOUSE_CIRCLE_NEON_ENTERPRISE_BACKUP_LANE stage_44rebuild/SkyeRoutex-v78-platform
+mkdir -p "$CANONICAL/src"
+cp "$DYNASTY/src/runtime.js" "$CANONICAL/src/runtime.js"
 
-# 2. Create symlink for easier access (optional)
-ln -s SkyeRoutex-v78-platform stage_44rebuild/skyeroutex
-
-# 3. Create README
-cat > stage_44rebuild/SkyeRoutex-v78-platform/README_INTEGRATED.md << 'ROUTEX_README'
-# SkyeRoutex Platform Integration
-
-Integrated from: Dynasty-Versions/SkyeRoutexFlow_v78_unpacked
-Version: v78 (v69 Backup Lane)
-Date: April 24, 2026
-
-## Contents:
-- AE-Flow application
-- White-Glove services (bookings, dispatch, payments, memberships, sync)
-- Browser automation configs
-- Operator and investor documentation
-- Integration guides
-
-## To Use:
-See SkyeRoutex/operator/ and SkyeRoutex/investor/
-
-## Integration Points:
-- AE-Command Hub integration (SkyeRoutex/AE-Flow/)
-- Service contracts in skyesol-* directories
-- API endpoints in white-glove services
-ROUTEX_README
+# Verify
+ls "$CANONICAL/src/"   # Should show runtime.js
 ```
-
-### Validation:
-```bash
-# Verify structure
-ls -d stage_44rebuild/SkyeRoutex-v78-platform/*/
-
-# Check AE-Flow app
-ls stage_44rebuild/SkyeRoutex-v78-platform/SkyeRoutexFlow_v69_PLATFORM_HOUSE_CIRCLE_NEON_ENTERPRISE_BACKUP_LANE/AE-Flow/AE-Flow/
-
-# Count files
-find stage_44rebuild/SkyeRoutex-v78-platform -type f | wc -l  # Should be ~486
-```
-
-**Expected Outcome:**
-- ✅ SkyeRoutex platform accessible
-- ✅ AE-Flow application ready
-- ✅ White-Glove services available
-- ✅ Routing infrastructure complete
 
 ---
 
-## PHASE 4: MERGE SCRIPTS
+## PHASE 4 (OPTIONAL): REVIEW ROOT ORCHESTRATION FILES
 
-**Objective:** Integrate all automation and build scripts  
-**Time:** ~5 minutes  
-**Risk:** Medium (need to detect newer versions)
-
-### Strategy:
-1. Compare script timestamps
-2. Keep newer versions
-3. Add missing scripts with no conflicts
-
-### Steps:
+**Do this step only after reviewing the content — do NOT blindly copy.**
 
 ```bash
-# 1. List current scripts
-ls stage_44rebuild/scripts/
+# Check if recovered_merged already has a Makefile (it does)
+cat "$CANONICAL/Makefile" | head -20
 
-# 2. Check which scripts would be overwritten
-for script in Dynasty-Versions/scripts/*; do
-  if [ -f "stage_44rebuild/scripts/$(basename "$script")" ]; then
-    echo "CONFLICT: $(basename "$script")"
-  fi
-done
+# Compare with Dynasty-Versions Makefile
+diff "$CANONICAL/Makefile" "$DYNASTY/Makefile" || true
 
-# 3. Copy all missing scripts (most will be new)
-for script in Dynasty-Versions/scripts/*; do
-  if [ ! -f "stage_44rebuild/scripts/$(basename "$script")" ]; then
-    cp "$script" stage_44rebuild/scripts/
-  fi
-done
-
-# 4. List conflicts found (if any)
-# For each conflict, review:
-#   - Timestamp
-#   - Content diff
-#   - Keep newer, rename old if needed
-
-# 5. Make all scripts executable
-chmod +x stage_44rebuild/scripts/*.sh
-chmod +x stage_44rebuild/scripts/*.mjs
-chmod +x stage_44rebuild/scripts/*.js 2>/dev/null
-```
-
-### Validation:
-```bash
-# Count scripts
-ls stage_44rebuild/scripts | wc -l  # Should be 70+
-
-# Verify smoke tests
-ls stage_44rebuild/scripts/smoke-*.* | wc -l
-
-# Try running one
-bash stage_44rebuild/scripts/smoke-startup.sh --help
-```
-
-**Expected Outcome:**
-- ✅ All 70 scripts present
-- ✅ Smoke tests runnable
-- ✅ Build automation scripts available
-
----
-
-## PHASE 5: MERGE .SKYEQUANTA INFRASTRUCTURE
-
-**Objective:** Sync runtime environment configuration  
-**Time:** ~10 minutes  
-**Risk:** Medium (interconnected systems)
-
-### Strategy:
-- Compare .skyequanta structure
-- Merge new subsystems
-- Preserve operational state
-
-### Analysis Needed:
-```bash
-# Check what exists in both
-diff <(find stage_44rebuild/.skyequanta -maxdepth 1 -type d | sort) \
-     <(find Dynasty-Versions/.skyequanta -maxdepth 1 -type d | sort)
-
-# This will show:
-# - NEW subsystems in Dynasty-Versions (add these)
-# - Existing subsystems (keep current, check for updates)
-```
-
-### Possible New Subsystems from Dynasty-Versions:
-- kaixu-council/ (might be new)
-- compliance-native-modes/ (might be new)
-- devglow/ (might be new)
-- deal-ownership-generation/ (might be new)
-- platform-launchpad/ (might be new)
-
-### Steps:
-```bash
-# 1. Copy any subsystems that don't exist
-for subdir in Dynasty-Versions/.skyequanta/*/; do
-  dirname=$(basename "$subdir")
-  if [ ! -d "stage_44rebuild/.skyequanta/$dirname" ]; then
-    cp -r "$subdir" stage_44rebuild/.skyequanta/
-    echo "Added: $dirname"
-  fi
-done
-
-# 2. For existing subsystems, review:
-#    - stage_44rebuild version vs Dynasty-Versions version
-#    - Keep newer, back up old if significantly different
-```
-
-### Validation:
-```bash
-# List all subsystems now available
-ls -d stage_44rebuild/.skyequanta/*/
-
-# Verify key subsystems
-ls stage_44rebuild/.skyequanta/autonomous-maintenance/
-ls stage_44rebuild/.skyequanta/autonomy-gradient/
-```
-
-**Expected Outcome:**
-- ✅ Complete runtime infrastructure
-- ✅ All autonomy subsystems present
-- ✅ Operational state preserved
-
----
-
-## PHASE 6: MERGE CONFIGURATION FILES
-
-**Objective:** Sync root-level configuration  
-**Time:** ~5 minutes  
-**Risk:** Medium (configuration conflicts possible)
-
-### Files to Review:
-
-```bash
-# 1. package.json
-#    - MUST MERGE carefully
-#    - Stage_44rebuild may have newer dependencies
-diff stage_44rebuild/package.json Dynasty-Versions/package.json
-#    ACTION: Manual merge - keep newer versions
-
-# 2. skyequanta.mjs
-if [ -f stage_44rebuild/skyequanta.mjs ]; then
-  diff stage_44rebuild/skyequanta.mjs Dynasty-Versions/skyequanta.mjs
-else
-  cp Dynasty-Versions/skyequanta.mjs stage_44rebuild/
-fi
-#    ACTION: Check timestamps, keep newer
-
-# 3. Makefile
-if [ -f stage_44rebuild/Makefile ]; then
-  diff stage_44rebuild/Makefile Dynasty-Versions/Makefile || true
-else
-  cp Dynasty-Versions/Makefile stage_44rebuild/
-fi
-#    ACTION: Merge targets carefully
-
-# 4. .devcontainer/
-#    - Compare both versions
-#    - Merge if needed
-```
-
-### Steps:
-
-```bash
-# Copy skyequanta.mjs if missing
-if [ ! -f stage_44rebuild/skyequanta.mjs ]; then
-  cp Dynasty-Versions/skyequanta.mjs stage_44rebuild/
-fi
-
-# Compare and decide on Makefile
-if [ ! -f stage_44rebuild/Makefile ]; then
-  cp Dynasty-Versions/Makefile stage_44rebuild/
+# If Dynasty skyequanta.mjs is needed:
+if [ ! -f "$CANONICAL/skyequanta.mjs" ]; then
+  cp "$DYNASTY/skyequanta.mjs" "$CANONICAL/skyequanta.mjs"
 fi
 ```
 
-**Expected Outcome:**
-- ✅ All configs present
-- ✅ No broken references
-- ✅ Build system ready
-
 ---
 
-## PHASE 7: DOCS AND REFERENCE MATERIALS
+## PHASE 5: VERIFY PRESERVED PLATFORMS
 
-**Objective:** Merge documentation  
-**Time:** ~5 minutes  
-**Risk:** Low (documentation)
-
-### Steps:
+Verify GrayChunks and all existing platforms are intact after the additions.
 
 ```bash
-# 1. Lists docs in both
-diff <(find stage_44rebuild/docs -name "*.md" | sort) \
-     <(find Dynasty-Versions/docs -name "*.md" | sort)
+# GrayChunks
+ls "$CANONICAL/scripts/graychunks-core.mjs"
+ls "$CANONICAL/graychunks.config.json"
+ls "$CANONICAL/skydexia/alerts/graychunks-findings.json"
 
-# 2. Copy any missing docs
-for doc in Dynasty-Versions/docs/**/*.md; do
-  target_path="stage_44rebuild/docs/${doc#Dynasty-Versions/docs/}"
-  mkdir -p "$(dirname "$target_path")"
-  if [ ! -f "$target_path" ]; then
-    cp "$doc" "$target_path"
-    echo "Added: $(basename "$doc")"
-  fi
-done
+# AE Command Hub
+ls "$CANONICAL/platform/user-platforms/skye-account-executive-commandhub-s0l26-0s/"
+
+# Codex platforms
+ls "$CANONICAL/platform/user-platforms/skyehands-codex-real-platform/"
+
+# Autonomous agent lane
+ls "$CANONICAL/.skyequanta/autonomous-maintenance/"
+ls "$CANONICAL/.skyequanta/autonomy-gradient/"
 ```
 
-**Expected Outcome:**
-- ✅ Complete documentation
-- ✅ All guides present
-- ✅ Hardening directives included
-
 ---
 
-## FINAL VALIDATION PHASE
-
-**Objective:** Verify merged build integrity  
-**Time:** ~15 minutes  
-**Risk:** None (read-only checks)
-
-### Checks:
+## FINAL VALIDATION
 
 ```bash
-# 1. File count verification
-TOTAL=$(find stage_44rebuild -type f | wc -l)
-echo "Total files: $TOTAL (Target: 113,000+)"
+# 1. Confirm SkyeRoutex is integrated
+find "$CANONICAL/SkyeRoutex-v78" -type f | wc -l   # ~486
 
-# 2. Structure verification
-for dir in apps platform scripts docs config src workspace branding; do
-  if [ -d "stage_44rebuild/$dir" ]; then
-    echo "✓ $dir"
+# 2. Confirm all platforms accessible
+for platform in ae-autonomous-store-system-maggies \
+                skye-account-executive-commandhub-s0l26-0s \
+                skyehands-codex-competitor \
+                skyehands-codex-control-plane \
+                skyehands-codex-real-platform; do
+  if [ -d "$CANONICAL/platform/user-platforms/$platform" ]; then
+    echo "✓ $platform"
   else
-    echo "✗ $dir MISSING"
+    echo "✗ $platform MISSING"
   fi
 done
 
-# 3. Platform verification
-for platform in ae-command skyeroutex skyehands-codex skye-autonomous; do
-  if find stage_44rebuild -type d -name "*$platform*" | grep -q .; then
-    echo "✓ $platform platform available"
-  fi
-done
+# 3. Script count
+ls "$CANONICAL/scripts/" | wc -l      # Should be 223+
 
-# 4. Script verification  
-ls stage_44rebuild/scripts/smoke-*.* 2>/dev/null | wc -l | xargs echo "Smoke tests:"
+# 4. Subsystem count
+ls "$CANONICAL/.skyequanta/" | wc -l  # Should be 19+
 
-# 5. Build system check
-cd stage_44rebuild
-npm install --dry-run 2>&1 | head -20
+# 5. Full repo file count
+find stage_44rebuild -type f | wc -l  # Should be ~32,000+ after SkyeRoutex added
 ```
 
 ### Success Criteria:
-- [ ] Total files ≥ 100,000
-- [ ] All 9 root directories present
-- [ ] Platform subsystems accessible
-- [ ] 70+ scripts present
-- [ ] npm install runs without fatal errors
-- [ ] No critical file corruption
+- [ ] SkyeRoutex at `$CANONICAL/SkyeRoutex-v78/` with ~486 files
+- [ ] workspace/ templates present
+- [ ] src/runtime.js present
+- [ ] All 5 user-platforms present
+- [ ] GrayChunks scripts intact
+- [ ] 223+ scripts in canonical scripts/
+- [ ] No existing platform overwritten
 
 ---
 
 ## GIT COMMIT & PUSH
 
 ```bash
-# 1. Stage the merge
-cd /workspaces/SkyeHands
-git add stage_44rebuild/
+cd /home/user/SkyeHands
 
-# 2. Create merge commit
-git commit -m "MERGE: Integrate missing components from Dynasty-Versions reference build
+# Stage only the new additions
+git add "$CANONICAL/SkyeRoutex-v78/"
+git add "$CANONICAL/workspace/" 2>/dev/null || true
+git add "$CANONICAL/src/" 2>/dev/null || true
 
-INCLUDES:
-- Added missing apps/ (skye-reader-hardened, skyequanta-shell)
-- Added missing branding/ directory
-- Added missing config/ directory  
-- Added missing src/ directory
-- Added missing workspace/ directory
-- Added platform/user-platforms with:
-  * AE-Command Hub system
-  * SkyeHands Codex platforms (sections 81-92)
-  * Autonomous store systems
-- Added SkyeRoutex platform (v78)
-- Added 66 missing scripts for build automation
-- Merged .skyequanta subsystems
-- Merged documentation
-- Verified all platforms loadable
-- Validated build integrity
+# Check what's staged
+git diff --cached --stat
 
-BUILD STATUS:
-- Files: 40,530 → 113,000+
-- Directories: 9 → 18
-- Platforms: 2 → 10+
-- Scripts: 4 → 70
+# Commit
+git commit -m "Integrate SkyeRoutex platform + workspace templates + src/runtime.js
 
-RESULT: Cohesive, complete build ready for operations"
+ADDITIONS:
+- SkyeRoutex-v78 platform (486 files):
+  * AE-FLOW PWA application
+  * SkyeRoutex netlify functions (33 phc-* functions)
+  * skyesol-whiteglove services (bookings/dispatch/memberships/payments/sync)
+  * WHITE_GLOVE versions V39-V78
+  * AuditReadyConsole application
+- workspace/ runtime templates (prebuilds, secrets, volumes)
+- src/runtime.js core source file
 
-# 3. Push to origin
-git push origin stage_44rebuild
+PRESERVED:
+- GrayChunks platform (scripts/graychunks-*.mjs)
+- All 5 platform/user-platforms
+- 19 .skyequanta subsystems
+- 223 scripts suite"
+
+# Push
+git push -u origin claude/repair-codebase-Wur41
 ```
 
 ---
 
-## ROLLBACK PROCEDURE
+## ROLLBACK
 
-If merge fails:
+If something goes wrong:
 
 ```bash
-# 1. Restore from backup
-rm -rf stage_44rebuild
-mv stage_44rebuild.backup_pre_merge stage_44rebuild
+# Remove the additions
+rm -rf "$CANONICAL/SkyeRoutex-v78"
+rm -rf "$CANONICAL/workspace"
+rm -f "$CANONICAL/src/runtime.js"
 
-# 2. Reset git
-git reset --hard HEAD
-
-# 3. Investigate issue and try again
+# Reset git state
+git checkout -- .
 ```
 
 ---
 
-## SUCCESS INDICATORS
+## WHAT THIS PLAN DOES NOT DO
 
-Once complete:
+The old plan included copying apps/, branding/, config/, src/, workspace/ from Dynasty-Versions into stage_44rebuild. **This is NOT needed and NOT done** because:
 
-✅ `stage_44rebuild/` contains complete, cohesive codebase  
-✅ All 113,000+ source files present  
-✅ All platforms accessible and loadable  
-✅ Build system operational (npm install, make test)  
-✅ All smoke tests available  
-✅ .skyequanta runtime ready  
-✅ Git commit created with merge documentation  
+1. Those directories already exist at the canonical app root
+2. Dynasty-Versions versions of those files are OLDER than what's in stage_44rebuild
+3. Copying them would OVERWRITE newer code with older code
 
 ---
 
-## NOTES ON PRESERVED FEATURES
+## NOTES ON DYNASTY-VERSIONS REFERENCE ARCHIVES
 
-### GrayChunks Platform
-- **Status:** PRESERVED in stage_44rebuild/platform/agent-core/
-- **Action:** Verify not overwritten during merge
-- **Validation:** After merge, check that GrayChunks still functions
-
-### New Directives (Sections 81-92)
-- **Status:** May exist in both versions
-- **Action:** Determine which is newer
-- **Validation:** Verify completeness in merged build
-
----
-
-## READY TO EXECUTE?
-
-This plan is ready to execute. Next steps:
-
-1. ✅ User approves this execution plan
-2. ⏳ Run Phase 1-7 in sequence
-3. ⏳ Validate after each phase
-4. ⏳ Commit final result
-5. ⏳ Run smoke tests suite
-6. ⏳ Declare build operational
-
+Dynasty-Versions contains three older unpacked builds (`SkyeHands_3_1_9_unpacked`, `SkyeHandsunf`, `SkyeHands_stage40_pass41_unpacked`). These are reference archives only. **Do not merge them into stage_44rebuild.** The recovered_merged build is newer than all three.
