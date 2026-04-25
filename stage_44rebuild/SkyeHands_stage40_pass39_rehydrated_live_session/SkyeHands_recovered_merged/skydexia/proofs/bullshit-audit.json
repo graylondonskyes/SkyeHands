@@ -1,17 +1,17 @@
 {
-  "generatedAt": "2026-04-17T00:33:47.573Z",
-  "scannedFiles": 4110,
+  "generatedAt": "2026-04-25T23:47:40.519Z",
+  "scannedFiles": 4574,
   "suspiciousPatternCounts": {
-    "todo_fixme_xxx": 128,
-    "stub_placeholder": 1992,
-    "not_implemented": 28,
-    "force_pass_strings": 94
+    "todo_fixme_xxx": 143,
+    "stub_placeholder": 2160,
+    "not_implemented": 33,
+    "force_pass_strings": 99
   },
   "weakSmokeScriptCount": 0,
   "checkedDirectiveItemsWithoutScriptRef": 0,
   "checkedDirectiveItemsWithoutScriptRefList": [],
-  "actionableStubPlaceholderCount": 1035,
-  "executableFilesScanned": 570,
+  "actionableStubPlaceholderCount": 1169,
+  "executableFilesScanned": 773,
   "blockingExecutableFindingCount": 0,
   "blockingBullshitCount": 0,
   "blockingFindings": [],
@@ -33,8 +33,16 @@
       "count": 157
     },
     {
+      "file": "docs/proof/SECTION_37_SKEPTIC_PROOF_HARDENING.json",
+      "count": 72
+    },
+    {
       "file": "platform/user-platforms/skye-account-executive-commandhub-s0l26-0s/source/AE-Central-Command-Pack-CredentialHub-Launcher/Branching Apps/AE-Brain-Command-Site-v8-Additive/assets/app.js",
       "count": 34
+    },
+    {
+      "file": "ULTIMATE_SYSTEM_DIRECTIVE.md",
+      "count": 28
     },
     {
       "file": "apps/skyequanta-shell/lib/provider-connectors.mjs",
@@ -53,12 +61,16 @@
       "count": 23
     },
     {
-      "file": "platform/user-platforms/skye-account-executive-commandhub-s0l26-0s/source/AE-Central-Command-Pack-CredentialHub-Launcher/Branching Apps/Skye-Lead-Vault-Offline-Phase2-with-Walkthrough/assets/app.js",
+      "file": "SkyeRoutex-v78/AuditReadyConsole-main/AuditReadyConsole-main/AuditReadyConsole-main/assets/app.js",
       "count": 22
     },
     {
-      "file": "docs/proof/SECTION_37_SKEPTIC_PROOF_HARDENING.json",
-      "count": 21
+      "file": "SkyeRoutex-v78/SkyeRoutex/apps/audit-ready-console/assets/app.js",
+      "count": 22
+    },
+    {
+      "file": "platform/user-platforms/skye-account-executive-commandhub-s0l26-0s/source/AE-Central-Command-Pack-CredentialHub-Launcher/Branching Apps/Skye-Lead-Vault-Offline-Phase2-with-Walkthrough/assets/app.js",
+      "count": 22
     },
     {
       "file": "platform/ide-core/packages/ai-codex/src/browser/codex-chat-agent.spec.ts",
@@ -83,6 +95,10 @@
     {
       "file": "scripts/bullshit-audit.mjs",
       "count": 15
+    },
+    {
+      "file": "SkyeRoutex-v78/SkyeRoutex/housecircle.integral.v60.js",
+      "count": 14
     },
     {
       "file": "platform/ide-core/packages/ai-chat/src/common/chat-agent-service.spec.ts",
@@ -99,22 +115,6 @@
     {
       "file": "apps/skyequanta-shell/bin/workspace-service.mjs",
       "count": 11
-    },
-    {
-      "file": "docs/proof/SECTION_8_DEPLOYMENT_PACKAGING.json",
-      "count": 11
-    },
-    {
-      "file": "docs/proof/STAGE_9_DEPLOYMENT_READINESS.json",
-      "count": 11
-    },
-    {
-      "file": "platform/ide-core/packages/collaboration/src/browser/collaboration-frontend-contribution.ts",
-      "count": 11
-    },
-    {
-      "file": "skydexia/proofs/bullshit-audit.json",
-      "count": 11
     }
   ],
   "weakSmokeScripts": [],
@@ -126,6 +126,10 @@
     {
       "file": "platform/user-platforms/skye-account-executive-commandhub-s0l26-0s/source/AE-Central-Command-Pack-CredentialHub-Launcher/Branching Apps/AE-Brain-Command-Site-v8-Additive/assets/app.js",
       "count": 34
+    },
+    {
+      "file": "ULTIMATE_SYSTEM_DIRECTIVE.md",
+      "count": 28
     },
     {
       "file": "apps/skyequanta-shell/lib/provider-connectors.mjs",
@@ -142,6 +146,14 @@
     {
       "file": "platform/ide-core/packages/ai-chat/src/browser/chat-session-store-impl.spec.ts",
       "count": 23
+    },
+    {
+      "file": "SkyeRoutex-v78/AuditReadyConsole-main/AuditReadyConsole-main/AuditReadyConsole-main/assets/app.js",
+      "count": 22
+    },
+    {
+      "file": "SkyeRoutex-v78/SkyeRoutex/apps/audit-ready-console/assets/app.js",
+      "count": 22
     },
     {
       "file": "platform/user-platforms/skye-account-executive-commandhub-s0l26-0s/source/AE-Central-Command-Pack-CredentialHub-Launcher/Branching Apps/Skye-Lead-Vault-Offline-Phase2-with-Walkthrough/assets/app.js",
@@ -170,6 +182,10 @@
     {
       "file": "scripts/bullshit-audit.mjs",
       "count": 15
+    },
+    {
+      "file": "SkyeRoutex-v78/SkyeRoutex/housecircle.integral.v60.js",
+      "count": 14
     },
     {
       "file": "platform/ide-core/packages/ai-chat/src/common/chat-agent-service.spec.ts",
@@ -202,29 +218,25 @@
     {
       "file": "platform/ide-core/packages/task/src/browser/quick-open-task.ts",
       "count": 10
-    },
-    {
-      "file": "platform/user-platforms/skye-account-executive-commandhub-s0l26-0s/source/AE-Central-Command-Pack-CredentialHub-Launcher/Branching Apps/Printful-Commerce-Brain-EDM-pass6/netlify/functions/_printful.js",
-      "count": 10
-    },
-    {
-      "file": "apps/skyequanta-shell/bin/repair-stage2b.mjs",
-      "count": 9
-    },
-    {
-      "file": "docs/CODESPACES_REPLACEMENT_EXECUTION_DIRECTIVES.md",
-      "count": 8
-    },
-    {
-      "file": "platform/ide-core/packages/ai-core/src/common/prompt-service.ts",
-      "count": 8
     }
   ],
   "patternHits": {
     "todo_fixme_xxx": [
       {
         "file": "BULLSHIT_AUDIT_REPORT.md",
-        "count": 5
+        "count": 3
+      },
+      {
+        "file": "SkyeRoutex-v78/SkyeRoutex/WHITE_GLOVE_V77/smoke_output_v77.json",
+        "count": 1
+      },
+      {
+        "file": "SkyeRoutex-v78/SkyeRoutex/apps/audit-ready-console/skye-app.v77.json",
+        "count": 1
+      },
+      {
+        "file": "ULTIMATE_SYSTEM_DIRECTIVE.md",
+        "count": 12
       },
       {
         "file": "platform/ide-core/packages/ai-chat/src/browser/agent-delegation-tool.ts",
@@ -593,6 +605,10 @@
       {
         "file": "scripts/skydexia-ae-stub-replacement-and-smoke.mjs",
         "count": 1
+      },
+      {
+        "file": "scripts/sync-directive-audit-baseline.mjs",
+        "count": 3
       }
     ],
     "stub_placeholder": [
@@ -609,12 +625,92 @@
         "count": 2
       },
       {
+        "file": "SMOKE_P025_CLASSIFICATION_REAL_VS_STUBBED.md",
+        "count": 1
+      },
+      {
         "file": "SMOKE_P076_AE_STUBS_FULL_SMOKE.md",
         "count": 1
       },
       {
-        "file": "ULTIMATE_SYSTEM_DIRECTIVE.md",
+        "file": "SkyeRoutex-v78/AE-FLOW/AE-Flow/0s-auth-sdk/index.js",
+        "count": 3
+      },
+      {
+        "file": "SkyeRoutex-v78/AE-FLOW/AE-Flow/academy.v38.js",
+        "count": 1
+      },
+      {
+        "file": "SkyeRoutex-v78/AuditReadyConsole-main/AuditReadyConsole-main/AuditReadyConsole-main/assets/app.js",
+        "count": 22
+      },
+      {
+        "file": "SkyeRoutex-v78/NEW-SHIT2/09-IMPLEMENTATION-MANIFEST.json",
+        "count": 1
+      },
+      {
+        "file": "SkyeRoutex-v78/NEW-SHIT2/10-ACTUAL-CODE-PASS-STATUS.md",
+        "count": 1
+      },
+      {
+        "file": "SkyeRoutex-v78/ROUTEX_AE_FLOW_OFFLINE_UPGRADE_DIRECTIVE.md",
+        "count": 1
+      },
+      {
+        "file": "SkyeRoutex-v78/SKYEROUTEX_WHITE_GLOVE_FLEET_INFRASTRUCTURE_UPGRADE_DIRECTIVE.md",
+        "count": 1
+      },
+      {
+        "file": "SkyeRoutex-v78/SkyeRoutex/academy.v38.js",
+        "count": 1
+      },
+      {
+        "file": "SkyeRoutex-v78/SkyeRoutex/apps/audit-ready-console/assets/app.js",
+        "count": 22
+      },
+      {
+        "file": "SkyeRoutex-v78/SkyeRoutex/housecircle.integral.v60.js",
+        "count": 14
+      },
+      {
+        "file": "SkyeRoutex-v78/SkyeRoutex/housecircle.integral.v61.js",
+        "count": 7
+      },
+      {
+        "file": "SkyeRoutex-v78/SkyeRoutex/housecircle.integral.v62.js",
         "count": 4
+      },
+      {
+        "file": "SkyeRoutex-v78/SkyeRoutex/housecircle.integral.v63.js",
+        "count": 6
+      },
+      {
+        "file": "SkyeRoutex-v78/SkyeRoutex/housecircle.integral.v65.js",
+        "count": 2
+      },
+      {
+        "file": "SkyeRoutex-v78/SkyeRoutex/index.check.js",
+        "count": 3
+      },
+      {
+        "file": "SkyeRoutex-v78/SkyeRoutex/whiteglove.v44.js",
+        "count": 6
+      },
+      {
+        "file": "SkyeRoutex-v78/SkyeRoutex/whiteglove.v48.js",
+        "count": 2
+      },
+      {
+        "file": "SkyeRoutex-v78/SkyeRoutex/whiteglove.v50.js",
+        "count": 1
+      },
+      {
+        "file": "SkyeRoutex-v78/SkyeRoutex/whiteglove.v51.js",
+        "count": 1
+      },
+      {
+        "file": "ULTIMATE_SYSTEM_DIRECTIVE.md",
+        "count": 28
       },
       {
         "file": "apps/skyequanta-shell/bin/real-ide-runtime.mjs",
@@ -670,7 +766,7 @@
       },
       {
         "file": "docs/proof/SECTION_37_SKEPTIC_PROOF_HARDENING.json",
-        "count": 21
+        "count": 72
       },
       {
         "file": "docs/proof/SECTION_42_KERNEL_CONTAINMENT_AND_ARTIFACT_IDENTITY.json",
@@ -1513,6 +1609,14 @@
         "count": 1
       },
       {
+        "file": "platform/user-platforms/ae-autonomous-store-system-maggies/source/ai-setup/app.mjs",
+        "count": 1
+      },
+      {
+        "file": "platform/user-platforms/ae-autonomous-store-system-maggies/source/product-detail/app.mjs",
+        "count": 3
+      },
+      {
         "file": "platform/user-platforms/ae-autonomous-store-system-maggies/source/public-storefront/app.mjs",
         "count": 1
       },
@@ -1570,11 +1674,15 @@
       },
       {
         "file": "scripts/smoke-p025-classification-real-vs-stubbed.mjs",
-        "count": 1
+        "count": 2
       },
       {
         "file": "scripts/smoke-p076-ae-stubs-full-smoke.mjs",
         "count": 1
+      },
+      {
+        "file": "scripts/sync-directive-audit-baseline.mjs",
+        "count": 6
       },
       {
         "file": "skydexia/proofs/bullshit-audit.json",
@@ -1587,36 +1695,16 @@
       {
         "file": "skydexia/snapshots/2026-04-16T12-33-32-574Z/ULTIMATE_SYSTEM_DIRECTIVE.md",
         "count": 4
-      },
-      {
-        "file": "skydexia/snapshots/2026-04-16T23-46-40-564Z/DIRECTIVE_RELEASE_NOTES.md",
-        "count": 2
-      },
-      {
-        "file": "skydexia/snapshots/2026-04-16T23-46-40-564Z/ULTIMATE_SYSTEM_DIRECTIVE.md",
-        "count": 4
-      },
-      {
-        "file": "skydexia/snapshots/2026-04-16T23-55-52-889Z/DIRECTIVE_RELEASE_NOTES.md",
-        "count": 2
-      },
-      {
-        "file": "skydexia/snapshots/2026-04-16T23-55-52-889Z/ULTIMATE_SYSTEM_DIRECTIVE.md",
-        "count": 4
-      },
-      {
-        "file": "skydexia/snapshots/2026-04-17T00-21-05-465Z/DIRECTIVE_RELEASE_NOTES.md",
-        "count": 2
-      },
-      {
-        "file": "skydexia/snapshots/2026-04-17T00-21-05-465Z/ULTIMATE_SYSTEM_DIRECTIVE.md",
-        "count": 4
       }
     ],
     "not_implemented": [
       {
         "file": "BULLSHIT_AUDIT_REPORT.md",
         "count": 1
+      },
+      {
+        "file": "ULTIMATE_SYSTEM_DIRECTIVE.md",
+        "count": 4
       },
       {
         "file": "docs/SKYEHANDS_SOVEREIGN_PROVIDER_BINDINGS_IMPLEMENTATION_DIRECTIVE.md",
@@ -1680,6 +1768,10 @@
       },
       {
         "file": "scripts/skydexia-ae-stub-replacement-and-smoke.mjs",
+        "count": 1
+      },
+      {
+        "file": "scripts/sync-directive-audit-baseline.mjs",
         "count": 1
       }
     ],
@@ -2001,6 +2093,22 @@
         "count": 1
       },
       {
+        "file": "SMOKE_P085_GRAYCHUNKS_PLATFORM.md",
+        "count": 1
+      },
+      {
+        "file": "SMOKE_P086_GRAYCHUNKS_AE_INTEGRATION.md",
+        "count": 1
+      },
+      {
+        "file": "SMOKE_P087_GRAYCHUNKS_PLATFORM_SERVER.md",
+        "count": 1
+      },
+      {
+        "file": "SMOKE_P088_GRAYCHUNKS_CYCLE_AUTOFIX.md",
+        "count": 1
+      },
+      {
         "file": "platform/user-platforms/skye-account-executive-commandhub-s0l26-0s/source/AE-Central-Command-Pack-CredentialHub-Launcher/Branching Apps/AE-Brain-Command-Site-v8-Additive/docs/SMOKE_PROOF.md",
         "count": 1
       },
@@ -2018,6 +2126,10 @@
       },
       {
         "file": "scripts/directive-stale-smoke-check.mjs",
+        "count": 1
+      },
+      {
+        "file": "scripts/graychunks-runtime-cycle.mjs",
         "count": 1
       },
       {

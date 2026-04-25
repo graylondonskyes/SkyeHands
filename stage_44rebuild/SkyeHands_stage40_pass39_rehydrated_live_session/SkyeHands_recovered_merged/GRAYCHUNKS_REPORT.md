@@ -1,15 +1,15 @@
 # GrayChunks Scan Report
 
-GeneratedAt: 2026-04-18T05:06:24.985Z
+GeneratedAt: 2026-04-25T23:49:27.325Z
 ConfigPath: graychunks.config.json
-Scanned files: 3934
-Issue count: 1011
+Scanned files: 4225
+Issue count: 1026
 
 ## Issue Types
 - broken_jsx_structure: 431
 - duplicate_object_key: 375
 - duplicate_import: 115
-- repeated_chunk: 70
+- repeated_chunk: 85
 - repeated_config_key: 20
 
 ## Top Findings

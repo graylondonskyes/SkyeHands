@@ -2,6 +2,49 @@ const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 
+// SEC-04: AES-256-GCM encryption at rest for org state files.
+// Encryption is active only when PHC_SESSION_SECRET is set and PHC_ENCRYPT_AT_REST is not 'false'.
+// In dev (no secret), files are stored as plaintext JSON (same as before).
+const ENCRYPT_AT_REST = process.env.PHC_SESSION_SECRET && process.env.PHC_ENCRYPT_AT_REST !== 'false';
+const CIPHER_ALG = 'aes-256-gcm';
+const IV_BYTES = 12;
+const TAG_BYTES = 16;
+const MAGIC = 'PHC_ENC_V1:';
+
+function deriveEncKey(){
+  // Derive a separate AES key from the session secret so they can be rotated independently.
+  return crypto.createHash('sha256').update('phc-store-key:' + process.env.PHC_SESSION_SECRET).digest();
+}
+
+function encryptJSON(obj){
+  if(!ENCRYPT_AT_REST) return JSON.stringify(obj, null, 2);
+  const key = deriveEncKey();
+  const iv = crypto.randomBytes(IV_BYTES);
+  const cipher = crypto.createCipheriv(CIPHER_ALG, key, iv);
+  const plain = Buffer.from(JSON.stringify(obj));
+  const enc = Buffer.concat([cipher.update(plain), cipher.final()]);
+  const tag = cipher.getAuthTag();
+  // Format: MAGIC + base64(iv) + '.' + base64(tag) + '.' + base64(ciphertext)
+  return MAGIC + iv.toString('base64') + '.' + tag.toString('base64') + '.' + enc.toString('base64');
+}
+
+function decryptJSON(raw){
+  if(!raw || !raw.startsWith(MAGIC)){
+    // Legacy plaintext file or dev mode — parse as JSON directly
+    return JSON.parse(raw);
+  }
+  const key = deriveEncKey();
+  const parts = raw.slice(MAGIC.length).split('.');
+  if(parts.length !== 3) throw new Error('Corrupt encrypted store format.');
+  const iv = Buffer.from(parts[0], 'base64');
+  const tag = Buffer.from(parts[1], 'base64');
+  const enc = Buffer.from(parts[2], 'base64');
+  const decipher = crypto.createDecipheriv(CIPHER_ALG, key, iv);
+  decipher.setAuthTag(tag);
+  const plain = Buffer.concat([decipher.update(enc), decipher.final()]);
+  return JSON.parse(plain.toString('utf8'));
+}
+
 const DATA_ROOT = process.env.PHC_DATA_DIR || path.join(__dirname, '..', '..', '.phc_data');
 const ARRAY_KEYS = [
   'operators','joinPackets','checkins','posTickets','audit','routeTasks','serviceCases','automationRules','playbooks','signalRuns','shifts','assignments','readinessTemplates','readinessRuns','valuationRecords','walkthroughRecords'
@@ -22,7 +65,10 @@ function safeOrgId(orgId){
   const cleaned = clean(orgId).toLowerCase().replace(/[^a-z0-9_-]+/g, '-').replace(/^-+|-+$/g, '');
   return cleaned || 'default-org';
 }
-function ensureRoot(){ fs.mkdirSync(DATA_ROOT, { recursive:true }); }
+function ensureRoot(){
+  try { fs.mkdirSync(DATA_ROOT, { recursive:true }); }
+  catch(err) { console.error('[housecircle-cloud-store] ensureRoot failed:', err.message); throw err; }
+}
 function orgPath(orgId){ ensureRoot(); return path.join(DATA_ROOT, safeOrgId(orgId) + '.json'); }
 function hashOf(value){ return crypto.createHash('sha256').update(JSON.stringify(value || {})).digest('hex'); }
 function rowTs(row){
@@ -144,15 +190,17 @@ function readOrgState(orgId){
   const file = orgPath(orgId);
   if(!fs.existsSync(file)){
     const seed = defaultOrgState(orgId);
-    fs.writeFileSync(file, JSON.stringify(seed, null, 2));
+    try { fs.writeFileSync(file, encryptJSON(seed)); } catch(err) { console.error('[housecircle-cloud-store] readOrgState seed write failed:', err.message); }
     return seed;
   }
   try{
-    const parsed = JSON.parse(fs.readFileSync(file, 'utf8'));
+    const raw = fs.readFileSync(file, 'utf8');
+    const parsed = decryptJSON(raw);
     return { ...defaultOrgState(orgId), ...parsed, bundle: mergeBundles(defaultBundle(orgId), parsed.bundle || {}) };
-  }catch(_){
+  }catch(err){
+    console.error('[housecircle-cloud-store] readOrgState parse failed for', safeOrgId(orgId), '— reinitializing:', err.message);
     const seed = defaultOrgState(orgId);
-    fs.writeFileSync(file, JSON.stringify(seed, null, 2));
+    try { fs.writeFileSync(file, encryptJSON(seed)); } catch(_) {}
     return seed;
   }
 }
@@ -165,8 +213,9 @@ function saveOrgState(orgId, nextState){
   state.revision = 'rev-' + Date.now().toString(36) + '-' + hashOf(state.bundle).slice(0, 10);
   state.frames = mergeRows([], state.frames).slice(0, 400);
   state.jobs = mergeRows([], state.jobs).slice(0, 400);
-  state.sessions = mergeRows([], state.sessions).slice(0, 80);
-  fs.writeFileSync(file, JSON.stringify(state, null, 2));
+  state.sessions = mergeRows([], state.sessions).slice(0, num(process.env.PHC_SESSION_STORE_LIMIT) || 80);
+  try { fs.writeFileSync(file, encryptJSON(state)); }
+  catch(err) { console.error('[housecircle-cloud-store] saveOrgState write failed for', safeOrgId(orgId), ':', err.message); throw err; }
   return state;
 }
 function appendFrame(state, frame){

@@ -1,9 +1,9 @@
 const { readOrgState, saveOrgState, clean, compact, acquireLock, purgeExpiredLocks, pushEvent } = require('./_lib/housecircle-cloud-store');
 const { verifySessionToken, extractBearer } = require('./_lib/housecircle-auth');
-
-function cors(){ return { 'content-type':'application/json', 'cache-control':'no-store', 'access-control-allow-origin':'*', 'access-control-allow-headers':'content-type, authorization', 'access-control-allow-methods':'POST,OPTIONS' }; }
+const { corsHeaders } = require('./_lib/housecircle-cors');
 
 exports.handler = async function(event){
+  const cors = (m) => corsHeaders(event, m || 'POST,OPTIONS');
   if(event.httpMethod === 'OPTIONS') return { statusCode:204, headers:cors(), body:'' };
   if(event.httpMethod !== 'POST') return { statusCode:405, headers:cors(), body: JSON.stringify({ ok:false, error:'Method not allowed.' }) };
   const guard = verifySessionToken(extractBearer(event.headers || {}));

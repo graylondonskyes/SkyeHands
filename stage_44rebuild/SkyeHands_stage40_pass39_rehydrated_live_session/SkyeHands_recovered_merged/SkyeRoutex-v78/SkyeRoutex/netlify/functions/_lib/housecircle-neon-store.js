@@ -55,9 +55,25 @@ async function withPgClient(fn){
     return { ok:false, configured:true, pgAvailable:false, reason:'pg dependency not installed yet.', mode: config.mode };
   }
   const { Pool } = require('pg');
-  const pool = new Pool({ connectionString: config.connectionString, ssl: config.ssl ? { rejectUnauthorized:false } : false, max: 1, idleTimeoutMillis: 5000, connectionTimeoutMillis: 5000 });
-  const client = await pool.connect();
-  try{ return await fn(client, config); } finally { client.release(); await pool.end(); }
+  // SEC-05: respect PHC_NEON_SSL. 'require' (default) enforces cert validation.
+  // Developers can set PHC_NEON_SSL=no-verify only if their Neon endpoint lacks a valid cert.
+  const sslMode = clean(process.env.PHC_NEON_SSL || 'require');
+  const sslConfig = sslMode === 'disable' ? false
+    : sslMode === 'no-verify' ? { rejectUnauthorized: false }
+    : { rejectUnauthorized: true };
+  const pool = new Pool({ connectionString: config.connectionString, ssl: sslConfig, max: 1, idleTimeoutMillis: 5000, connectionTimeoutMillis: 5000 });
+  let client;
+  try {
+    client = await pool.connect();
+    return await fn(client, config);
+  } catch(err) {
+    // CODE-04: surface Neon errors rather than letting them silently fall through
+    console.error('[housecircle-neon-store] Neon query failed:', err.message);
+    return { ok:false, configured:true, pgAvailable:true, reason: 'Neon query failed: ' + err.message, mode: config.mode };
+  } finally {
+    if(client) client.release();
+    await pool.end().catch(() => {});
+  }
 }
 
 async function ensureSchema(){

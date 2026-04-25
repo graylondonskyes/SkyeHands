@@ -1,11 +1,8 @@
 # P087 Smoke Proof — GrayChunks Platform Server
 
 Status: PASS
-Status endpoint HTTP: 200
-Queue endpoint HTTP: 200
-Alert endpoint HTTP: 200
-Invalid target HTTP: 400
-Status has findings: true
-Queue has queue payload: true
-Alert has dispatch payload: true
-Invalid target blocked: true
+Scan seeded (200 or 500-with-findings): true (HTTP 200)
+Queue built: true (HTTP 200)
+Alert dispatched (dry-run): true (HTTP 200)
+Status has findings after scan: true (HTTP 200)
+Invalid target blocked with 400: true (HTTP 400)

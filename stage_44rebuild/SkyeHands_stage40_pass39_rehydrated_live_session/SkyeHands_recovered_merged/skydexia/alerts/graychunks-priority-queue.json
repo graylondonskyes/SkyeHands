@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-04-18T05:06:25.167Z",
+  "generatedAt": "2026-04-25T23:49:27.378Z",
   "configPath": "graychunks.config.json",
-  "scannedFiles": 3934,
-  "totalIssues": 1011,
+  "scannedFiles": 4225,
+  "totalIssues": 1026,
   "queuedIssues": 300,
   "summaryBySeverity": {
     "critical": 300

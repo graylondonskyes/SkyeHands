@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-04-18T05:06:24.985Z",
+  "generatedAt": "2026-04-25T23:49:27.325Z",
   "configPath": "graychunks.config.json",
-  "scannedFiles": 3934,
-  "issueCount": 1011,
+  "scannedFiles": 4225,
+  "issueCount": 1026,
   "issuesByType": {
-    "repeated_chunk": 70,
+    "repeated_chunk": 85,
     "duplicate_import": 115,
     "repeated_config_key": 20,
     "duplicate_object_key": 375,
@@ -6052,6 +6052,96 @@
       "file": "apps/skyequanta-shell/bin/workspace-proof-section15-pr-loop.mjs",
       "line": 105,
       "message": "Object key 'body' repeats key first seen on line 102."
+    },
+    {
+      "type": "repeated_chunk",
+      "file": "SkyeRoutex-v78/SkyeRoutex/whiteglove.v46.js",
+      "line": 391,
+      "message": "Repeated 5-line chunk first seen on line 378."
+    },
+    {
+      "type": "repeated_chunk",
+      "file": "SkyeRoutex-v78/SkyeRoutex/whiteglove.v46.js",
+      "line": 392,
+      "message": "Repeated 5-line chunk first seen on line 379."
+    },
+    {
+      "type": "repeated_chunk",
+      "file": "SkyeRoutex-v78/SkyeRoutex/whiteglove.v46.js",
+      "line": 407,
+      "message": "Repeated 5-line chunk first seen on line 379."
+    },
+    {
+      "type": "repeated_chunk",
+      "file": "SkyeRoutex-v78/SkyeRoutex/whiteglove.v39.js",
+      "line": 591,
+      "message": "Repeated 5-line chunk first seen on line 551."
+    },
+    {
+      "type": "repeated_chunk",
+      "file": "SkyeRoutex-v78/SkyeRoutex/index.check.js",
+      "line": 152,
+      "message": "Repeated 5-line chunk first seen on line 7."
+    },
+    {
+      "type": "repeated_chunk",
+      "file": "SkyeRoutex-v78/SkyeRoutex/index.check.js",
+      "line": 153,
+      "message": "Repeated 5-line chunk first seen on line 8."
+    },
+    {
+      "type": "repeated_chunk",
+      "file": "SkyeRoutex-v78/SkyeRoutex/index.check.js",
+      "line": 159,
+      "message": "Repeated 5-line chunk first seen on line 14."
+    },
+    {
+      "type": "repeated_chunk",
+      "file": "SkyeRoutex-v78/SkyeRoutex/index.check.js",
+      "line": 659,
+      "message": "Repeated 5-line chunk first seen on line 144."
+    },
+    {
+      "type": "repeated_chunk",
+      "file": "SkyeRoutex-v78/SkyeRoutex/index.check.js",
+      "line": 660,
+      "message": "Repeated 5-line chunk first seen on line 145."
+    },
+    {
+      "type": "repeated_chunk",
+      "file": "SkyeRoutex-v78/AE-FLOW/AE-Flow/index.check.v31v32.js",
+      "line": 50,
+      "message": "Repeated 5-line chunk first seen on line 7."
+    },
+    {
+      "type": "repeated_chunk",
+      "file": "SkyeRoutex-v78/AE-FLOW/AE-Flow/index.check.js",
+      "line": 67,
+      "message": "Repeated 5-line chunk first seen on line 7."
+    },
+    {
+      "type": "repeated_chunk",
+      "file": "SkyeRoutex-v78/AE-FLOW/AE-Flow/index.check.js",
+      "line": 253,
+      "message": "Repeated 5-line chunk first seen on line 7."
+    },
+    {
+      "type": "repeated_chunk",
+      "file": "SkyeRoutex-v78/AE-FLOW/AE-Flow/index.check.js",
+      "line": 330,
+      "message": "Repeated 5-line chunk first seen on line 64."
+    },
+    {
+      "type": "repeated_chunk",
+      "file": "SkyeRoutex-v78/AE-FLOW/AE-Flow/index.check.js",
+      "line": 331,
+      "message": "Repeated 5-line chunk first seen on line 65."
+    },
+    {
+      "type": "repeated_chunk",
+      "file": "SkyeRoutex-v78/AE-FLOW/AE-Flow/index.check.js",
+      "line": 332,
+      "message": "Repeated 5-line chunk first seen on line 66."
     },
     {
       "type": "repeated_config_key",

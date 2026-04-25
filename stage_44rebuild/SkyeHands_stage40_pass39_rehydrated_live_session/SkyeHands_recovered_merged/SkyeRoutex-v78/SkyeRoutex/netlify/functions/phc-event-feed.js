@@ -1,10 +1,11 @@
 const { readOrgState, clean, compact, purgeExpiredLocks, listDevices } = require('./_lib/housecircle-cloud-store');
 const { verifySessionToken, extractBearer } = require('./_lib/housecircle-auth');
+const { corsHeaders } = require('./_lib/housecircle-cors');
 
-function cors(){ return { 'content-type':'application/json', 'cache-control':'no-store', 'access-control-allow-origin':'*', 'access-control-allow-headers':'content-type, authorization', 'access-control-allow-methods':'GET,OPTIONS' }; }
 function limitRows(rows, n){ return Array.isArray(rows) ? rows.slice(0, Math.max(1, Math.min(100, Number(n) || 25))) : []; }
 
 exports.handler = async function(event){
+  const cors = (m) => corsHeaders(event, m || 'GET,OPTIONS');
   if(event.httpMethod === 'OPTIONS') return { statusCode:204, headers:cors(), body:'' };
   if(event.httpMethod !== 'GET') return { statusCode:405, headers:cors(), body: JSON.stringify({ ok:false, error:'Method not allowed.' }) };
   const guard = verifySessionToken(extractBearer(event.headers || {}));

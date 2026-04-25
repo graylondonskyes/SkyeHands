@@ -1,7 +1,7 @@
 # P085 Smoke Proof — GrayChunks Platform
 
 Status: PASS
-Fixture: /tmp/graychunks-smoke-6VNkvA/fixture
+Fixture: /tmp/graychunks-smoke-gJdPhO/fixture
 First scan issues: 4
 Second scan issues: 2
 Duplicate import issues before/after: 1 -> 0
