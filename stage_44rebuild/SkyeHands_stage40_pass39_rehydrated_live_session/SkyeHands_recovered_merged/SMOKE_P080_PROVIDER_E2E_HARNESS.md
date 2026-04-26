@@ -1,5 +1,5 @@
 # P080 Smoke Proof — Provider E2E Harness
 
-Status: PASS
-Harness Status: PASS
+Status: FAIL
+Harness Status: FAIL
 Steps: 5

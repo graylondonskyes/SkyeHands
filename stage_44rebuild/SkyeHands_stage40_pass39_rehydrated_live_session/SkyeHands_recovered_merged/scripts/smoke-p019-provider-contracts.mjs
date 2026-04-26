@@ -10,9 +10,10 @@ const artifactPath = path.join(root, 'SMOKE_P019_PROVIDER_CONTRACTS.md');
 
 function check(pass, label, detail = null) { return { pass: Boolean(pass), label, detail }; }
 
-process.env.OPENAI_API_KEY = 'openai-smoke-token';
-process.env.PRINTFUL_API_TOKEN = 'printful-smoke-token';
-process.env.CALENDLY_TOKEN = 'calendly-smoke-token';
+if (!process.env.OPENAI_API_KEY) process.env.AE_PROVIDERS_DRY_RUN = '1'; // dry-run when no live keys
+process.env.OPENAI_API_KEY = process.env.OPENAI_API_KEY || 'openai-smoke-token';
+process.env.PRINTFUL_API_TOKEN = process.env.PRINTFUL_API_TOKEN || 'printful-smoke-token';
+process.env.CALENDLY_TOKEN = process.env.CALENDLY_TOKEN || 'calendly-smoke-token';
 
 const openaiOk = providers.validateProviderAction('openai', { model: 'gpt-4.1-mini', input: 'hello world' });
 const printfulFail = providers.validateProviderAction('printful', { sku: 'SKU-1' });

@@ -12,6 +12,7 @@ const threads = require(path.join(fnRoot, 'ae-threads.js'));
 const messages = require(path.join(fnRoot, 'ae-messages.js'));
 const providers = require(path.join(fnRoot, '_shared', 'ae_providers.js'));
 process.env.CALENDLY_TOKEN = process.env.CALENDLY_TOKEN || 'calendly-smoke-token';
+if (!process.env.CALENDLY_TOKEN || process.env.CALENDLY_TOKEN === 'calendly-smoke-token') process.env.AE_PROVIDERS_DRY_RUN = '1';
 
 const thread = JSON.parse((await threads.handler({ httpMethod: 'POST', body: JSON.stringify({ clientId: 'p021-client', subject: 'Appointment Handoff' }) })).body);
 const message = JSON.parse((await messages.handler({ httpMethod: 'POST', body: JSON.stringify({ threadId: thread.thread.id, author: 'ae', content: 'handoff initiated' }) })).body);

@@ -130,6 +130,42 @@
       "clientId": "client_8dce42a3-ee64-4b8b-895d-fed4f85af6ac",
       "subject": "P026 Thread",
       "status": "open"
+    },
+    {
+      "id": "thread_c1a640be-84ba-4daa-8b07-d0f7d95b4d49",
+      "createdAt": "2026-04-26T08:30:51.663Z",
+      "updatedAt": "2026-04-26T08:30:51.663Z",
+      "clientId": "p021-client",
+      "subject": "Appointment Handoff",
+      "status": "open",
+      "priority": "normal"
+    },
+    {
+      "id": "thread_6b9c1302-4c39-4a24-a298-a448a7641964",
+      "createdAt": "2026-04-26T08:33:29.050Z",
+      "updatedAt": "2026-04-26T08:33:29.051Z",
+      "clientId": "p021-client",
+      "subject": "Appointment Handoff",
+      "status": "open",
+      "priority": "normal"
+    },
+    {
+      "id": "thread_8898de6e-99f9-4f6a-bc8d-d8b3cfe3d2d6",
+      "createdAt": "2026-04-26T08:33:55.715Z",
+      "updatedAt": "2026-04-26T08:33:55.715Z",
+      "clientId": "p021-client",
+      "subject": "Appointment Handoff",
+      "status": "open",
+      "priority": "normal"
+    },
+    {
+      "id": "thread_710ac4a0-f0f5-4724-97c1-ab156dbd2473",
+      "createdAt": "2026-04-26T08:34:06.323Z",
+      "updatedAt": "2026-04-26T08:34:06.323Z",
+      "clientId": "p021-client",
+      "subject": "Appointment Handoff",
+      "status": "open",
+      "priority": "normal"
     }
   ],
   "messages": [
@@ -148,6 +184,42 @@
       "threadId": "thread_bce2165b-53af-4f8e-9338-d4d4d4f82d7a",
       "author": "system",
       "content": "P026 message"
+    },
+    {
+      "id": "message_da1e05a4-b82c-4af2-be9b-0702d794d602",
+      "createdAt": "2026-04-26T08:30:51.665Z",
+      "updatedAt": "2026-04-26T08:30:51.665Z",
+      "threadId": "thread_c1a640be-84ba-4daa-8b07-d0f7d95b4d49",
+      "author": "ae",
+      "content": "handoff initiated",
+      "status": "sent"
+    },
+    {
+      "id": "message_e84c9a46-b54d-4477-ac05-df31d5967172",
+      "createdAt": "2026-04-26T08:33:29.053Z",
+      "updatedAt": "2026-04-26T08:33:29.053Z",
+      "threadId": "thread_6b9c1302-4c39-4a24-a298-a448a7641964",
+      "author": "ae",
+      "content": "handoff initiated",
+      "status": "sent"
+    },
+    {
+      "id": "message_78f7b706-15ce-4b9c-94dc-6f209ca76d0f",
+      "createdAt": "2026-04-26T08:33:55.717Z",
+      "updatedAt": "2026-04-26T08:33:55.717Z",
+      "threadId": "thread_8898de6e-99f9-4f6a-bc8d-d8b3cfe3d2d6",
+      "author": "ae",
+      "content": "handoff initiated",
+      "status": "sent"
+    },
+    {
+      "id": "message_b61972f6-cd53-4258-b039-a6ba50677ceb",
+      "createdAt": "2026-04-26T08:34:06.326Z",
+      "updatedAt": "2026-04-26T08:34:06.326Z",
+      "threadId": "thread_710ac4a0-f0f5-4724-97c1-ab156dbd2473",
+      "author": "ae",
+      "content": "handoff initiated",
+      "status": "sent"
     }
   ],
   "snapshots": []

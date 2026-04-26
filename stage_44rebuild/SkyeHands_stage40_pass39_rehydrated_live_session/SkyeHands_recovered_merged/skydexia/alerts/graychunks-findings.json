@@ -1,12 +1,19 @@
 {
+<<<<<<< Updated upstream:stage_44rebuild/SkyeHands_stage40_pass39_rehydrated_live_session/SkyeHands_recovered_merged/skydexia/alerts/graychunks-findings.json
   "generatedAt": "2026-04-25T23:49:27.325Z",
   "configPath": "graychunks.config.json",
   "scannedFiles": 4225,
   "issueCount": 1026,
+=======
+  "generatedAt": "2026-04-26T08:34:09.053Z",
+  "configPath": "graychunks.config.json",
+  "scannedFiles": 3985,
+  "issueCount": 1012,
+>>>>>>> Stashed changes:SkyeHands_stage40_pass39_rehydrated_live_session/SkyeHands_recovered_merged/skydexia/alerts/graychunks-findings.json
   "issuesByType": {
     "repeated_chunk": 85,
     "duplicate_import": 115,
-    "repeated_config_key": 20,
+    "repeated_config_key": 21,
     "duplicate_object_key": 375,
     "broken_jsx_structure": 431
   },
@@ -6166,6 +6173,12 @@
       "file": ".skyequanta/deep-scan-mode/runs/section-60-rich-fixture-scan.json",
       "line": 576,
       "message": "JSON key 'binding' repeats key first seen on line 574."
+    },
+    {
+      "type": "repeated_config_key",
+      "file": ".skyehands-codex-real-platform/platform-core.json",
+      "line": 100,
+      "message": "JSON key 'decision' repeats key first seen on line 99."
     }
   ]
 }

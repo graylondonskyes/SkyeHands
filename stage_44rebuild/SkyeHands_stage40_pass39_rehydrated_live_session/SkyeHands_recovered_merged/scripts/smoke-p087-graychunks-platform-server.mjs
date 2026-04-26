@@ -26,6 +26,7 @@ function waitForReady() {
 
 await waitForReady();
 
+<<<<<<< Updated upstream:stage_44rebuild/SkyeHands_stage40_pass39_rehydrated_live_session/SkyeHands_recovered_merged/scripts/smoke-p087-graychunks-platform-server.mjs
 // Step 1: seed findings by running a scan through the server
 const scanRes = await fetch(`http://127.0.0.1:${port}/scan`, {
   method: 'POST',
@@ -34,6 +35,11 @@ const scanRes = await fetch(`http://127.0.0.1:${port}/scan`, {
 });
 
 // Step 2: build the priority queue
+=======
+const statusRes = await fetch(`http://127.0.0.1:${port}/status`, {
+  headers: { 'x-graychunks-token': token }
+});
+>>>>>>> Stashed changes:SkyeHands_stage40_pass39_rehydrated_live_session/SkyeHands_recovered_merged/scripts/smoke-p087-graychunks-platform-server.mjs
 const queueRes = await fetch(`http://127.0.0.1:${port}/queue`, {
   method: 'POST',
   headers: { 'content-type': 'application/json', 'x-graychunks-token': token },

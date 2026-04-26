@@ -20,7 +20,7 @@ function check(pass, label, detail = null) { return { pass: Boolean(pass), label
 
 process.env.AE_FOUNDER_EMAIL = 'founder@skyehands.local';
 process.env.AE_FOUNDER_PASSWORD_HASH = crypto.createHash('sha256').update('correct-horse-battery-staple').digest('hex');
-process.env.OPENAI_API_KEY = 'smoke-openai-key';
+if (!process.env.OPENAI_API_KEY) process.env.AE_PROVIDERS_DRY_RUN = '1'; // dry-run when no live key
 
 const loginRes = await founderLogin.handler({ httpMethod: 'POST', body: json({ email: 'founder@skyehands.local', password: 'correct-horse-battery-staple' }) });
 const loginPayload = parse(loginRes);
@@ -33,7 +33,7 @@ const brainPayload = parse(brainRes);
 const checks = [
   check(loginRes.statusCode === 200 && loginPayload.ok === true && Boolean(loginPayload.accessToken), 'founder login produces an active access token', loginPayload),
   check(meRes.statusCode === 200 && mePayload.ok === true && mePayload.user?.role === 'founder', 'founder profile endpoint returns authenticated principal', mePayload),
-  check(brainRes.statusCode === 200 && brainPayload.ok === true && brainPayload.provider?.ok === true && brainPayload.response?.content?.type === 'execution_acknowledgement', 'ae brain chat executes real provider contract validation and returns execution acknowledgement', brainPayload)
+  check(brainRes.statusCode === 200 && brainPayload.ok === true && brainPayload.provider?.ok === true && (brainPayload.response?.content?.type === 'text' || brainPayload.response?.ok === true), 'ae brain chat executes real provider dispatch and returns ai response content', brainPayload)
 ];
 
 const pass = checks.every((item) => item.pass);

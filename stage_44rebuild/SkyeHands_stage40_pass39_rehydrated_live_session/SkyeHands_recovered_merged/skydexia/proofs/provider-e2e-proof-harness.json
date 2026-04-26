@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "executedAt": "2026-04-16T12:40:41.925Z",
+  "executedAt": "2026-04-26T08:33:49.090Z",
   "steps": [
     {
       "step": "provider-contract",
@@ -14,8 +14,8 @@
     },
     {
       "step": "required-vars-e2e",
-      "exit": 0,
-      "ok": true
+      "exit": 1,
+      "ok": false
     },
     {
       "step": "artifact-capture",
@@ -28,5 +28,5 @@
       "ok": true
     }
   ],
-  "status": "PASS"
+  "status": "FAIL"
 }

@@ -1,16 +1,28 @@
 # GrayChunks Scan Report
 
+<<<<<<< Updated upstream:stage_44rebuild/SkyeHands_stage40_pass39_rehydrated_live_session/SkyeHands_recovered_merged/GRAYCHUNKS_REPORT.md
 GeneratedAt: 2026-04-25T23:49:27.325Z
 ConfigPath: graychunks.config.json
 Scanned files: 4225
 Issue count: 1026
+=======
+GeneratedAt: 2026-04-26T08:34:09.053Z
+ConfigPath: graychunks.config.json
+Scanned files: 3985
+Issue count: 1012
+>>>>>>> Stashed changes:SkyeHands_stage40_pass39_rehydrated_live_session/SkyeHands_recovered_merged/GRAYCHUNKS_REPORT.md
 
 ## Issue Types
 - broken_jsx_structure: 431
 - duplicate_object_key: 375
 - duplicate_import: 115
+<<<<<<< Updated upstream:stage_44rebuild/SkyeHands_stage40_pass39_rehydrated_live_session/SkyeHands_recovered_merged/GRAYCHUNKS_REPORT.md
 - repeated_chunk: 85
 - repeated_config_key: 20
+=======
+- repeated_chunk: 70
+- repeated_config_key: 21
+>>>>>>> Stashed changes:SkyeHands_stage40_pass39_rehydrated_live_session/SkyeHands_recovered_merged/GRAYCHUNKS_REPORT.md
 
 ## Top Findings
 - repeated_chunk | scripts/smoke-p085-graychunks-platform.mjs:45 | Repeated 5-line chunk first seen on line 37.

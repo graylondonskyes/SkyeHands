@@ -21,6 +21,50 @@
       "expiresAt": "2026-04-17T00:40:38.525Z",
       "revokedAt": null,
       "tokenHash": "UcJlphN2aYnYuRia3C1AsRAc_-Al8WC-e2QFlKOVbEU"
+    },
+    {
+      "sessionId": "8c986af6-3048-4b92-a785-979ab201501f",
+      "userId": "founder",
+      "role": "founder",
+      "email": "founder@skyehands.local",
+      "tenantId": "ae-commandhub",
+      "issuedAt": "2026-04-26T08:30:50.926Z",
+      "expiresAt": "2026-04-26T20:30:50.926Z",
+      "revokedAt": null,
+      "tokenHash": "zgrD5FYkVKdSp_ZpA1yYTApZBuwEBLhx4vwtkWcZW7E"
+    },
+    {
+      "sessionId": "b43abd94-d451-418e-9f53-551646030eca",
+      "userId": "founder",
+      "role": "founder",
+      "email": "founder@skyehands.local",
+      "tenantId": "ae-commandhub",
+      "issuedAt": "2026-04-26T08:33:28.984Z",
+      "expiresAt": "2026-04-26T20:33:28.984Z",
+      "revokedAt": null,
+      "tokenHash": "1V8VBarpZYfQbsEZLFTzvMHPumZ0J29vjzVdLtTvFU0"
+    },
+    {
+      "sessionId": "3ba87e7c-a3ae-4b4b-8ce3-e73e68266845",
+      "userId": "founder",
+      "role": "founder",
+      "email": "founder@skyehands.local",
+      "tenantId": "ae-commandhub",
+      "issuedAt": "2026-04-26T08:33:55.609Z",
+      "expiresAt": "2026-04-26T20:33:55.609Z",
+      "revokedAt": null,
+      "tokenHash": "TJH2PiM1S-aori_PJ8kEP7-LwPIpShhkBPHmy4YDcSU"
+    },
+    {
+      "sessionId": "6b8ae431-991e-4b5c-aad9-0f6cbf4c911c",
+      "userId": "founder",
+      "role": "founder",
+      "email": "founder@skyehands.local",
+      "tenantId": "ae-commandhub",
+      "issuedAt": "2026-04-26T08:34:06.256Z",
+      "expiresAt": "2026-04-26T20:34:06.256Z",
+      "revokedAt": null,
+      "tokenHash": "yAZxosP9qlsZYktQAX35a-7kQDt8HvtJqu2grlqJdK4"
     }
   ]
 }

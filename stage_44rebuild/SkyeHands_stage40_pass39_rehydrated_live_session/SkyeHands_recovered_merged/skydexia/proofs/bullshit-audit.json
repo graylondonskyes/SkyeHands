@@ -1,4 +1,5 @@
 {
+<<<<<<< Updated upstream:stage_44rebuild/SkyeHands_stage40_pass39_rehydrated_live_session/SkyeHands_recovered_merged/skydexia/proofs/bullshit-audit.json
   "generatedAt": "2026-04-25T23:47:40.519Z",
   "scannedFiles": 4574,
   "suspiciousPatternCounts": {
@@ -6,12 +7,26 @@
     "stub_placeholder": 2160,
     "not_implemented": 33,
     "force_pass_strings": 99
+=======
+  "generatedAt": "2026-04-26T08:34:10.290Z",
+  "scannedFiles": 4169,
+  "suspiciousPatternCounts": {
+    "todo_fixme_xxx": 49,
+    "stub_placeholder": 1306,
+    "not_implemented": 20,
+    "force_pass_strings": 102
+>>>>>>> Stashed changes:SkyeHands_stage40_pass39_rehydrated_live_session/SkyeHands_recovered_merged/skydexia/proofs/bullshit-audit.json
   },
   "weakSmokeScriptCount": 0,
   "checkedDirectiveItemsWithoutScriptRef": 0,
   "checkedDirectiveItemsWithoutScriptRefList": [],
+<<<<<<< Updated upstream:stage_44rebuild/SkyeHands_stage40_pass39_rehydrated_live_session/SkyeHands_recovered_merged/skydexia/proofs/bullshit-audit.json
   "actionableStubPlaceholderCount": 1169,
   "executableFilesScanned": 773,
+=======
+  "actionableStubPlaceholderCount": 182,
+  "executableFilesScanned": 522,
+>>>>>>> Stashed changes:SkyeHands_stage40_pass39_rehydrated_live_session/SkyeHands_recovered_merged/skydexia/proofs/bullshit-audit.json
   "blockingExecutableFindingCount": 0,
   "blockingBullshitCount": 0,
   "blockingFindings": [],
@@ -29,8 +44,8 @@
       "count": 288
     },
     {
-      "file": "platform/ide-core/packages/core/src/common/i18n/nls.metadata.json",
-      "count": 157
+      "file": "docs/proof/SECTION_37_SKEPTIC_PROOF_HARDENING.json",
+      "count": 72
     },
     {
       "file": "docs/proof/SECTION_37_SKEPTIC_PROOF_HARDENING.json",
@@ -49,14 +64,15 @@
       "count": 25
     },
     {
-      "file": "platform/ide-core/packages/plugin/src/theia.d.ts",
-      "count": 25
+      "file": "ULTIMATE_SYSTEM_DIRECTIVE.md",
+      "count": 24
     },
     {
       "file": "platform/user-platforms/skye-account-executive-commandhub-s0l26-0s/source/AE-Central-Command-Pack-CredentialHub-Launcher/Branching Apps/AI-Appointment-Setter-Brain-v33/data/mock-provider-state.json",
       "count": 24
     },
     {
+<<<<<<< Updated upstream:stage_44rebuild/SkyeHands_stage40_pass39_rehydrated_live_session/SkyeHands_recovered_merged/skydexia/proofs/bullshit-audit.json
       "file": "platform/ide-core/packages/ai-chat/src/browser/chat-session-store-impl.spec.ts",
       "count": 23
     },
@@ -77,44 +93,43 @@
       "count": 18
     },
     {
+=======
+      "file": "platform/user-platforms/skye-account-executive-commandhub-s0l26-0s/source/AE-Central-Command-Pack-CredentialHub-Launcher/Branching Apps/Skye-Lead-Vault-Offline-Phase2-with-Walkthrough/assets/app.js",
+      "count": 22
+    },
+    {
+>>>>>>> Stashed changes:SkyeHands_stage40_pass39_rehydrated_live_session/SkyeHands_recovered_merged/skydexia/proofs/bullshit-audit.json
       "file": "apps/skyequanta-shell/lib/provider-ui.mjs",
       "count": 17
     },
     {
-      "file": "platform/ide-core/packages/ai-core/src/browser/skills-variable-contribution.spec.ts",
-      "count": 17
-    },
-    {
-      "file": "platform/ide-core/packages/core/src/browser/keyboard/keys.spec.ts",
-      "count": 17
-    },
-    {
-      "file": "platform/ide-core/packages/ai-chat/src/common/chat-request-parser.spec.ts",
+      "file": "scripts/bullshit-audit.mjs",
       "count": 16
     },
     {
-      "file": "scripts/bullshit-audit.mjs",
+      "file": "BULLSHIT_AUDIT_REPORT.md",
       "count": 15
     },
     {
+<<<<<<< Updated upstream:stage_44rebuild/SkyeHands_stage40_pass39_rehydrated_live_session/SkyeHands_recovered_merged/skydexia/proofs/bullshit-audit.json
       "file": "SkyeRoutex-v78/SkyeRoutex/housecircle.integral.v60.js",
       "count": 14
     },
     {
       "file": "platform/ide-core/packages/ai-chat/src/common/chat-agent-service.spec.ts",
+=======
+      "file": "scripts/smoke-p082-stub-placeholder-burn.mjs",
+>>>>>>> Stashed changes:SkyeHands_stage40_pass39_rehydrated_live_session/SkyeHands_recovered_merged/skydexia/proofs/bullshit-audit.json
       "count": 14
     },
     {
-      "file": "platform/ide-core/packages/filesystem/src/browser/file-resource.spec.ts",
-      "count": 13
-    },
-    {
-      "file": "BULLSHIT_AUDIT_REPORT.md",
+      "file": "skydexia/proofs/bullshit-audit.json",
       "count": 12
     },
     {
       "file": "apps/skyequanta-shell/bin/workspace-service.mjs",
       "count": 11
+<<<<<<< Updated upstream:stage_44rebuild/SkyeHands_stage40_pass39_rehydrated_live_session/SkyeHands_recovered_merged/skydexia/proofs/bullshit-audit.json
     }
   ],
   "weakSmokeScripts": [],
@@ -218,12 +233,158 @@
     {
       "file": "platform/ide-core/packages/task/src/browser/quick-open-task.ts",
       "count": 10
+=======
+    },
+    {
+      "file": "docs/proof/SECTION_8_DEPLOYMENT_PACKAGING.json",
+      "count": 11
+    },
+    {
+      "file": "docs/proof/STAGE_9_DEPLOYMENT_READINESS.json",
+      "count": 11
+    },
+    {
+      "file": "SMOKE_P082_STUB_PLACEHOLDER_BURN.md",
+      "count": 10
+    },
+    {
+      "file": "platform/user-platforms/skye-account-executive-commandhub-s0l26-0s/source/AE-Central-Command-Pack-CredentialHub-Launcher/Branching Apps/Printful-Commerce-Brain-EDM-pass6/netlify/functions/_printful.js",
+      "count": 10
+    },
+    {
+      "file": "apps/skyequanta-shell/bin/repair-stage2b.mjs",
+      "count": 9
+    },
+    {
+      "file": "docs/CODESPACES_REPLACEMENT_EXECUTION_DIRECTIVES.md",
+      "count": 8
+    },
+    {
+      "file": "SMOKE_P084_ACTIONABLE_STUBS_BURN.md",
+      "count": 7
+    },
+    {
+      "file": "scripts/smoke-p084-actionable-stubs-burn.mjs",
+      "count": 7
+    },
+    {
+      "file": "scripts/sync-directive-audit-baseline.mjs",
+      "count": 6
+    },
+    {
+      "file": "apps/skyequanta-shell/bin/workspace-proof.mjs",
+      "count": 5
+    }
+  ],
+  "weakSmokeScripts": [],
+  "topActionableStubPlaceholderFiles": [
+    {
+      "file": "platform/user-platforms/skye-account-executive-commandhub-s0l26-0s/source/AE-Central-Command-Pack-CredentialHub-Launcher/Branching Apps/AE-Brain-Command-Site-v8-Additive/assets/app.js",
+      "count": 34
+    },
+    {
+      "file": "apps/skyequanta-shell/lib/provider-connectors.mjs",
+      "count": 25
+    },
+    {
+      "file": "platform/user-platforms/skye-account-executive-commandhub-s0l26-0s/source/AE-Central-Command-Pack-CredentialHub-Launcher/Branching Apps/Skye-Lead-Vault-Offline-Phase2-with-Walkthrough/assets/app.js",
+      "count": 22
+    },
+    {
+      "file": "apps/skyequanta-shell/lib/provider-ui.mjs",
+      "count": 17
+    },
+    {
+      "file": "scripts/smoke-p082-stub-placeholder-burn.mjs",
+      "count": 14
+    },
+    {
+      "file": "apps/skyequanta-shell/bin/workspace-service.mjs",
+      "count": 11
+    },
+    {
+      "file": "platform/user-platforms/skye-account-executive-commandhub-s0l26-0s/source/AE-Central-Command-Pack-CredentialHub-Launcher/Branching Apps/Printful-Commerce-Brain-EDM-pass6/netlify/functions/_printful.js",
+      "count": 10
+    },
+    {
+      "file": "apps/skyequanta-shell/bin/repair-stage2b.mjs",
+      "count": 9
+    },
+    {
+      "file": "scripts/smoke-p084-actionable-stubs-burn.mjs",
+      "count": 7
+    },
+    {
+      "file": "apps/skyequanta-shell/bin/workspace-proof.mjs",
+      "count": 5
+    },
+    {
+      "file": "apps/skyequanta-shell/lib/workspace-runtime.mjs",
+      "count": 4
+    },
+    {
+      "file": "apps/skyequanta-shell/lib/system-deps.mjs",
+      "count": 3
+    },
+    {
+      "file": "platform/user-platforms/ae-autonomous-store-system-maggies/source/product-detail/app.mjs",
+      "count": 3
+    },
+    {
+      "file": "apps/skyequanta-shell/bin/real-ide-runtime.mjs",
+      "count": 2
+    },
+    {
+      "file": "apps/skyequanta-shell/bin/workspace-proof-stage1.mjs",
+      "count": 2
+    },
+    {
+      "file": "apps/skyequanta-shell/bin/workspace-proof-stage2.mjs",
+      "count": 2
+    },
+    {
+      "file": "platform/user-platforms/skye-account-executive-commandhub-s0l26-0s/source/AE-Central-Command-Pack-CredentialHub-Launcher/Branching Apps/Printful-Commerce-Brain-EDM-pass6/site/printful-pod/sw.js",
+      "count": 2
+    },
+    {
+      "file": "scripts/smoke-p025-classification-real-vs-stubbed.mjs",
+      "count": 2
+    },
+    {
+      "file": "apps/skyequanta-shell/bin/workspace-proof-section19-governance.mjs",
+      "count": 1
+    },
+    {
+      "file": "apps/skyequanta-shell/bin/workspace-proof-section5-gate-runtime.mjs",
+      "count": 1
+    },
+    {
+      "file": "platform/user-platforms/ae-autonomous-store-system-maggies/source/ai-setup/app.mjs",
+      "count": 1
+    },
+    {
+      "file": "platform/user-platforms/ae-autonomous-store-system-maggies/source/public-storefront/app.mjs",
+      "count": 1
+    },
+    {
+      "file": "platform/user-platforms/skye-account-executive-commandhub-s0l26-0s/source/AE-Central-Command-Pack-CredentialHub-Launcher/Branching Apps/AI-Appointment-Setter-Brain-v33/static/js/manage.js",
+      "count": 1
+    },
+    {
+      "file": "platform/user-platforms/skye-account-executive-commandhub-s0l26-0s/source/AE-Central-Command-Pack-CredentialHub-Launcher/netlify/functions/_shared/ae_providers.js",
+      "count": 1
+    },
+    {
+      "file": "scripts/smoke-p076-ae-stubs-full-smoke.mjs",
+      "count": 1
+>>>>>>> Stashed changes:SkyeHands_stage40_pass39_rehydrated_live_session/SkyeHands_recovered_merged/skydexia/proofs/bullshit-audit.json
     }
   ],
   "patternHits": {
     "todo_fixme_xxx": [
       {
         "file": "BULLSHIT_AUDIT_REPORT.md",
+<<<<<<< Updated upstream:stage_44rebuild/SkyeHands_stage40_pass39_rehydrated_live_session/SkyeHands_recovered_merged/skydexia/proofs/bullshit-audit.json
         "count": 3
       },
       {
@@ -244,359 +405,17 @@
       },
       {
         "file": "platform/ide-core/packages/ai-chat/src/common/chat-model.ts",
+=======
+>>>>>>> Stashed changes:SkyeHands_stage40_pass39_rehydrated_live_session/SkyeHands_recovered_merged/skydexia/proofs/bullshit-audit.json
         "count": 3
       },
       {
-        "file": "platform/ide-core/packages/ai-chat/src/common/chat-service.ts",
-        "count": 1
+        "file": "SMOKE_P081_TODO_FIXME_BURN.md",
+        "count": 12
       },
       {
-        "file": "platform/ide-core/packages/ai-chat-ui/src/browser/chat-response-renderer/markdown-part-renderer.tsx",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/ai-chat-ui/src/browser/chat-tree-view/chat-view-tree-widget.tsx",
-        "count": 3
-      },
-      {
-        "file": "platform/ide-core/packages/ai-core/src/common/language-model.spec.ts",
-        "count": 2
-      },
-      {
-        "file": "platform/ide-core/packages/ai-core/src/common/language-model.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/ai-google/src/node/google-language-model.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/ai-ide/src/common/orchestrator-chat-agent.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/ai-ollama/src/node/ollama-language-model.ts",
-        "count": 2
-      },
-      {
-        "file": "platform/ide-core/packages/ai-openai/src/node/openai-language-model.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/collaboration/src/browser/collaboration-frontend-contribution.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/core/src/browser/common-frontend-contribution.ts",
-        "count": 2
-      },
-      {
-        "file": "platform/ide-core/packages/core/src/browser/dialogs.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/core/src/browser/endpoint.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/core/src/browser/frontend-application.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/core/src/browser/label-provider.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/core/src/browser/saveable-service.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/core/src/browser/shell/application-shell.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/core/src/browser/shell/tab-bars.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/core/src/browser/tree/tree-model.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/core/src/browser/tree/tree-selection-state.spec.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/core/src/common/preferences/preference-service.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/core/src/common/uri.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/core/src/electron-common/electron-api.ts",
-        "count": 3
-      },
-      {
-        "file": "platform/ide-core/packages/core/src/electron-main/electron-api-main.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/core/src/electron-main/electron-main-application.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/core/src/electron-node/request/electron-backend-request-service.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/debug/src/browser/debug-session.tsx",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/debug/src/browser/disassembly-view/disassembly-view-utilities.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/debug/src/browser/editor/debug-expression-provider.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/debug/src/browser/editor/debug-inline-value-decorator.ts",
-        "count": 2
-      },
-      {
-        "file": "platform/ide-core/packages/debug/src/common/debug-common.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/debug/src/common/debug-model.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/debug/src/node/debug-adapter-factory.ts",
-        "count": 2
-      },
-      {
-        "file": "platform/ide-core/packages/debug/src/node/debug-service-impl.ts",
-        "count": 6
-      },
-      {
-        "file": "platform/ide-core/packages/debug/src/node/stream-debug-adapter.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/dev-container/src/electron-node/devcontainer-contributions/main-container-creation-contributions.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/dev-container/src/electron-node/docker-compose/compose-service.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/dev-container/src/electron-node/docker-container-service.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/dev-container/src/electron-node/remote-container-connection-provider.ts",
-        "count": 2
-      },
-      {
-        "file": "platform/ide-core/packages/editor/src/browser/editor-navigation-contribution.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/editor/src/browser/navigation/navigation-location-updater.spec.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/filesystem/src/browser/file-resource.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/filesystem/src/browser/upload/file-upload-service-impl.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/keymaps/src/browser/keybindings-widget.tsx",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/memory-inspector/src/browser/memory-widget/memory-options-widget.tsx",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/mini-browser/src/browser/mini-browser-content.ts",
-        "count": 2
-      },
-      {
-        "file": "platform/ide-core/packages/monaco/src/browser/monaco-outline-contribution.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/monaco/src/browser/monaco-snippet-suggest-provider.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/notebook/src/browser/service/notebook-kernel-quick-pick-service.ts",
-        "count": 2
-      },
-      {
-        "file": "platform/ide-core/packages/notebook/src/browser/service/notebook-kernel-service.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/notebook/src/browser/service/notebook-model-resolver-service.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/notebook/src/browser/view/notebook-cell-editor.tsx",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/notebook/src/browser/view/notebook-main-toolbar.tsx",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/plugin-ext/src/common/plugin-api-rpc.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/plugin-ext/src/common/rpc-protocol.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/plugin-ext/src/common/uri-components.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/plugin-ext/src/hosted/browser/hosted-plugin.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/plugin-ext/src/hosted/node/scanners/grammars-reader.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/plugin-ext/src/hosted/node/scanners/scanner-theia.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/plugin-ext/src/main/browser/editors-and-documents-main.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/plugin-ext/src/main/browser/notebooks/notebook-documents-and-editors-main.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/plugin-ext/src/main/browser/notebooks/notebook-documents-main.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/plugin-ext/src/main/browser/notebooks/notebook-kernels-main.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/plugin-ext/src/main/browser/notebooks/renderers/cell-output-webview.tsx",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/plugin-ext/src/main/browser/notebooks/renderers/output-webview-internal.ts",
-        "count": 2
-      },
-      {
-        "file": "platform/ide-core/packages/plugin-ext/src/main/browser/scm-main.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/plugin-ext/src/main/browser/tabs/tabs-main.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/plugin-ext/src/main/browser/text-editor-main.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/plugin-ext/src/main/browser/view/plugin-view-registry.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/plugin-ext/src/main/browser/webview/webview.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/plugin-ext/src/plugin/editors-and-documents.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/plugin-ext/src/plugin/plugin-context.ts",
-        "count": 3
-      },
-      {
-        "file": "platform/ide-core/packages/plugin-ext/src/plugin/scm.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/plugin-ext/src/plugin/tree/tree-views.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/plugin-ext/src/plugin/workspace.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/plugin-ext-headless/src/hosted/node/headless-hosted-plugin.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/plugin-ext-vscode/src/browser/plugin-vscode-commands-contribution.ts",
-        "count": 2
-      },
-      {
-        "file": "platform/ide-core/packages/process/src/node/process-backend-module.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/scm/src/browser/scm-tree-widget.tsx",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/search-in-workspace/src/node/ripgrep-search-in-workspace-server.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/task/src/browser/quick-open-task.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/task/src/browser/task-configurations.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/task/src/node/task-server.slow-spec.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/terminal/src/browser/terminal-file-link-provider.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/terminal/src/browser/terminal-frontend-contribution.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/terminal/src/browser/terminal-quick-open-service.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/terminal/src/common/terminal-preferences.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/vsx-registry/src/browser/vsx-extension.tsx",
-        "count": 1
+        "file": "ULTIMATE_SYSTEM_DIRECTIVE.md",
+        "count": 9
       },
       {
         "file": "scripts/bullshit-audit.mjs",
@@ -607,6 +426,13 @@
         "count": 1
       },
       {
+<<<<<<< Updated upstream:stage_44rebuild/SkyeHands_stage40_pass39_rehydrated_live_session/SkyeHands_recovered_merged/skydexia/proofs/bullshit-audit.json
+=======
+        "file": "scripts/smoke-p081-todo-fixme-burn.mjs",
+        "count": 12
+      },
+      {
+>>>>>>> Stashed changes:SkyeHands_stage40_pass39_rehydrated_live_session/SkyeHands_recovered_merged/skydexia/proofs/bullshit-audit.json
         "file": "scripts/sync-directive-audit-baseline.mjs",
         "count": 3
       }
@@ -618,7 +444,7 @@
       },
       {
         "file": "BULLSHIT_AUDIT_REPORT.md",
-        "count": 12
+        "count": 15
       },
       {
         "file": "DIRECTIVE_RELEASE_NOTES.md",
@@ -633,6 +459,7 @@
         "count": 1
       },
       {
+<<<<<<< Updated upstream:stage_44rebuild/SkyeHands_stage40_pass39_rehydrated_live_session/SkyeHands_recovered_merged/skydexia/proofs/bullshit-audit.json
         "file": "SkyeRoutex-v78/AE-FLOW/AE-Flow/0s-auth-sdk/index.js",
         "count": 3
       },
@@ -679,6 +506,22 @@
       {
         "file": "SkyeRoutex-v78/SkyeRoutex/housecircle.integral.v62.js",
         "count": 4
+=======
+        "file": "SMOKE_P082_STUB_PLACEHOLDER_BURN.md",
+        "count": 10
+      },
+      {
+        "file": "SMOKE_P083_NOT_IMPLEMENTED_BURN.md",
+        "count": 1
+      },
+      {
+        "file": "SMOKE_P084_ACTIONABLE_STUBS_BURN.md",
+        "count": 7
+      },
+      {
+        "file": "ULTIMATE_SYSTEM_DIRECTIVE.md",
+        "count": 24
+>>>>>>> Stashed changes:SkyeHands_stage40_pass39_rehydrated_live_session/SkyeHands_recovered_merged/skydexia/proofs/bullshit-audit.json
       },
       {
         "file": "SkyeRoutex-v78/SkyeRoutex/housecircle.integral.v63.js",
@@ -821,38 +664,15 @@
         "count": 2
       },
       {
-        "file": "platform/ide-core/CHANGELOG.md",
+        "file": "platform/user-platforms/ae-autonomous-store-system-maggies/source/ai-setup/app.mjs",
         "count": 1
       },
       {
-        "file": "platform/ide-core/examples/ovsx-router-config.json",
-        "count": 4
-      },
-      {
-        "file": "platform/ide-core/package-lock.json",
-        "count": 4
-      },
-      {
-        "file": "platform/ide-core/packages/ai-chat/src/browser/chat-session-store-impl.spec.ts",
-        "count": 23
-      },
-      {
-        "file": "platform/ide-core/packages/ai-chat/src/browser/chat-tool-preference-bindings.spec.ts",
-        "count": 2
-      },
-      {
-        "file": "platform/ide-core/packages/ai-chat/src/browser/file-chat-variable-contribution.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/ai-chat/src/common/chat-agent-service.spec.ts",
-        "count": 14
-      },
-      {
-        "file": "platform/ide-core/packages/ai-chat/src/common/chat-auto-save.spec.ts",
+        "file": "platform/user-platforms/ae-autonomous-store-system-maggies/source/product-detail/app.mjs",
         "count": 3
       },
       {
+<<<<<<< Updated upstream:stage_44rebuild/SkyeHands_stage40_pass39_rehydrated_live_session/SkyeHands_recovered_merged/skydexia/proofs/bullshit-audit.json
         "file": "platform/ide-core/packages/ai-chat/src/common/chat-model-serialization.spec.ts",
         "count": 3
       },
@@ -1617,6 +1437,8 @@
         "count": 3
       },
       {
+=======
+>>>>>>> Stashed changes:SkyeHands_stage40_pass39_rehydrated_live_session/SkyeHands_recovered_merged/skydexia/proofs/bullshit-audit.json
         "file": "platform/user-platforms/ae-autonomous-store-system-maggies/source/public-storefront/app.mjs",
         "count": 1
       },
@@ -1665,8 +1487,12 @@
         "count": 1
       },
       {
+        "file": "platform/user-platforms/skye-account-executive-commandhub-s0l26-0s/source/AE-Central-Command-Pack-CredentialHub-Launcher/netlify/functions/_shared/ae_providers.js",
+        "count": 1
+      },
+      {
         "file": "scripts/bullshit-audit.mjs",
-        "count": 15
+        "count": 16
       },
       {
         "file": "scripts/skydexia-ae-stub-replacement-and-smoke.mjs",
@@ -1681,12 +1507,27 @@
         "count": 1
       },
       {
+<<<<<<< Updated upstream:stage_44rebuild/SkyeHands_stage40_pass39_rehydrated_live_session/SkyeHands_recovered_merged/skydexia/proofs/bullshit-audit.json
+=======
+        "file": "scripts/smoke-p082-stub-placeholder-burn.mjs",
+        "count": 14
+      },
+      {
+        "file": "scripts/smoke-p083-not-implemented-burn.mjs",
+        "count": 1
+      },
+      {
+        "file": "scripts/smoke-p084-actionable-stubs-burn.mjs",
+        "count": 7
+      },
+      {
+>>>>>>> Stashed changes:SkyeHands_stage40_pass39_rehydrated_live_session/SkyeHands_recovered_merged/skydexia/proofs/bullshit-audit.json
         "file": "scripts/sync-directive-audit-baseline.mjs",
         "count": 6
       },
       {
         "file": "skydexia/proofs/bullshit-audit.json",
-        "count": 11
+        "count": 12
       },
       {
         "file": "skydexia/snapshots/2026-04-16T12-33-32-574Z/DIRECTIVE_RELEASE_NOTES.md",
@@ -1703,63 +1544,22 @@
         "count": 1
       },
       {
+<<<<<<< Updated upstream:stage_44rebuild/SkyeHands_stage40_pass39_rehydrated_live_session/SkyeHands_recovered_merged/skydexia/proofs/bullshit-audit.json
         "file": "ULTIMATE_SYSTEM_DIRECTIVE.md",
         "count": 4
       },
       {
+=======
+        "file": "SMOKE_P083_NOT_IMPLEMENTED_BURN.md",
+        "count": 4
+      },
+      {
+        "file": "ULTIMATE_SYSTEM_DIRECTIVE.md",
+        "count": 3
+      },
+      {
+>>>>>>> Stashed changes:SkyeHands_stage40_pass39_rehydrated_live_session/SkyeHands_recovered_merged/skydexia/proofs/bullshit-audit.json
         "file": "docs/SKYEHANDS_SOVEREIGN_PROVIDER_BINDINGS_IMPLEMENTATION_DIRECTIVE.md",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/ai-chat/src/common/chat-model.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/core/src/browser/shell/application-shell.ts",
-        "count": 2
-      },
-      {
-        "file": "platform/ide-core/packages/core/src/browser/test/mock-env-variables-server.ts",
-        "count": 4
-      },
-      {
-        "file": "platform/ide-core/packages/plugin/src/theia.d.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/plugin/src/theia.proposed.customEditorMove.d.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/plugin-ext/src/main/browser/notebooks/notebook-editors-main.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/plugin-ext/src/main/browser/notebooks/notebook-kernels-main.ts",
-        "count": 4
-      },
-      {
-        "file": "platform/ide-core/packages/plugin-ext/src/main/node/plugin-deployer-entry-impl.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/plugin-ext/src/plugin/node/debug/plugin-node-debug-adapter-creator.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/plugin-ext/src/plugin/type-converters.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/preferences/src/common/abstract-resource-preference-provider.spec.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/property-view/src/browser/property-view-widget-provider.ts",
-        "count": 1
-      },
-      {
-        "file": "platform/ide-core/packages/scm/src/browser/dirty-diff/content-lines.ts",
         "count": 1
       },
       {
@@ -1771,6 +1571,13 @@
         "count": 1
       },
       {
+<<<<<<< Updated upstream:stage_44rebuild/SkyeHands_stage40_pass39_rehydrated_live_session/SkyeHands_recovered_merged/skydexia/proofs/bullshit-audit.json
+=======
+        "file": "scripts/smoke-p083-not-implemented-burn.mjs",
+        "count": 4
+      },
+      {
+>>>>>>> Stashed changes:SkyeHands_stage40_pass39_rehydrated_live_session/SkyeHands_recovered_merged/skydexia/proofs/bullshit-audit.json
         "file": "scripts/sync-directive-audit-baseline.mjs",
         "count": 1
       }
@@ -1778,6 +1585,10 @@
     "force_pass_strings": [
       {
         "file": "BULLSHIT_AUDIT_REPORT.md",
+        "count": 1
+      },
+      {
+        "file": "SMOKE_AE_PROVIDER_DISPATCH.md",
         "count": 1
       },
       {
@@ -2085,11 +1896,39 @@
         "count": 2
       },
       {
-        "file": "SMOKE_P080_PROVIDER_E2E_HARNESS.md",
-        "count": 2
+        "file": "SMOKE_P081_DIRECTIVE_RUNTIME_AUDIT.md",
+        "count": 1
       },
       {
-        "file": "SMOKE_P081_DIRECTIVE_RUNTIME_AUDIT.md",
+        "file": "SMOKE_P081_TODO_FIXME_BURN.md",
+        "count": 1
+      },
+      {
+        "file": "SMOKE_P082_STUB_PLACEHOLDER_BURN.md",
+        "count": 1
+      },
+      {
+        "file": "SMOKE_P083_NOT_IMPLEMENTED_BURN.md",
+        "count": 1
+      },
+      {
+        "file": "SMOKE_P084_ACTIONABLE_STUBS_BURN.md",
+        "count": 1
+      },
+      {
+        "file": "SMOKE_P085_GRAYCHUNKS_PLATFORM.md",
+        "count": 1
+      },
+      {
+        "file": "SMOKE_P086_GRAYCHUNKS_AE_INTEGRATION.md",
+        "count": 1
+      },
+      {
+        "file": "SMOKE_P087_GRAYCHUNKS_PLATFORM_SERVER.md",
+        "count": 1
+      },
+      {
+        "file": "SMOKE_P088_GRAYCHUNKS_CYCLE_AUTOFIX.md",
         "count": 1
       },
       {
