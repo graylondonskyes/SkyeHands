@@ -1,13 +1,15 @@
 const { getNeonHealth } = require('./_lib/housecircle-neon-store');
 const { readOrgState, bundlePushSummary, clean } = require('./_lib/housecircle-cloud-store');
+const { corsHeaders } = require('./_lib/housecircle-cors');
 
 exports.handler = async function(event){
+  const cors = (m) => corsHeaders(event, m || 'GET,OPTIONS');
   const orgId = clean(event && event.queryStringParameters && event.queryStringParameters.orgId) || 'default-org';
   const state = readOrgState(orgId);
   const neon = await getNeonHealth(orgId);
   return {
     statusCode: 200,
-    headers: { 'content-type':'application/json', 'cache-control':'no-store', 'access-control-allow-origin':'*', 'access-control-allow-headers':'content-type, authorization' },
+    headers: cors(),
     body: JSON.stringify({
       ok:true,
       orgId: state.orgId,

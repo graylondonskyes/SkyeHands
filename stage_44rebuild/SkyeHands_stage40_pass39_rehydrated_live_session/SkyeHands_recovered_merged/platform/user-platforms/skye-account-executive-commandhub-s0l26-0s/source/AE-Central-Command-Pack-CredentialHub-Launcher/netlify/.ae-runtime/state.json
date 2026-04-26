@@ -159,6 +159,140 @@
       "detail": {
         "taskId": "task_dae37139-d128-415b-9c0e-49302213a8ab"
       }
+    },
+    {
+      "id": "usage_c5ccbcb4-4197-4dbb-99a0-e00c4e12180c",
+      "createdAt": "2026-04-25T23:47:56.503Z",
+      "route": "ae-graychunks-control",
+      "action": "read_graychunks_state",
+      "actorId": "",
+      "tenantId": "default",
+      "metrics": {},
+      "detail": {
+        "hasFindings": true,
+        "hasQueue": true,
+        "hasDispatch": true,
+        "hasProgress": true
+      }
+    },
+    {
+      "id": "usage_97091780-a9e8-48a9-be02-bb80c9f861fc",
+      "createdAt": "2026-04-25T23:47:57.704Z",
+      "route": "ae-graychunks-control",
+      "action": "execute_scan",
+      "actorId": "",
+      "tenantId": "default",
+      "metrics": {},
+      "detail": {
+        "success": true,
+        "steps": 1
+      }
+    },
+    {
+      "id": "usage_309c803c-dd49-442e-88ea-78134b3475fe",
+      "createdAt": "2026-04-25T23:47:57.760Z",
+      "route": "ae-graychunks-control",
+      "action": "execute_queue",
+      "actorId": "",
+      "tenantId": "default",
+      "metrics": {},
+      "detail": {
+        "success": true,
+        "steps": 1
+      }
+    },
+    {
+      "id": "usage_2661dd5f-65b4-48db-b9b5-655bc7a8cca1",
+      "createdAt": "2026-04-25T23:47:57.808Z",
+      "route": "ae-graychunks-control",
+      "action": "execute_alert",
+      "actorId": "",
+      "tenantId": "default",
+      "metrics": {},
+      "detail": {
+        "success": true,
+        "steps": 1
+      }
+    },
+    {
+      "id": "usage_a540ba7e-608b-439d-8237-f3b78b2d7c99",
+      "createdAt": "2026-04-25T23:47:57.905Z",
+      "route": "ae-graychunks-control",
+      "action": "execute_progress",
+      "actorId": "",
+      "tenantId": "default",
+      "metrics": {},
+      "detail": {
+        "success": true,
+        "steps": 1
+      }
+    },
+    {
+      "id": "usage_19289c65-1604-4b0b-bb1e-13aca3af1424",
+      "createdAt": "2026-04-25T23:49:23.429Z",
+      "route": "ae-graychunks-control",
+      "action": "read_graychunks_state",
+      "actorId": "",
+      "tenantId": "default",
+      "metrics": {},
+      "detail": {
+        "hasFindings": true,
+        "hasQueue": true,
+        "hasDispatch": true,
+        "hasProgress": true
+      }
+    },
+    {
+      "id": "usage_76b0ebaf-1b3b-4800-9b63-1ba43996e2df",
+      "createdAt": "2026-04-25T23:49:24.419Z",
+      "route": "ae-graychunks-control",
+      "action": "execute_scan",
+      "actorId": "",
+      "tenantId": "default",
+      "metrics": {},
+      "detail": {
+        "success": true,
+        "steps": 1
+      }
+    },
+    {
+      "id": "usage_332bc232-9485-485e-b18a-ce9e8cb9e411",
+      "createdAt": "2026-04-25T23:49:24.470Z",
+      "route": "ae-graychunks-control",
+      "action": "execute_queue",
+      "actorId": "",
+      "tenantId": "default",
+      "metrics": {},
+      "detail": {
+        "success": true,
+        "steps": 1
+      }
+    },
+    {
+      "id": "usage_889326ee-a2b5-47cb-9ba0-5f0231c30f7d",
+      "createdAt": "2026-04-25T23:49:24.511Z",
+      "route": "ae-graychunks-control",
+      "action": "execute_alert",
+      "actorId": "",
+      "tenantId": "default",
+      "metrics": {},
+      "detail": {
+        "success": true,
+        "steps": 1
+      }
+    },
+    {
+      "id": "usage_9bbe79df-6aca-4441-a194-857a9fe5fdbe",
+      "createdAt": "2026-04-25T23:49:24.592Z",
+      "route": "ae-graychunks-control",
+      "action": "execute_progress",
+      "actorId": "",
+      "tenantId": "default",
+      "metrics": {},
+      "detail": {
+        "success": true,
+        "steps": 1
+      }
     }
   ],
   "auditEvents": [
@@ -345,6 +479,174 @@
       "tenantId": "default",
       "outcome": "ok",
       "detail": {}
+    },
+    {
+      "id": "audit_7ee04e9e-2524-4082-bb8e-25ccef0b4c89",
+      "createdAt": "2026-04-25T23:47:57.704Z",
+      "actorId": "ae-system",
+      "actorType": "system",
+      "action": "ae_graychunks_execution",
+      "resource": "scan",
+      "tenantId": "default",
+      "outcome": "ok",
+      "detail": {
+        "steps": [
+          {
+            "script": "graychunks-scan.mjs",
+            "exitCode": 2,
+            "ok": false,
+            "stdout": "{\n  \"status\": \"FAIL\",\n  \"scannedFiles\": 4225,\n  \"issueCount\": 1026,\n  \"issuesByType\": {\n    \"repeated_chunk\": 85,\n    \"duplicate_import\": 115,\n    \"repeated_config_key\": 20,\n    \"duplicate_object_key\": 375,\n    \"broken_jsx_structure\": 431\n  },\n  \"targetDir\": \"\",\n  \"outputs\": {\n    \"json\": \"skydexia/alerts/graychunks-findings.json\",\n    \"markdown\": \"GRAYCHUNKS_REPORT.md\"\n  }\n}",
+            "stderr": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "audit_0c4150eb-2eb7-41f2-8e28-c1b45e9ceb3b",
+      "createdAt": "2026-04-25T23:47:57.760Z",
+      "actorId": "ae-system",
+      "actorType": "system",
+      "action": "ae_graychunks_execution",
+      "resource": "queue",
+      "tenantId": "default",
+      "outcome": "ok",
+      "detail": {
+        "steps": [
+          {
+            "script": "graychunks-priority-queue.mjs",
+            "exitCode": 0,
+            "ok": true,
+            "stdout": "{\n  \"status\": \"PASS\",\n  \"output\": \"skydexia/alerts/graychunks-priority-queue.json\",\n  \"queuedIssues\": 300\n}",
+            "stderr": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "audit_f9121a12-337c-40d9-9b17-2844b110753b",
+      "createdAt": "2026-04-25T23:47:57.808Z",
+      "actorId": "ae-system",
+      "actorType": "system",
+      "action": "ae_graychunks_execution",
+      "resource": "alert",
+      "tenantId": "default",
+      "outcome": "ok",
+      "detail": {
+        "steps": [
+          {
+            "script": "graychunks-alert-resend.mjs",
+            "exitCode": 0,
+            "ok": true,
+            "stdout": "{\n  \"status\": \"PASS\",\n  \"dispatch\": \"skydexia/alerts/graychunks-alert-dispatch.json\",\n  \"delivery\": \"DRY_RUN\"\n}",
+            "stderr": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "audit_2729b6f3-318c-4ed4-bfdc-84456c213652",
+      "createdAt": "2026-04-25T23:47:57.906Z",
+      "actorId": "ae-system",
+      "actorType": "system",
+      "action": "ae_graychunks_execution",
+      "resource": "progress",
+      "tenantId": "default",
+      "outcome": "ok",
+      "detail": {
+        "steps": [
+          {
+            "script": "graychunks-progress-dashboard.mjs",
+            "exitCode": 0,
+            "ok": true,
+            "stdout": "{\n  \"status\": \"PASS\",\n  \"json\": \"skydexia/alerts/graychunks-progress.json\",\n  \"markdown\": \"GRAYCHUNKS_PROGRESS.md\"\n}",
+            "stderr": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "audit_73792953-f47d-4ba9-9662-20a124592c73",
+      "createdAt": "2026-04-25T23:49:24.420Z",
+      "actorId": "ae-system",
+      "actorType": "system",
+      "action": "ae_graychunks_execution",
+      "resource": "scan",
+      "tenantId": "default",
+      "outcome": "ok",
+      "detail": {
+        "steps": [
+          {
+            "script": "graychunks-scan.mjs",
+            "exitCode": 2,
+            "ok": false,
+            "stdout": "{\n  \"status\": \"FAIL\",\n  \"scannedFiles\": 4225,\n  \"issueCount\": 1026,\n  \"issuesByType\": {\n    \"repeated_chunk\": 85,\n    \"duplicate_import\": 115,\n    \"repeated_config_key\": 20,\n    \"duplicate_object_key\": 375,\n    \"broken_jsx_structure\": 431\n  },\n  \"targetDir\": \"\",\n  \"outputs\": {\n    \"json\": \"skydexia/alerts/graychunks-findings.json\",\n    \"markdown\": \"GRAYCHUNKS_REPORT.md\"\n  }\n}",
+            "stderr": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "audit_5f03b8e1-08e3-445a-8c05-8cbd9a638ec9",
+      "createdAt": "2026-04-25T23:49:24.470Z",
+      "actorId": "ae-system",
+      "actorType": "system",
+      "action": "ae_graychunks_execution",
+      "resource": "queue",
+      "tenantId": "default",
+      "outcome": "ok",
+      "detail": {
+        "steps": [
+          {
+            "script": "graychunks-priority-queue.mjs",
+            "exitCode": 0,
+            "ok": true,
+            "stdout": "{\n  \"status\": \"PASS\",\n  \"output\": \"skydexia/alerts/graychunks-priority-queue.json\",\n  \"queuedIssues\": 300\n}",
+            "stderr": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "audit_950ac915-6362-4934-b8a3-41e02dc5f2af",
+      "createdAt": "2026-04-25T23:49:24.511Z",
+      "actorId": "ae-system",
+      "actorType": "system",
+      "action": "ae_graychunks_execution",
+      "resource": "alert",
+      "tenantId": "default",
+      "outcome": "ok",
+      "detail": {
+        "steps": [
+          {
+            "script": "graychunks-alert-resend.mjs",
+            "exitCode": 0,
+            "ok": true,
+            "stdout": "{\n  \"status\": \"PASS\",\n  \"dispatch\": \"skydexia/alerts/graychunks-alert-dispatch.json\",\n  \"delivery\": \"DRY_RUN\"\n}",
+            "stderr": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "audit_8cfd6aae-549f-4891-952d-5dd0e8034b01",
+      "createdAt": "2026-04-25T23:49:24.593Z",
+      "actorId": "ae-system",
+      "actorType": "system",
+      "action": "ae_graychunks_execution",
+      "resource": "progress",
+      "tenantId": "default",
+      "outcome": "ok",
+      "detail": {
+        "steps": [
+          {
+            "script": "graychunks-progress-dashboard.mjs",
+            "exitCode": 0,
+            "ok": true,
+            "stdout": "{\n  \"status\": \"PASS\",\n  \"json\": \"skydexia/alerts/graychunks-progress.json\",\n  \"markdown\": \"GRAYCHUNKS_PROGRESS.md\"\n}",
+            "stderr": ""
+          }
+        ]
+      }
     }
   ],
   "smokeReports": []

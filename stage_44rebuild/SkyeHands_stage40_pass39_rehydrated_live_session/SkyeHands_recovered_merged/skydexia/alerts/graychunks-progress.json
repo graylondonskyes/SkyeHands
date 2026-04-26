@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-18T05:06:25.496Z",
+  "generatedAt": "2026-04-25T23:49:27.462Z",
   "directiveCompletion": {
     "percent": 91,
     "checkedItems": 80,
@@ -7,10 +7,10 @@
     "uncheckedItems": 8
   },
   "graychunks": {
-    "scannedFiles": 3934,
-    "issueCount": 1011,
+    "scannedFiles": 4225,
+    "issueCount": 1026,
     "issuesByType": {
-      "repeated_chunk": 70,
+      "repeated_chunk": 85,
       "duplicate_import": 115,
       "repeated_config_key": 20,
       "duplicate_object_key": 375,
@@ -23,8 +23,8 @@
   },
   "trend": {
     "baselinePath": "skydexia/alerts/graychunks-progress.json",
-    "previousGeneratedAt": "2026-04-18T05:06:22.566Z",
-    "issueCountDelta": 1011,
+    "previousGeneratedAt": "2026-04-25T23:49:26.276Z",
+    "issueCountDelta": 1026,
     "queuedIssuesDelta": 300,
     "issuesByTypeDelta": {
       "repeated_chunk": null,
@@ -38,7 +38,7 @@
     "score": 16,
     "grade": "F",
     "penalties": {
-      "issueCount": 50.55,
+      "issueCount": 51.3,
       "criticalQueued": 25,
       "uncheckedItems": 8
     }

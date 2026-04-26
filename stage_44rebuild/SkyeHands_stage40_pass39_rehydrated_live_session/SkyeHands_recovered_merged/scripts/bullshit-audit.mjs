@@ -39,7 +39,9 @@ const argv = process.argv.slice(2);
 const strict = argv.includes('--strict');
 const blockingIgnoreFiles = new Set([
   'scripts/bullshit-audit.mjs',
-  'scripts/skydexia-ae-stub-replacement-and-smoke.mjs'
+  'scripts/skydexia-ae-stub-replacement-and-smoke.mjs',
+  // sync-directive script contains the audit pattern strings as string literals in its output templates — not real debt
+  'scripts/sync-directive-audit-baseline.mjs'
 ]);
 
 const files = walk(root);

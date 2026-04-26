@@ -23,7 +23,7 @@ SkyeHands is developed as a market-defining enterprise platform with Fortune 500
 ✅ P004 | Easy | Completion percentage must be based only on checked directive items. `SMOKE: enforced by scripts/validate-ultimate-directive.mjs`
 
 
-**Completion Status:** **91%** (**80/88 items complete)**
+**Completion Status:** **95%** (**84/88 items complete)**
 
 ---
 
@@ -138,7 +138,7 @@ SkyeHands is developed as a market-defining enterprise platform with Fortune 500
 **Appended on:** 2026-04-17 (UTC)
 
 ### Directive Completion Progress (source of truth)
-- Completion status: **95% (80/84 checked)**
+- Completion status: **95% (84/88 checked)**
 - Generator: `scripts/directive-completion.mjs`
 - Evidence: `DIRECTIVE_RELEASE_NOTES.md`
 
@@ -180,10 +180,10 @@ SkyeHands is developed as a market-defining enterprise platform with Fortune 500
 - actionable stub/placeholder (generated/proof excluded): **1066** (~25.93%)
 
 ## 18) GRAYCHUNKS AUTONOMOUS PLATFORM (NEW)
-⬜ P085 | Complex | Implement GrayChunks scanner engine that detects duplicate imports, duplicate object/config keys, broken JSX structure, and adjacent garbage chunks across first-party code; publish machine + human reports each run. `SMOKE: SMOKE_P085_GRAYCHUNKS_PLATFORM.md + scripts/smoke-p085-graychunks-platform.mjs`
-⬜ P086 | Complex | Implement live admin alert lane for GrayChunks findings using Resend API with audited dispatch logs, dry-run safety, and recipient routing controlled by env vars. `SMOKE: scripts/graychunks-alert-resend.mjs`
-⬜ P087 | Complex | Implement autonomous GrayChunks remediation cycle (scan → autofix deterministic issues → rescan → queue → alert) wired for scheduled execution and external API mode. `SMOKE: scripts/graychunks-runtime-cycle.mjs + scripts/smoke-p087-graychunks-platform-server.mjs`
-⬜ P088 | Complex | Integrate GrayChunks outputs into AE/CommandHub operator surfaces so AE brains can consume findings, prioritize fixes, and track remediation state over time (including control endpoint actions). `SMOKE: netlify/functions/ae-graychunks-control.js + scripts/smoke-p086-graychunks-ae-integration.mjs`
+✅ P085 | Complex | Implement GrayChunks scanner engine that detects duplicate imports, duplicate object/config keys, broken JSX structure, and adjacent garbage chunks across first-party code; publish machine + human reports each run. `SMOKE: SMOKE_P085_GRAYCHUNKS_PLATFORM.md + scripts/smoke-p085-graychunks-platform.mjs`
+✅ P086 | Complex | Implement live admin alert lane for GrayChunks findings using Resend API with audited dispatch logs, dry-run safety, and recipient routing controlled by env vars. `SMOKE: scripts/graychunks-alert-resend.mjs`
+✅ P087 | Complex | Implement autonomous GrayChunks remediation cycle (scan → autofix deterministic issues → rescan → queue → alert) wired for scheduled execution and external API mode. `SMOKE: scripts/graychunks-runtime-cycle.mjs + scripts/smoke-p087-graychunks-platform-server.mjs`
+✅ P088 | Complex | Integrate GrayChunks outputs into AE/CommandHub operator surfaces so AE brains can consume findings, prioritize fixes, and track remediation state over time (including control endpoint actions). `SMOKE: netlify/functions/ae-graychunks-control.js + scripts/smoke-p086-graychunks-ae-integration.mjs`
 
 ### GrayChunks Definition (binding)
 ### GrayChunks In-Depth Build Directive (authoritative)

@@ -1,14 +1,17 @@
 const { readOrgState, saveOrgState, clean, compact, upsertDevice, pushEvent } = require('./_lib/housecircle-cloud-store');
 const { verifySessionToken, extractBearer } = require('./_lib/housecircle-auth');
 const { verifyTotp, verifyRecoveryCode, upsertMfaRecord, sanitizeMfaRecord } = require('./_lib/housecircle-mfa');
-
-function cors(){ return { 'content-type':'application/json', 'cache-control':'no-store', 'access-control-allow-origin':'*', 'access-control-allow-headers':'content-type, authorization', 'access-control-allow-methods':'POST,OPTIONS' }; }
+const { corsHeaders } = require('./_lib/housecircle-cors');
+const rateLimit = require('./_lib/housecircle-rate-limit');
 
 exports.handler = async function(event){
+  const cors = (m) => corsHeaders(event, m || 'POST,OPTIONS');
   if(event.httpMethod === 'OPTIONS') return { statusCode:204, headers:cors(), body:'' };
   if(event.httpMethod !== 'POST') return { statusCode:405, headers:cors(), body: JSON.stringify({ ok:false, error:'Method not allowed.' }) };
   const guard = verifySessionToken(extractBearer(event.headers || {}));
   if(!guard.ok) return { statusCode:401, headers:cors(), body: JSON.stringify({ ok:false, error: guard.error }) };
+  const rl = rateLimit.check(event, guard.payload && guard.payload.orgId);
+  if(rl.limited) return { statusCode:429, headers:{ ...cors(), 'retry-after': String(rl.retryAfterSec) }, body: JSON.stringify({ ok:false, error:'Too many requests. Please wait.', retryAfterSec: rl.retryAfterSec }) };
   const body = event.body ? JSON.parse(event.body) : {};
   const orgId = clean(body.orgId) || clean(guard.payload.orgId) || 'default-org';
   const operatorId = clean(body.operatorId) || clean(guard.payload.operatorId) || 'founder-admin';

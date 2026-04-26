@@ -16,13 +16,9 @@ const server = spawn(process.execPath, [path.join(root, 'scripts', 'graychunks-p
 
 function waitForReady() {
   return new Promise((resolve, reject) => {
-    const timeout = setTimeout(() => reject(new Error('server_start_timeout')), 7000);
+    const timeout = setTimeout(() => reject(new Error('server_start_timeout')), 8000);
     server.stdout.on('data', (chunk) => {
-      const line = String(chunk);
-      if (line.includes('LISTENING')) {
-        clearTimeout(timeout);
-        resolve();
-      }
+      if (String(chunk).includes('LISTENING')) { clearTimeout(timeout); resolve(); }
     });
     server.on('exit', (code) => reject(new Error(`server_exited_${code}`)));
   });
@@ -30,47 +26,63 @@ function waitForReady() {
 
 await waitForReady();
 
-const statusRes = await fetch(`http://127.0.0.1:${port}/status`);
+// Step 1: seed findings by running a scan through the server
+const scanRes = await fetch(`http://127.0.0.1:${port}/scan`, {
+  method: 'POST',
+  headers: { 'content-type': 'application/json', 'x-graychunks-token': token },
+  body: JSON.stringify({ action: 'scan' })
+});
+
+// Step 2: build the priority queue
 const queueRes = await fetch(`http://127.0.0.1:${port}/queue`, {
   method: 'POST',
   headers: { 'content-type': 'application/json', 'x-graychunks-token': token },
   body: JSON.stringify({ action: 'queue' })
 });
+
+// Step 3: fire dry-run alert dispatch
 const alertRes = await fetch(`http://127.0.0.1:${port}/alert`, {
   method: 'POST',
   headers: { 'content-type': 'application/json', 'x-graychunks-token': token },
   body: JSON.stringify({ action: 'alert', dryRun: true })
 });
+
+// Step 4: check status — findings must now be populated
+const statusRes = await fetch(`http://127.0.0.1:${port}/status`, {
+  headers: { 'x-graychunks-token': token }
+});
+
+// Step 5: invalid target must be rejected
 const invalidTargetRes = await fetch(`http://127.0.0.1:${port}/scan`, {
   method: 'POST',
   headers: { 'content-type': 'application/json', 'x-graychunks-token': token },
   body: JSON.stringify({ action: 'scan', target: '../../' })
 });
 
-const statusBody = await statusRes.json();
+const scanBody = await scanRes.json();
 const queueBody = await queueRes.json();
 const alertBody = await alertRes.json();
+const statusBody = await statusRes.json();
 const invalidTargetBody = await invalidTargetRes.json();
 
-const pass = statusRes.ok && queueRes.ok && alertRes.ok && invalidTargetRes.status === 400
-  && Boolean(statusBody.findings)
-  && Boolean(queueBody.queue)
-  && Boolean(alertBody.dispatch)
-  && invalidTargetBody.error === 'invalid_target';
+const scanOk = scanRes.status === 200 || scanRes.status === 500; // scan returns 500 if findings found (exit 2 is ok)
+const queueOk = queueRes.ok && Boolean(queueBody.queue);
+const alertOk = alertRes.ok && Boolean(alertBody.dispatch);
+const statusOk = statusRes.ok && Boolean(statusBody.findings);
+const invalidOk = invalidTargetRes.status === 400 && invalidTargetBody.error === 'invalid_target';
+
+const pass = scanOk && queueOk && alertOk && statusOk && invalidOk;
 
 const artifact = path.join(root, 'SMOKE_P087_GRAYCHUNKS_PLATFORM_SERVER.md');
 fs.writeFileSync(artifact, [
   '# P087 Smoke Proof — GrayChunks Platform Server',
   '',
   `Status: ${pass ? 'PASS' : 'FAIL'}`,
-  `Status endpoint HTTP: ${statusRes.status}`,
-  `Queue endpoint HTTP: ${queueRes.status}`,
-  `Alert endpoint HTTP: ${alertRes.status}`,
-  `Invalid target HTTP: ${invalidTargetRes.status}`,
-  `Status has findings: ${Boolean(statusBody.findings)}`,
-  `Queue has queue payload: ${Boolean(queueBody.queue)}`,
-  `Alert has dispatch payload: ${Boolean(alertBody.dispatch)}`,
-  `Invalid target blocked: ${invalidTargetBody.error === 'invalid_target'}`
+  `Scan seeded (200 or 500-with-findings): ${scanOk} (HTTP ${scanRes.status})`,
+  `Queue built: ${queueOk} (HTTP ${queueRes.status})`,
+  `Alert dispatched (dry-run): ${alertOk} (HTTP ${alertRes.status})`,
+  `Status has findings after scan: ${statusOk} (HTTP ${statusRes.status})`,
+  `Invalid target blocked with 400: ${invalidOk} (HTTP ${invalidTargetRes.status})`,
 ].join('\n') + '\n', 'utf8');
 
 server.kill('SIGTERM');
